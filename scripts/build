@@ -1,0 +1,4 @@
+#!/bin/bash
+
+babel src -d lib
+browserify lib/index.js -o lib/bundle.js

@@ -6,11 +6,11 @@ proc cb(req: Request) {.async.} =
   var parts = req.url.path.split('/')
   if parts[1] == "f" and parts.len >= 3:
     var file: File
-    if open(file, parts[2]):
+    if open(file, "lib/" & parts[2]):
       await req.respond(Http200, readAll(file))
     else:
       await req.respond(Http404, "")
   else:
-    await req.respond(Http200, "Hello World")
+    await req.respond(Http200, readFile("src/index.html"))
 
 waitFor server.serve(Port(8080), cb)
