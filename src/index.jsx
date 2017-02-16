@@ -121,11 +121,12 @@ class Header extends React.Component {
 class Page extends React.Component {
 	render() {
 		const outerStyle = {
-			width: '100vw',
-			height: '100vh',
+			minHeight: '100vh',
 			display: 'flex',
-			justifyContent: 'center',
 			alignItems: 'center'
+		};
+		const innerStyle = {
+			width: '100%'
 		};
 		const hStyle = Object.assign({}, headingFontStyle, {
 			fontSize: 64,
@@ -136,7 +137,7 @@ class Page extends React.Component {
 		});
 		return (
 			<div style={outerStyle}>
-				<div>
+				<div style={innerStyle}>
 					<h1 style={hStyle}>{this.props.heading}</h1>
 					<div>{this.props.children}</div>
 				</div>
@@ -162,11 +163,61 @@ class HomePage extends React.Component {
 }
 
 
+class ProjectPreview extends React.Component {
+	render() {
+		const picStyle = {
+			width: 250,
+			height: 250,
+			display: 'flex',
+			backgroundColor: '#9A9A9A'
+		};
+		const titleStyle = {
+			fontSize: 24,
+			padding: 10,
+			width: '100%',
+			color: colorScheme.body,
+			backgroundColor: '#BBB',
+			textAlign: 'center',
+			alignSelf: 'flex-end'
+		};
+		return (
+			<div>
+				<div style={picStyle}>
+					<div style={titleStyle}>Project</div>
+				</div>
+			</div>
+		);
+	}
+}
+ProjectPreview = Radium(ProjectPreview)
+
+
 class ProjectsPage extends React.Component {
 	render() {
+		const ulStyle = {
+			width: '80%',
+			margin: 'auto',
+			marginTop: 50,
+			listStyle: 'none',
+			display: 'flex',
+			flexFlow: 'row wrap',
+			justifyContent: 'space-between'
+		};
+		const liStyle = {};
+
 		return (
 			<Page heading="Projects">
-				<p style={bodyFontStyle}>I need some projects here</p>
+				<ul style={ulStyle}>
+					<li style={liStyle}>
+						<ProjectPreview />
+					</li>
+					<li style={liStyle}>
+						<ProjectPreview />
+					</li>
+					<li style={liStyle}>
+						<ProjectPreview />
+					</li>
+				</ul>
 			</Page>
 		);
 	}
