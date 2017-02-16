@@ -21,6 +21,7 @@
     "scripty": "^1.7.0"
   },
   "dependencies": {
+    "radium": "^0.18.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   }

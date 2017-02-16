@@ -1,3 +1,4 @@
+import Radium from 'radium';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -31,9 +32,43 @@ const bodyFontStyle = {
 };
 
 
-class Header extends React.Component {
+class NavLink extends React.Component {
 	render() {
-		const padding = 20;
+		const style = Object.assign({}, headingFontStyle, {
+			fontSize: 20,
+			textDecoration: 'none',
+			paddingLeft: 20,
+			paddingRight: 20,
+			marginLeft: 2,
+			marginRight: 2,
+			display: 'inline-block',
+			height: this.props.height,
+			lineHeight: this.props.height.toString() + 'px',
+			':hover': {
+				height: this.props.height - 3,
+				borderBottom: '3px solid ' + colorScheme.accent,
+				color: colorScheme.body
+			}
+		});
+		const accentStyle = Object.assign({}, style, {
+			color: colorScheme.accent
+		});
+		if (this.props.accent) {
+			return (<a href="{this.props.href}" style={accentStyle}>{this.props.text}</a>);
+		} else {
+			return (<a href="{this.props.href}" style={style}>{this.props.text}</a>);
+		}
+	}
+}
+NavLink = Radium(NavLink);
+
+
+class Header extends React.Component {
+	constructor(props) {
+		super(props);
+		this.height = 64;
+	}
+	render() {
 		const outerStyle = {
 			width: '100%',
 			position: 'fixed',
@@ -42,7 +77,7 @@ class Header extends React.Component {
 		const innerStyle = {
 			width: 960,
 			margin: 'auto',
-			height: 64
+			height: this.height
 		};
 		return (
 			<header style={outerStyle}>
@@ -58,8 +93,8 @@ class Header extends React.Component {
 			fontSize: 24,
 			textDecoration: 'none',
 			display: 'inline-block',
-			height: '100%',
-			
+			height: this.height,
+			lineHeight: this.height.toString() + 'px'
 		});
 		return (
 			<a href="#" style={logoStyle}>
@@ -71,23 +106,12 @@ class Header extends React.Component {
 		const navStyle = {
 			float: 'right'
 		};
-		const aStyle = Object.assign({}, headingFontStyle, {
-			fontSize: 20,
-			textDecoration: 'none',
-			padding: 2,
-			marginLeft: 20,
-			marginRight: 20,
-			display: 'inline-block'
-		});
-		const aStyleAccent = Object.assign({}, aStyle, {
-			color: colorScheme.accent
-		});
 		return (
 			<nav style={navStyle}>
-				<a href="#" style={aStyleAccent}>Home</a>
-				<a href="#" style={aStyle}>Projects</a>
-				<a href="#" style={aStyle}>About</a>
-				<a href="#" style={aStyle}>Contact</a>
+				<NavLink height={this.height} href="#" text="Home" accent="true" />
+				<NavLink height={this.height} href="#" text="Projects" />
+				<NavLink height={this.height} href="#" text="About" />
+				<NavLink height={this.height} href="#" text="Contact" />
 			</nav>
 		);
 	}
