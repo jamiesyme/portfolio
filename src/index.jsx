@@ -150,6 +150,10 @@ class Page extends React.Component {
 
 class GithubProfileLink extends React.Component {
 	render() {
+		const divStyle = {
+			marginTop: 18,
+			marginBottom: 18
+		};
 		const aStyle = Object.assign({}, bodyFontStyle, {
 			color: colorScheme.accent,
 			textDecoration: 'none',
@@ -158,7 +162,7 @@ class GithubProfileLink extends React.Component {
 			}
 		});
 		return (
-			<div>
+			<div style={divStyle}>
 				{/* <iframe src="https://ghbtns.com/github-btn.html?user=jamiesyme&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe> */}
 				<a style={aStyle} href="#">Github</a>
 			</div>
@@ -170,6 +174,10 @@ GithubProfileLink = Radium(GithubProfileLink);
 
 class ContactLink extends React.Component {
 	render() {
+		const divStyle = {
+			marginTop: 18,
+			marginBottom: 18
+		};
 		const aStyle = Object.assign({}, bodyFontStyle, {
 			color: colorScheme.accent,
 			textDecoration: 'none',
@@ -178,7 +186,7 @@ class ContactLink extends React.Component {
 			}
 		});
 		return (
-			<div>
+			<div style={divStyle}>
 				<a style={aStyle} href="#">Contact Me</a>
 			</div>
 		);
@@ -194,8 +202,7 @@ class HomePage extends React.Component {
 			alignItems: 'center'
 		};
 		const pageInnerStyle = {
-			display: 'flex',
-			//width: '100%'
+			display: 'flex'
 		};
 		const picContainerStyle = {
 			minWidth: '45%'
@@ -212,11 +219,11 @@ class HomePage extends React.Component {
 		};
 		const hStyle = Object.assign({}, headingFontStyle, {
 			fontSize: 64,
-			paddingBottom: 60
+			marginTop: 0,
+			marginBottom: 60
 		});
 		const pStyle = Object.assign({}, bodyFontStyle, {
-			paddingRight: 100,
-			paddingBottom: 30
+			marginRight: 100
 		});
 		return (
 			<Page style={pageStyle}>
@@ -239,68 +246,60 @@ class HomePage extends React.Component {
 HomePage = Radium(HomePage);
 
 
-class ProjectPreview extends React.Component {
+class Project extends React.Component {
 	render() {
-		const picStyle = {
-			width: 250,
-			height: 250,
-			display: 'flex',
-			backgroundColor: '#9A9A9A'
-		};
-		const titleStyle = {
-			fontSize: 24,
-			padding: 10,
-			width: '100%',
-			color: colorScheme.body,
-			backgroundColor: 'rgba(255, 255, 255, 0.5)',
-			textAlign: 'center',
-			alignSelf: 'flex-end'
-		};
+		const pStyle = Object.assign({}, bodyFontStyle);
 		return (
 			<div>
-				<div style={picStyle}>
-					<div style={titleStyle}>Project</div>
-				</div>
+				<h2>Minfo</h2>
+				<p style={pStyle}><strong>Overview:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus ultricies elit eu laoreet. Sed id urna faucibus, interdum turpis.</p>
+				<p style={pStyle}><strong>Languages:</strong> C, Xlib, Cairo/Pango, Make</p>
+				<p style={pStyle}><strong>When:</strong> Jan '17 - Present</p>
+				<p style={pStyle}><strong>Details:</strong></p>
 			</div>
 		);
 	}
 }
-ProjectPreview = Radium(ProjectPreview)
 
 
-class ProjectDetails extends React.Component {
-	render() {
-	}
-}
-
-
-
-class ProjectsPage extends React.Component {
+class ProjectList extends React.Component {
 	render() {
 		const ulStyle = {
 			width: '80%',
 			margin: 'auto',
-			marginTop: 50,
-			listStyle: 'none',
-			display: 'flex',
-			flexFlow: 'row wrap',
-			justifyContent: 'space-between'
+			listStyle: 'none'
 		};
 		const liStyle = {};
 
 		return (
-			<Page heading="Projects">
-				<ul style={ulStyle}>
-					<li style={liStyle}>
-						<ProjectPreview />
-					</li>
-					<li style={liStyle}>
-						<ProjectPreview />
-					</li>
-					<li style={liStyle}>
-						<ProjectPreview />
-					</li>
-				</ul>
+			<ul style={ulStyle}>
+				<li style={liStyle}>
+					<Project />
+				</li>
+				<li style={liStyle}>
+					<Project />
+				</li>
+				<li style={liStyle}>
+					<Project />
+				</li>
+			</ul>
+		);
+	}
+}
+
+
+class ProjectsPage extends React.Component {
+	render() {
+		const hStyle = Object.assign({}, headingFontStyle, {
+			fontSize: 64,
+			marginTop: 0,
+			marginBottom: 60,
+			marginLeft: '10%'
+		});
+		return (
+			<Page>
+				<h1 style={hStyle}>Projects</h1>
+				<ProjectList />
 			</Page>
 		);
 	}
@@ -309,9 +308,22 @@ class ProjectsPage extends React.Component {
 
 class AboutPage extends React.Component {
 	render() {
+		const hStyle = Object.assign({}, headingFontStyle, {
+			fontSize: 64,
+			marginTop: 0,
+			marginBottom: 60,
+			marginLeft: '10%'
+		});
+		const pStyle = Object.assign({}, bodyFontStyle, {
+			width: '80%',
+			marginLeft: 'auto',
+			marginRight: 'auto'
+		});
 		return (
-			<Page heading="About">
-				<p style={bodyFontStyle}>I need to write some stuff about me here</p>
+			<Page>
+				<h1 style={hStyle}>About</h1>
+				<p style={pStyle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut erat vitae turpis fringilla ornare non id leo. Phasellus lacinia turpis non velit lobortis dictum. Integer tempor, mauris sit amet consequat maximus, felis justo sollicitudin turpis, a cursus nulla massa in turpis. Maecenas nibh quam, finibus ornare malesuada ut, tincidunt eget dui. Pellentesque lacinia faucibus nibh, quis ornare nunc venenatis id. Maecenas eget nulla vel lorem hendrerit scelerisque sed in nisi. Curabitur pulvinar felis non purus iaculis viverra. Nulla euismod turpis non lacinia tincidunt. Nam eget scelerisque quam. Fusce a sodales lacus. Nam iaculis eget sapien vitae ornare. Donec ullamcorper eros eleifend eleifend ultrices.</p>
+				<p style={pStyle}>Quisque fringilla sapien odio, et pretium arcu fermentum sit amet. Phasellus purus arcu, porta ultricies luctus quis, condimentum vitae ipsum. Ut id urna eget nisi varius cursus. Praesent varius finibus vehicula. Nunc vitae augue in ipsum cursus vulputate. Nulla feugiat nulla ut mauris vulputate, eget posuere lectus rhoncus. Praesent imperdiet mauris eu urna consequat scelerisque sed ut tortor. Aliquam suscipit purus ac lectus egestas, at imperdiet ipsum consectetur. Aenean quam ex, vehicula quis risus id, congue accumsan sapien. Sed ante augue, commodo ut faucibus id, consequat nec ex. Vestibulum eu velit malesuada, vulputate velit sed, fermentum lectus. Suspendisse tincidunt justo non leo viverra maximus. Aliquam feugiat lacus vitae est condimentum, vel dignissim dolor dictum.</p>
 			</Page>
 		);
 	}
@@ -320,9 +332,22 @@ class AboutPage extends React.Component {
 
 class ContactPage extends React.Component {
 	render() {
+		const hStyle = Object.assign({}, headingFontStyle, {
+			fontSize: 64,
+			marginTop: 0,
+			marginBottom: 60,
+			marginLeft: '10%'
+		});
+		const pStyle = Object.assign({}, bodyFontStyle, {
+			width: '80%',
+			marginLeft: 'auto',
+			marginRight: 'auto'
+		});
 		return (
-			<Page heading="Contact">
-				<p style={bodyFontStyle}>I need to write contact info here</p>
+			<Page>
+				<h1 style={hStyle}>Contact</h1>
+				<p style={pStyle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut erat vitae turpis fringilla ornare non id leo. Phasellus lacinia turpis non velit lobortis dictum. Integer tempor, mauris sit amet consequat maximus, felis justo sollicitudin turpis, a cursus nulla massa in turpis. Maecenas nibh quam, finibus ornare malesuada ut, tincidunt eget dui. Pellentesque lacinia faucibus nibh, quis ornare nunc venenatis id. Maecenas eget nulla vel lorem hendrerit scelerisque sed in nisi. Curabitur pulvinar felis non purus iaculis viverra. Nulla euismod turpis non lacinia tincidunt. Nam eget scelerisque quam. Fusce a sodales lacus. Nam iaculis eget sapien vitae ornare. Donec ullamcorper eros eleifend eleifend ultrices.</p>
+				<p style={pStyle}>Quisque fringilla sapien odio, et pretium arcu fermentum sit amet. Phasellus purus arcu, porta ultricies luctus quis, condimentum vitae ipsum. Ut id urna eget nisi varius cursus. Praesent varius finibus vehicula. Nunc vitae augue in ipsum cursus vulputate. Nulla feugiat nulla ut mauris vulputate, eget posuere lectus rhoncus. Praesent imperdiet mauris eu urna consequat scelerisque sed ut tortor. Aliquam suscipit purus ac lectus egestas, at imperdiet ipsum consectetur. Aenean quam ex, vehicula quis risus id, congue accumsan sapien. Sed ante augue, commodo ut faucibus id, consequat nec ex. Vestibulum eu velit malesuada, vulputate velit sed, fermentum lectus. Suspendisse tincidunt justo non leo viverra maximus. Aliquam feugiat lacus vitae est condimentum, vel dignissim dolor dictum.</p>
 			</Page>
 		);
 	}
