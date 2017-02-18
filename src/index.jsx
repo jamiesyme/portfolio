@@ -12,9 +12,9 @@ const colorScheme = {
 };
 
 const fontScheme = {
-	heavy: ['Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Tahoma', 'sans-serif'],
-	//heading: ['Tahoma', 'Geneva', 'sans-serif'],
-	body: ['Georgia', 'Serif']
+	heavy: 'Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif',
+	//heading: 'Tahoma, Geneva, sans-serif',
+	body: 'Georgia, Serif'
 };
 
 const headingFontStyle = {
@@ -120,47 +120,123 @@ class Header extends React.Component {
 
 class Page extends React.Component {
 	render() {
-		const outerStyle = {
-			minHeight: '100vh',
-			display: 'flex',
-			alignItems: 'center'
-		};
-		const innerStyle = {
-			width: '100%'
-		};
-		const hStyle = Object.assign({}, headingFontStyle, {
-			fontSize: 64,
-			//paddingTop: 60,
-			paddingBottom: 60,
-			margin: 0,
-			textAlign: 'center'
-		});
+		//const outerStyle = {
+			//minHeight: '100vh',
+			//display: 'flex',
+			//alignItems: 'center'
+		//};
+		//const innerStyle = {
+			//width: '100%'
+		//};
+		//const hStyle = Object.assign({}, headingFontStyle, {
+			//fontSize: 64,
+			////paddingTop: 60,
+			//paddingBottom: 60,
+			//margin: 0,
+			//textAlign: 'center'
+		//});
+		const style = Object.assign({
+			minHeight: '100vh'
+		}, this.props.style);
+
 		return (
-			<div style={outerStyle}>
-				<div style={innerStyle}>
-					<h1 style={hStyle}>{this.props.heading}</h1>
-					<div>{this.props.children}</div>
-				</div>
+			<div style={style}>
+				{this.props.children}
 			</div>
 		);
 	}
 }
 
 
-class HomePage extends React.Component {
+class GithubProfileLink extends React.Component {
 	render() {
-		const pStyle = Object.assign({}, bodyFontStyle, {
-			width: 450,
-			margin: 'auto',
-			textAlign: 'center'
+		const aStyle = Object.assign({}, bodyFontStyle, {
+			color: colorScheme.accent,
+			textDecoration: 'none',
+			':hover': {
+				textDecoration: 'underline'
+			}
 		});
 		return (
-			<Page heading="Welcome">
-				<p style={pStyle}>I'm a backend web developer who is blah blah here are some more words to make this the right length. Let's add a little bit more and see if we can get a couple more lines.</p>
+			<div>
+				{/* <iframe src="https://ghbtns.com/github-btn.html?user=jamiesyme&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe> */}
+				<a style={aStyle} href="#">Github</a>
+			</div>
+		);
+	}
+}
+GithubProfileLink = Radium(GithubProfileLink);
+
+
+class ContactLink extends React.Component {
+	render() {
+		const aStyle = Object.assign({}, bodyFontStyle, {
+			color: colorScheme.accent,
+			textDecoration: 'none',
+			':hover': {
+				textDecoration: 'underline'
+			}
+		});
+		return (
+			<div>
+				<a style={aStyle} href="#">Contact Me</a>
+			</div>
+		);
+	}
+}
+ContactLink = Radium(ContactLink);
+
+
+class HomePage extends React.Component {
+	render() {
+		const pageStyle = {
+			display: 'flex',
+			alignItems: 'center'
+		};
+		const pageInnerStyle = {
+			display: 'flex',
+			//width: '100%'
+		};
+		const picContainerStyle = {
+			minWidth: '45%'
+		};
+		const picStyle = {
+			width: 250,
+			height: 250,
+			margin: 'auto',
+			borderRadius: '50%',
+			backgroundColor: 'rgb(200, 200, 200)'
+		};
+		const introContainerStyle = {
+			flexGrow: 1
+		};
+		const hStyle = Object.assign({}, headingFontStyle, {
+			fontSize: 64,
+			paddingBottom: 60
+		});
+		const pStyle = Object.assign({}, bodyFontStyle, {
+			paddingRight: 100,
+			paddingBottom: 30
+		});
+		return (
+			<Page style={pageStyle}>
+				<div style={pageInnerStyle}>
+					<div style={picContainerStyle}>
+						<div style={picStyle}></div>
+					</div>
+					<div style={introContainerStyle}>
+						<h1 style={hStyle}>Welcome</h1>
+						<p style={pStyle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus libero, pulvinar quis imperdiet ut, tempus sed tortor. Suspendisse in pulvinar tortor. Donec feugiat at quam quis sodales. Cras tellus lorem, porttitor ac pretium sit amet, vestibulum in neque. Sed.</p>
+						<p style={pStyle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nibh sapien, nec molestie leo.</p>
+						<GithubProfileLink />
+						<ContactLink />
+					</div>
+				</div>
 			</Page>
 		);
 	}
 }
+HomePage = Radium(HomePage);
 
 
 class ProjectPreview extends React.Component {
@@ -176,7 +252,7 @@ class ProjectPreview extends React.Component {
 			padding: 10,
 			width: '100%',
 			color: colorScheme.body,
-			backgroundColor: '#BBB',
+			backgroundColor: 'rgba(255, 255, 255, 0.5)',
 			textAlign: 'center',
 			alignSelf: 'flex-end'
 		};
@@ -190,6 +266,13 @@ class ProjectPreview extends React.Component {
 	}
 }
 ProjectPreview = Radium(ProjectPreview)
+
+
+class ProjectDetails extends React.Component {
+	render() {
+	}
+}
+
 
 
 class ProjectsPage extends React.Component {
