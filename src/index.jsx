@@ -248,14 +248,33 @@ HomePage = Radium(HomePage);
 
 class Project extends React.Component {
 	render() {
+		const divStyle = {
+			display: 'flex'
+		};
+		const divLeftStyle = {
+			flexGrow: 1
+		};
 		const pStyle = Object.assign({}, bodyFontStyle);
+		const picStyle = {
+			width: 250,
+			height: 250,
+			margin: '20 20 20 40',
+			backgroundColor: '#DDD'
+		};
 		return (
 			<div>
 				<h2>Minfo</h2>
-				<p style={pStyle}><strong>Overview:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus ultricies elit eu laoreet. Sed id urna faucibus, interdum turpis.</p>
-				<p style={pStyle}><strong>Languages:</strong> C, Xlib, Cairo/Pango, Make</p>
-				<p style={pStyle}><strong>When:</strong> Jan '17 - Present</p>
-				<p style={pStyle}><strong>Details:</strong></p>
+				<div style={divStyle}>
+					<div style={divLeftStyle}>
+						<p style={pStyle}><strong>Overview:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus ultricies elit eu laoreet. Sed id urna faucibus, interdum turpis.</p>
+						<p style={pStyle}><strong>Languages:</strong> C, Xlib, Cairo/Pango, Make</p>
+						<p style={pStyle}><strong>When:</strong> Jan '17 - Present</p>
+						<p style={pStyle}><strong>Details:</strong></p>
+					</div>
+					<div>
+						<div style={picStyle}></div>
+					</div>
+				</div>
 			</div>
 		);
 	}
