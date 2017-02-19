@@ -5,9 +5,9 @@
   "author": "Jamie Syme <jamie.d.syme@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build-client": "babel client -d tmp && browserify tmp/index.js -o build/bundle.js && rm -rf tmp",
+    "build-client": "babel client -d tmp && browserify tmp/app.js -o build/bundle.js && rm -rf tmp",
     "build-server": "babel server -d build",
-    "build": "babel client -d tmp && browserify tmp/index.js -o build/bundle.js && rm -rf tmp && babel server -d build",
+    "build": "babel client -d tmp && browserify tmp/app.js -o build/bundle.js && rm -rf tmp && babel server -d build",
     "start": "(cd build && node app.js)"
   },
   "babel": {
