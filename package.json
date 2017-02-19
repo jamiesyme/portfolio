@@ -5,7 +5,10 @@
   "author": "Jamie Syme <jamie.d.syme@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "scripty"
+    "build-client": "babel client -d tmp && browserify tmp/index.js -o build/bundle.js && rm -rf tmp",
+    "build-server": "babel server -d build",
+    "build": "babel client -d tmp && browserify tmp/index.js -o build/bundle.js && rm -rf tmp && babel server -d build",
+    "start": "(cd build && node app.js)"
   },
   "babel": {
     "presets": [
@@ -17,10 +20,10 @@
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
-    "browserify": "^13.1.1",
-    "scripty": "^1.7.0"
+    "browserify": "^13.1.1"
   },
   "dependencies": {
+    "express": "^4.14.1",
     "normalize.css": "^5.0.0",
     "radium": "^0.18.1",
     "react": "^15.4.1",

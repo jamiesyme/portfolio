@@ -1,4 +1,2 @@
-/lib/
-/nimcache/
+/build/
 /node_modules/
-/main
