@@ -148,12 +148,8 @@ class Page extends React.Component {
 }
 
 
-class GithubProfileLink extends React.Component {
+class Link extends React.Component {
 	render() {
-		const divStyle = {
-			marginTop: 18,
-			marginBottom: 18
-		};
 		const aStyle = Object.assign({}, bodyFontStyle, {
 			color: colorScheme.accent,
 			textDecoration: 'none',
@@ -162,37 +158,22 @@ class GithubProfileLink extends React.Component {
 			}
 		});
 		return (
-			<div style={divStyle}>
-				{/* <iframe src="https://ghbtns.com/github-btn.html?user=jamiesyme&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe> */}
-				<a style={aStyle} href="#">Github</a>
-			</div>
+			<a style={aStyle} href={this.props.href}>{this.props.children}</a>
 		);
 	}
 }
-GithubProfileLink = Radium(GithubProfileLink);
+Link = Radium(Link);
 
 
-class ContactLink extends React.Component {
+class BlockLink extends React.Component {
 	render() {
-		const divStyle = {
-			marginTop: 18,
-			marginBottom: 18
-		};
-		const aStyle = Object.assign({}, bodyFontStyle, {
-			color: colorScheme.accent,
-			textDecoration: 'none',
-			':hover': {
-				textDecoration: 'underline'
-			}
-		});
 		return (
-			<div style={divStyle}>
-				<a style={aStyle} href="#">Contact Me</a>
-			</div>
+			<p>
+				<Link href={this.props.href}>{this.props.children}</Link>
+			</p>
 		);
 	}
 }
-ContactLink = Radium(ContactLink);
 
 
 class HomePage extends React.Component {
@@ -235,8 +216,8 @@ class HomePage extends React.Component {
 						<h1 style={hStyle}>Welcome</h1>
 						<p style={pStyle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus libero, pulvinar quis imperdiet ut, tempus sed tortor. Suspendisse in pulvinar tortor. Donec feugiat at quam quis sodales. Cras tellus lorem, porttitor ac pretium sit amet, vestibulum in neque. Sed.</p>
 						<p style={pStyle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nibh sapien, nec molestie leo.</p>
-						<GithubProfileLink />
-						<ContactLink />
+						<BlockLink href="https://github.com/jamiesyme">Github</BlockLink>
+						<BlockLink href="#">Contact Me</BlockLink>
 					</div>
 				</div>
 			</Page>
@@ -269,6 +250,7 @@ class Project extends React.Component {
 						<p style={pStyle}><strong>Overview:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus ultricies elit eu laoreet. Sed id urna faucibus, interdum turpis.</p>
 						<p style={pStyle}><strong>Languages:</strong> C, Xlib, Cairo/Pango, Make</p>
 						<p style={pStyle}><strong>When:</strong> Jan '17 - Present</p>
+						<p style={pStyle}><strong>Where:</strong> <Link href="https://github.com/jamiesyme/minfo">Github</Link></p>
 						<p style={pStyle}><strong>Details:</strong></p>
 					</div>
 					<div>
