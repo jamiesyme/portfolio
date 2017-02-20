@@ -1,9 +1,11 @@
-import { Link } from '../atoms/link';
-import { Paragraph } from '../atoms/paragraph';
-import { SecondaryHeading } from '../atoms/secondary-heading';
-import { Screenshot } from '../atoms/screenshot';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import LinkAtom from '../atoms/link';
+import ParagraphAtom from '../atoms/paragraph';
+import SecondaryHeadingAtom from '../atoms/secondary-heading';
+import ScreenshotAtom from '../atoms/screenshot';
+
 
 const flexStyle = {
 	display: 'flex'
@@ -13,34 +15,37 @@ const growStyle = {
 	flexGrow: 1
 };
 
-export class Project extends React.Component {
+
+export class ProjectMole extends React.Component {
 	render() {
 		return (
 			<div>
-				<SecondaryHeading>Minfo</SecondaryHeading>
+				<SecondaryHeadingAtom>Minfo</SecondaryHeadingAtom>
 				<div style={flexStyle}>
 					<div style={growStyle}>
-						<Paragraph>
+						<ParagraphAtom>
 							<strong>Overview:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus ultricies elit eu laoreet. Sed id urna faucibus, interdum turpis.
-						</Paragraph>
-						<Paragraph>
+						</ParagraphAtom>
+						<ParagraphAtom>
 							<strong>Languages:</strong> C, Xlib, Cairo/Pango, Make
-						</Paragraph>
-						<Paragraph>
+						</ParagraphAtom>
+						<ParagraphAtom>
 							<strong>When:</strong> Jan '17 - Present
-						</Paragraph>
-						<Paragraph>
-							<strong>Where:</strong> <Link href="https://github.com/jamiesyme/minfo">Github</Link>
-						</Paragraph>
-						<Paragraph>
+						</ParagraphAtom>
+						<ParagraphAtom>
+							<strong>Where:</strong> <LinkAtom href="https://github.com/jamiesyme/minfo">Github</LinkAtom>
+						</ParagraphAtom>
+						<ParagraphAtom>
 							<strong>Details:</strong>
-						</Paragraph>
+						</ParagraphAtom>
 					</div>
 					<div>
-						<Screenshot />
+						<ScreenshotAtom />
 					</div>
 				</div>
 			</div>
 		);
 	}
 };
+
+export default ProjectMole;

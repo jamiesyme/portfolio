@@ -1,6 +1,8 @@
-import { Project } from '../molecules/project';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import ProjectMole from '../molecules/project';
+
 
 const ulStyle = {
 	listStyle: 'none',
@@ -10,20 +12,22 @@ const ulStyle = {
 
 const liStyle = {};
 
-export class ProjectList extends React.Component {
+export class ProjectListOrg extends React.Component {
 	render() {
 		return (
 			<ul style={ulStyle}>
 				<li style={liStyle}>
-					<Project />
+					<ProjectMole />
 				</li>
 				<li style={liStyle}>
-					<Project />
+					<ProjectMole />
 				</li>
 				<li style={liStyle}>
-					<Project />
+					<ProjectMole />
 				</li>
 			</ul>
 		);
 	}
 };
+
+export default ProjectListOrg;

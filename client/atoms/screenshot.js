@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+
 const style = {
 	backgroundColor: '#DDD',
 	height: 250,
@@ -8,10 +9,12 @@ const style = {
 	width: 250
 };
 
-export class Screenshot extends React.Component {
+export class ScreenshotAtom extends React.Component {
 	render() {
 		return (
 			<div style={style}></div>
 		);
 	}
 };
+
+export default ScreenshotAtom;

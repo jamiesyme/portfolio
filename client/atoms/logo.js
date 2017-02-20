@@ -1,12 +1,14 @@
-import { ColorPalette } from './color-palette';
-import { FontPalette } from './font-palette';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import ColorPaletteAtom from './color-palette';
+import FontPaletteAtom from './font-palette';
+
+
 const style = {
-	color: ColorPalette.heavy,
+	color: ColorPaletteAtom.heavy,
 	display: 'inline-block',
-	fontFamily: FontPalette.heavy,
+	fontFamily: FontPaletteAtom.heavy,
 	fontSize: 24,
 	fontWeight: 500,
 	height: 64,
@@ -14,10 +16,12 @@ const style = {
 	textDecoration: 'none'
 };
 
-export class Logo extends React.Component {
+export class LogoAtom extends React.Component {
 	render() {
 		return (
 			<a href="#" style={style}>jamiesyme.com</a>
 		);
 	}
 };
+
+export default LogoAtom;

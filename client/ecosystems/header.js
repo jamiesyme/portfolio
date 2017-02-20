@@ -1,21 +1,40 @@
-import { ColorPalette } from '../atoms/color-palette';
-import { Header as HeaderOrganism } from '../organisms/header';
-import Radium from 'radium';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const style = {
-	backgroundColor: ColorPalette.bg,
+import ColorPaletteAtom from '../atoms/color-palette';
+import LogoAtom from '../atoms/logo';
+import NavigationBarMole from '../molecules/navigation-bar';
+
+
+const headerStyle = {
+	backgroundColor: ColorPaletteAtom.bg,
 	position: 'fixed',
 	width: '100%'
 };
 
-export class Header extends React.Component {
+const innerHeaderStyle = {
+	height: 64,
+	margin: 'auto',
+	width: 960
+};
+
+const navStyle = {
+	float: 'right'
+};
+
+export class HeaderEco extends React.Component {
 	render() {
 		return (
-			<div style={style}>
-				<HeaderOrganism />
-			</div>
+			<header style={headerStyle}>
+				<div style={innerHeaderStyle}>
+					<LogoAtom />
+					<div style={navStyle}>
+						<NavigationBarMole />
+					</div>
+				</div>
+			</header>
 		);
 	}
 };
+
+export default HeaderEco;

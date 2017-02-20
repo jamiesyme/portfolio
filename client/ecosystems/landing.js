@@ -1,9 +1,11 @@
-import { Avatar } from '../atoms/avatar';
-import { Link } from '../atoms/link';
-import { Paragraph } from '../atoms/paragraph';
-import { PrimaryHeading } from '../atoms/primary-heading';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import AvatarAtom from '../atoms/avatar';
+import LinkAtom from '../atoms/link';
+import ParagraphAtom from '../atoms/paragraph';
+import PrimaryHeadingAtom from '../atoms/primary-heading';
+
 
 const fullStyle = {
 	alignItems: 'center',
@@ -25,27 +27,32 @@ const introContainerStyle = {
 	flexGrow: 1
 };
 
-export class Landing extends React.Component {
+
+export class LandingEco extends React.Component {
 	render() {
+		const lorem1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus libero, pulvinar quis imperdiet ut, tempus sed tortor. Suspendisse in pulvinar tortor. Donec feugiat at quam quis sodales. Cras tellus lorem, porttitor ac pretium sit amet, vestibulum in neque. Sed.';
+		const lorem2 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nibh sapien, nec molestie leo.';
 		return (
 			<div style={fullStyle}>
 				<div style={contentContainerStyle}>
 					<div style={picContainerStyle}>
-						<Avatar />
+						<AvatarAtom />
 					</div>
 					<div style={introContainerStyle}>
-						<PrimaryHeading>Welcome</PrimaryHeading>
-						<Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus libero, pulvinar quis imperdiet ut, tempus sed tortor. Suspendisse in pulvinar tortor. Donec feugiat at quam quis sodales. Cras tellus lorem, porttitor ac pretium sit amet, vestibulum in neque. Sed.</Paragraph>
-						<Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nibh sapien, nec molestie leo.</Paragraph>
-						<Paragraph>
-							<Link href="https://github.com/jamiesyme">Github</Link>
-						</Paragraph>
-						<Paragraph>
-							<Link href="#">Contact Me</Link>
-						</Paragraph>
+						<PrimaryHeadingAtom>Welcome</PrimaryHeadingAtom>
+						<ParagraphAtom>{lorem1}</ParagraphAtom>
+						<ParagraphAtom>{lorem2}</ParagraphAtom>
+						<ParagraphAtom>
+							<LinkAtom href="https://github.com/jamiesyme">Github</LinkAtom>
+						</ParagraphAtom>
+						<ParagraphAtom>
+							<LinkAtom href="#">Contact Me</LinkAtom>
+						</ParagraphAtom>
 					</div>
 				</div>
 			</div>
 		);
 	}
 };
+
+export default LandingEco;

@@ -1,6 +1,8 @@
-import { Normal as NormalEnv } from './environments/normal';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import NormalEnv from './environments/normal';
+
 
 ReactDOM.render(
 	<NormalEnv />,

@@ -1,13 +1,15 @@
-import { ColorPalette } from './color-palette';
-import { FontPalette } from './font-palette';
 import Radium from 'radium';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import ColorPaletteAtom from './color-palette';
+import FontPaletteAtom from './font-palette';
+
+
 const style = {
-	color: ColorPalette.heavy,
+	color: ColorPaletteAtom.heavy,
 	display: 'inline-block',
-	fontFamily: FontPalette.heavy,
+	fontFamily: FontPaletteAtom.heavy,
 	fontSize: 20,
 	fontWeight: 500,
 	height: 64,
@@ -18,17 +20,18 @@ const style = {
 	paddingRight: 20,
 	textDecoration: 'none',
 	':hover': {
-		borderBottom: '3px solid ' + ColorPalette.accent,
-		color: ColorPalette.body,
+		borderBottom: '3px solid ' + ColorPaletteAtom.accent,
+		color: ColorPaletteAtom.body,
 		height: 64 - 3
 	}
 };
 
 const accentStyle = Object.assign({}, style, {
-	color: ColorPalette.accent
+	color: ColorPaletteAtom.accent
 });
 
-class NavLink extends React.Component {
+
+export class NavigationLinkAtom extends React.Component {
 	render() {
 		if (this.props.accent) {
 			return (
@@ -41,6 +44,6 @@ class NavLink extends React.Component {
 		}
 	}
 };
-NavLink = Radium(NavLink);
+NavigationLinkAtom = Radium(NavigationLinkAtom);
 
-export { NavLink };
+export default NavigationLinkAtom;

@@ -1,21 +1,24 @@
-import { PrimaryHeading } from '../atoms/primary-heading';
-import { ProjectList } from '../organisms/project-list';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const fullStyle = {
+import PrimaryHeadingAtom from '../atoms/primary-heading';
+import ProjectListOrg from '../organisms/project-list';
+
+const style = {
 	margin: 'auto',
 	minHeight: '100vh',
 	width: '80%'
 };
 
-export class Projects extends React.Component {
+export class ProjectsEco extends React.Component {
 	render() {
 		return (
-			<div style={fullStyle}>
-				<PrimaryHeading>Projects</PrimaryHeading>
-				<ProjectList />
+			<div style={style}>
+				<PrimaryHeadingAtom>Projects</PrimaryHeadingAtom>
+				<ProjectListOrg />
 			</div>
 		);
 	}
 };
+
+export default ProjectsEco;

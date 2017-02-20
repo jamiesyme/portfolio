@@ -1,12 +1,14 @@
-import { ColorPalette } from './color-palette';
-import { FontPalette } from './font-palette';
 import Radium from 'radium';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import ColorPaletteAtom from './color-palette';
+import FontPaletteAtom from './font-palette';
+
+
 const style = {
-	color: ColorPalette.accent,
-	fontFamily: FontPalette.body,
+	color: ColorPaletteAtom.accent,
+	fontFamily: FontPaletteAtom.body,
 	fontSize: 18,
 	letterSpacing: 0.5,
 	lineHeight: 1.6,
@@ -16,13 +18,13 @@ const style = {
 	}
 };
 
-class Link extends React.Component {
+export class LinkAtom extends React.Component {
 	render() {
 		return (
 			<a style={style} href={this.props.href}>{this.props.children}</a>
 		);
 	}
 };
-Link = Radium(Link);
+LinkAtom = Radium(LinkAtom);
 
-export { Link };
+export default LinkAtom;
