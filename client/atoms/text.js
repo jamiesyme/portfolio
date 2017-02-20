@@ -13,17 +13,12 @@ const style = {
 	lineHeight: 1.6
 };
 
-export class ParagraphAtom extends React.Component {
+export class TextAtom extends React.Component {
 	render() {
-		const combinedStyle = Object.assign(
-			{},
-			style,
-			this.props.style
-		);
 		return (
-			<p style={combinedStyle}>{this.props.children}</p>
+			<span style={style}>{this.props.children}</span>
 		);
 	}
 };
 
-export default ParagraphAtom;
+export default TextAtom;

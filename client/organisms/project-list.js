@@ -1,29 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ProjectMole from '../molecules/project';
+import ProjectOrg from '../organisms/project';
 
 
-const ulStyle = {
-	listStyle: 'none',
-	padding: 0,
-	margin: 0
+const styles = {
+	list: {
+		listStyle: 'none',
+		padding: 0,
+		margin: 0
+	},
+	item: {}
 };
 
-const liStyle = {};
 
 export class ProjectListOrg extends React.Component {
 	render() {
 		return (
-			<ul style={ulStyle}>
-				<li style={liStyle}>
-					<ProjectMole />
+			<ul style={styles.list}>
+				<li style={styles.item}>
+					<ProjectOrg />
 				</li>
-				<li style={liStyle}>
-					<ProjectMole />
+				<li style={styles.item}>
+					<ProjectOrg />
 				</li>
-				<li style={liStyle}>
-					<ProjectMole />
+				<li style={styles.item}>
+					<ProjectOrg />
 				</li>
 			</ul>
 		);
