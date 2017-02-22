@@ -9,8 +9,9 @@ import SecondaryHeadingAtom from '../atoms/secondary-heading';
 const baseStyles = {
 	project: {
 		backgroundColor: 'white',
+		border: '1px solid #CCC',
 		overflow: 'auto',
-		padding: 20
+		padding: 30
 	},
 	screenshots: {
 		float: 'right'

@@ -9,7 +9,7 @@ const baseStyles = {
 		color: ColorPaletteAtom.heavy,
 		fontFamily: FontPaletteAtom.heavy,
 		fontSize: 64,
-		fontWeight: 500,
+		fontWeight: 'bold',
 		marginTop: 0,
 		marginBottom: 60
 	}
@@ -18,8 +18,14 @@ const baseStyles = {
 
 export class PrimaryHeadingAtom extends React.Component {
 	render() {
+		const headingStyle = Object.assign(
+			{},
+			baseStyles.heading,
+			this.props.style
+		);
+
 		return (
-				<h1 style={baseStyles.heading}>{this.props.children}</h1>
+				<h1 style={headingStyle}>{this.props.children}</h1>
 		);
 	}
 };

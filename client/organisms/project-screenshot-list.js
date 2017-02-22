@@ -7,14 +7,11 @@ import ScreenshotAtom from '../atoms/screenshot';
 const screenshotPadding = 20;
 
 const baseStyles = {
-	list: {
-		list: {
-			padding: screenshotPadding
-		}
-	},
+	list: {},
 	img: {
-		width: 250,
-		height: 250
+		height: 250,
+		margin: 0,
+		width: 250
 	}
 };
 
