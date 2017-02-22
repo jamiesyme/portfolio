@@ -6,12 +6,14 @@ import FontPaletteAtom from './font-palette';
 
 const baseStyles = {
 	heading: {
+		borderBottom: '1px solid ' + ColorPaletteAtom.heavy,
 		color: ColorPaletteAtom.heavy,
 		fontFamily: FontPaletteAtom.heavy,
 		fontSize: 64,
 		fontWeight: 'bold',
 		marginTop: 0,
-		marginBottom: 60
+		marginBottom: 52,
+		paddingBottom: 8
 	}
 };
 
