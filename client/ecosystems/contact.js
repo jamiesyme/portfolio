@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ContactForm from '../molecules/contact-form';
 import ParagraphAtom from '../atoms/paragraph';
 import PrimaryHeadingAtom from '../atoms/primary-heading';
 
@@ -22,6 +23,7 @@ export class ContactEco extends React.Component {
 				<PrimaryHeadingAtom>Contact</PrimaryHeadingAtom>
 				<ParagraphAtom>{lorem1}</ParagraphAtom>
 				<ParagraphAtom>{lorem2}</ParagraphAtom>
+				<ContactForm />
 			</div>
 		);
 	}
