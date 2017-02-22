@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import ColorPaletteAtom from '../atoms/color-palette';
 import FontPaletteAtom from '../atoms/font-palette';
@@ -10,7 +9,7 @@ import TextAtom from '../atoms/text';
 import { insertListPadding } from '../utils/list';
 
 
-const styles = {
+const baseStyles = {
 	container: {},
 	entry: {
 		display: 'flex',
@@ -37,16 +36,10 @@ const styles = {
 
 export class ProjectOutlineOrg extends React.Component {
 	render() {
-		const extStyles = Object.assign(
+		const containerStyle = Object.assign(
 			{},
-			styles,
-			{
-				container: Object.assign(
-					{},
-					styles.container,
-					this.props.style
-				)
-			}
+			baseStyles.container,
+			this.props.style
 		);
 
 		const langText = this.props.languages.join(', ');
@@ -60,25 +53,26 @@ export class ProjectOutlineOrg extends React.Component {
 			<TextAtom key={'t' + index.toString()}>, </TextAtom>
 		));
 
+		// TODO: Replace with PaddedListOrg
 		return (
-			<div style={extStyles.container}>
-				<div style={styles.entry}>
-					<div style={styles.entryName}>Languages</div>
-					<ParagraphAtom style={styles.entryValue}>
+			<div style={containerStyle}>
+				<div style={baseStyles.entry}>
+					<div style={baseStyles.entryName}>Languages</div>
+					<ParagraphAtom style={baseStyles.entryValue}>
 						{langText}
 					</ParagraphAtom>
 				</div>
 
-				<div style={styles.entry}>
-					<div style={styles.entryName}>When</div>
-					<ParagraphAtom style={styles.entryValue}>
+				<div style={baseStyles.entry}>
+					<div style={baseStyles.entryName}>When</div>
+					<ParagraphAtom style={baseStyles.entryValue}>
 						{this.props.when}
 					</ParagraphAtom>
 				</div>
 
-				<div style={styles.entry}>
-					<div style={styles.entryName}>Where</div>
-					<ParagraphAtom style={styles.entryValue}>
+				<div style={baseStyles.entry}>
+					<div style={baseStyles.entryName}>Where</div>
+					<ParagraphAtom style={baseStyles.entryValue}>
 						{whereItems}
 					</ParagraphAtom>
 				</div>

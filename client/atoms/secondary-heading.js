@@ -1,11 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
+
+const baseStyles = {
+	heading: {
+		// TODO
+	}
+};
 
 export class SecondaryHeadingAtom extends React.Component {
 	render() {
 		return (
-			<h2>{this.props.children}</h2>
+			<h2 style={baseStyles.heading}>{this.props.children}</h2>
 		);
 	}
 };

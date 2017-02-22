@@ -1,35 +1,42 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
+import PaddedListOrg from '../organisms/padded-list';
 import ProjectOrg from '../organisms/project';
 
 
-const styles = {
+const projectPadding = 20;
+
+const baseStyles = {
 	list: {
-		listStyle: 'none',
-		padding: 0,
-		margin: 0
-	},
-	item: {}
+		list: {
+			padding: projectPadding
+		}
+	}
 };
 
 
 export class ProjectListOrg extends React.Component {
 	render() {
+		const items = this.props.projects.map((project) => (
+			<ProjectOrg />
+		));
+
 		return (
-			<ul style={styles.list}>
-				<li style={styles.item}>
-					<ProjectOrg />
-				</li>
-				<li style={styles.item}>
-					<ProjectOrg />
-				</li>
-				<li style={styles.item}>
-					<ProjectOrg />
-				</li>
-			</ul>
+			<PaddedListOrg
+				styles={baseStyles.list}
+				padding={projectPadding}
+				items={items} />
 		);
 	}
 };
 
 export default ProjectListOrg;
+
+
+ProjectListOrg.propTypes = {
+	projects: React.PropTypes.array
+};
+
+ProjectListOrg.defaultProps = {
+	projects: [0, 0, 0]
+};

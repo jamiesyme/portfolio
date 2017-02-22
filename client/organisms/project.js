@@ -1,13 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import ParagraphAtom from '../atoms/paragraph';
 import ProjectOutlineOrg from '../organisms/project-outline';
-import ProjectScreenshotsOrg from '../organisms/project-screenshots';
+import ProjectScreenshotListOrg from '../organisms/project-screenshot-list';
 import SecondaryHeadingAtom from '../atoms/secondary-heading';
 
 
-const styles = {
+const baseStyles = {
 	project: {
 		backgroundColor: 'white',
 		overflow: 'auto',
@@ -22,11 +21,11 @@ const styles = {
 export class ProjectOrg extends React.Component {
 	render() {
 		return (
-			<div style={styles.project}>
+			<div style={baseStyles.project}>
 				<SecondaryHeadingAtom>{this.props.title}</SecondaryHeadingAtom>
 
-				<ProjectScreenshotsOrg
-					style={styles.screenshots}
+				<ProjectScreenshotListOrg
+					style={baseStyles.screenshots}
 					sources={this.props.screenshots} />
 
 				<ParagraphAtom>{this.props.summary}</ParagraphAtom>

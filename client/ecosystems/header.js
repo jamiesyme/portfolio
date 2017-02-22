@@ -1,34 +1,34 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import ColorPaletteAtom from '../atoms/color-palette';
 import LogoAtom from '../atoms/logo';
 import NavigationBarMole from '../molecules/navigation-bar';
 
 
-const headerStyle = {
-	backgroundColor: ColorPaletteAtom.bg,
-	position: 'fixed',
-	width: '100%'
-};
+const baseStyles = {
+	header: {
+		backgroundColor: ColorPaletteAtom.bg,
+		position: 'fixed',
+		width: '100%'
+	},
+	innerHeader: {
+		height: 64,
+		margin: 'auto',
+		width: 960
+	},
+	nav: {
+		float: 'right'
+	}
+}
 
-const innerHeaderStyle = {
-	height: 64,
-	margin: 'auto',
-	width: 960
-};
-
-const navStyle = {
-	float: 'right'
-};
 
 export class HeaderEco extends React.Component {
 	render() {
 		return (
-			<header style={headerStyle}>
-				<div style={innerHeaderStyle}>
+			<header style={baseStyles.header}>
+				<div style={baseStyles.innerHeader}>
 					<LogoAtom />
-					<div style={navStyle}>
+					<div style={baseStyles.nav}>
 						<NavigationBarMole />
 					</div>
 				</div>

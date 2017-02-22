@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 
-const styles = {
+const baseStyles = {
 	img: {
 		backgroundColor: '#DDD',
 		height: 250,
@@ -14,19 +13,14 @@ const styles = {
 
 export class ScreenshotAtom extends React.Component {
 	render() {
-		const extStyles = Object.assign(
+		const imgStyle = Object.assign(
 			{},
-			styles,
-			{
-				img: Object.assign(
-					{},
-					styles.img,
-					this.props.style
-				)
-			}
+			baseStyles.img,
+			this.props.style
 		);
+
 		return (
-			<div style={extStyles.img}></div>
+			<div style={imgStyle}></div>
 		);
 	}
 };
