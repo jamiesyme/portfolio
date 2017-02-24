@@ -1,23 +1,17 @@
-jamiesyme.com
-=============
+# My Portfolio
 
-Building Client
----------------
+## Building
 
 Install npm modules: `yarn install`
 
-Build: `yarn run build`
+Build: `yarn run build | build-client | build-server`
 
 
-Building Server
----------------
+## Running Server
 
-Build: `nim c main.nim`
-
-Run: `./main`
+Run: `yarn run start`
 
 
-View in Browser
----------------
+## View in Browser
 
-Go to `localhost:8080`
+Url: `localhost:8080`
