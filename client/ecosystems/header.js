@@ -8,7 +8,9 @@ import NavigationBarMole from '../molecules/navigation-bar';
 const baseStyles = {
 	header: {
 		backgroundColor: ColorPaletteAtom.bg,
+		borderBottom: '1px solid ' + ColorPaletteAtom.heavy,
 		position: 'fixed',
+		top: '0',
 		width: '100%'
 	},
 	innerHeader: {

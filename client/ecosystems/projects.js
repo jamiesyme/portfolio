@@ -6,8 +6,10 @@ import ProjectListOrg from '../organisms/project-list';
 
 const baseStyles = {
 	container: {
+		boxSizing: 'border-box',
 		margin: 'auto',
-		minHeight: '100vh',
+		minHeight: 'calc(100vh - 64px)',
+		paddingBottom: '150px',
 		width: '80%'
 	}
 }

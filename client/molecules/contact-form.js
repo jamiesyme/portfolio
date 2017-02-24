@@ -37,9 +37,20 @@ export class ContactForm extends React.Component {
 
 		return (
 			<form style={formStyle}>
-				<TextInput style={baseStyles.input} />
-				<TextInput style={baseStyles.input} />
-				<TextInputArea style={baseStyles.inputArea} minRows={6} />
+				<TextInput
+					style={baseStyles.input}
+					placeholder="Your email address"
+					required={true}
+					type="email" />
+				<TextInput
+					style={baseStyles.input}
+					placeholder="Subject (optional)"
+					required={false}
+					type="text" />
+				<TextInputArea
+					style={baseStyles.inputArea}
+					minRows={6}
+					placeholder="Say hello" />
 				<SubmitButton style={baseStyles.submit} />
 			</form>
 		);

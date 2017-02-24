@@ -9,9 +9,12 @@ import PrimaryHeadingAtom from '../atoms/primary-heading';
 const baseStyles = {
 	page: {
 		alignItems: 'center',
+		boxSizing: 'border-box',
 		display: 'flex',
 		margin: 'auto',
-		minHeight: '100vh',
+		minHeight: 'calc(100vh - 64px)',
+		paddingBottom: '150px',
+		marginTop: '64px', // Header size
 		width: '80%'
 	},
 	container: {

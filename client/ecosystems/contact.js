@@ -7,9 +7,14 @@ import PrimaryHeadingAtom from '../atoms/primary-heading';
 
 const baseStyles = {
 	container: {
+		boxSizing: 'border-box',
 		margin: 'auto',
-		minHeight: '100vh',
+		minHeight: 'calc(100vh - 64px)',
+		//paddingBottom: '150px',
 		width: '80%'
+	},
+	form: {
+		marginTop: '50px'
 	}
 };
 
@@ -23,7 +28,7 @@ export class ContactEco extends React.Component {
 				<PrimaryHeadingAtom>Contact</PrimaryHeadingAtom>
 				<ParagraphAtom>{lorem1}</ParagraphAtom>
 				<ParagraphAtom>{lorem2}</ParagraphAtom>
-				<ContactForm />
+				<ContactForm style={baseStyles.form} />
 			</div>
 		);
 	}
