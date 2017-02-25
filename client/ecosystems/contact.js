@@ -44,3 +44,7 @@ ContactEco.propTypes = {
 	body: React.PropTypes.arrayOf(React.PropTypes.string),
 	title: React.PropTypes.string
 };
+
+ContactEco.defaultProps = {
+	body: []
+};

@@ -73,16 +73,6 @@ LandingEco.propTypes = {
 };
 
 LandingEco.defaultProps = {
-	title: 'Landing',
-	body: ['paragraph1', 'paragraph2'],
-	links: [
-		{
-			text: 'url1',
-			url: '#'
-		},
-		{
-			text: 'url2',
-			url: '#'
-		}
-	]
+	body: [],
+	links: []
 };

@@ -41,5 +41,10 @@ AboutEco.propTypes = {
 	body: React.PropTypes.arrayOf(React.PropTypes.shape({
 		imgSrc: React.PropTypes.string,
 		content: React.PropTypes.string
-	}))
+	})),
+	title: React.PropTypes.string
+};
+
+AboutEco.defaultProps = {
+	body: []
 };
