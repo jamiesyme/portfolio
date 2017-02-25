@@ -12,7 +12,7 @@ const baseStyles = {
 		paddingBottom: '150px',
 		width: '80%'
 	}
-}
+};
 
 
 export class ProjectsEco extends React.Component {
@@ -20,10 +20,15 @@ export class ProjectsEco extends React.Component {
 		return (
 			<div style={baseStyles.container}>
 				<PrimaryHeadingAtom>Projects</PrimaryHeadingAtom>
-				<ProjectListOrg />
+				<ProjectListOrg projects={this.props.projects} />
 			</div>
 		);
 	}
 };
 
 export default ProjectsEco;
+
+
+ProjectsEco.propTypes = {
+	projects: ProjectListOrg.propTypes.projects
+};

@@ -17,8 +17,8 @@ const baseStyles = {
 
 export class ProjectListOrg extends React.Component {
 	render() {
-		const items = this.props.projects.map((project) => (
-			<ProjectOrg />
+		const items = this.props.projects.map((project, index) => (
+			<ProjectOrg key={index.toString()} {...project} />
 		));
 
 		return (
@@ -34,9 +34,7 @@ export default ProjectListOrg;
 
 
 ProjectListOrg.propTypes = {
-	projects: React.PropTypes.array
-};
-
-ProjectListOrg.defaultProps = {
-	projects: [0, 0, 0]
+	projects: React.PropTypes.arrayOf(
+		React.PropTypes.shape(ProjectOrg.propTypes)
+	)
 };

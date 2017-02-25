@@ -9,6 +9,19 @@ import ProjectsEco from '../ecosystems/projects';
 
 export class LoremEnv extends React.Component {
 	render() {
+		const exampleProj = {
+			details: ['Details.'],
+			languages: ['lang1', 'lang2'],
+			screenshots: ['', ''],
+			summary: 'Summary.',
+			title: 'Title',
+			when: 'When',
+			where: [{
+				text: 'Link',
+				url: '#'
+			}]
+		};
+
 		return (
 			<div>
 				<HeaderEco
@@ -39,7 +52,12 @@ export class LoremEnv extends React.Component {
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nibh sapien, nec molestie leo.'
 					]} />
 
-				<ProjectsEco />
+				<ProjectsEco
+					projects={[
+						exampleProj,
+						exampleProj,
+						exampleProj
+					]} />
 
 				<AboutEco />
 
