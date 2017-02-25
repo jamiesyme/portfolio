@@ -6,6 +6,6 @@ import NormalEnv from './environments/normal';
 
 
 ReactDOM.render(
-	<LoremEnv />,
+	<NormalEnv />,
 	document.getElementById('root')
 );

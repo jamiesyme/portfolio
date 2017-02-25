@@ -7,18 +7,53 @@ import LandingEco from '../ecosystems/landing';
 import ProjectsEco from '../ecosystems/projects';
 
 
-export class NormalEnv extends React.Component {
+export class LoremEnv extends React.Component {
 	render() {
 		return (
 			<div>
-				<HeaderEco />
-				<LandingEco />
-				<ProjectsEco />
-				<AboutEco />
-				<ContactEco />
+				<HeaderEco
+					links={[
+						{
+							active: true,
+							text: 'Home',
+							url: '#'
+						}, {
+							active: false,
+							text: 'Projects',
+							url: '#'
+						}, {
+							active: false,
+							text: 'About',
+							url: '#'
+						}, {
+							active: false,
+							text: 'Contact',
+							url: '#'
+						},
+					]} />
+
+				<LandingEco
+					title="Welcome"
+					body={[
+					]} />
+
+				<ProjectsEco
+					title="Projects"
+					projects={[
+					]} />
+
+				<AboutEco
+					title="About"
+					body={[
+					]}/>
+
+				<ContactEco
+					title="Contact"
+					body={[
+					]}/>
 			</div>
 		);
 	}
 };
 
-export default NormalEnv;
+export default LoremEnv;
