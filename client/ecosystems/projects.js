@@ -19,7 +19,7 @@ export class ProjectsEco extends React.Component {
 	render() {
 		return (
 			<div style={baseStyles.container}>
-				<PrimaryHeadingAtom>Projects</PrimaryHeadingAtom>
+				<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
 				<ProjectListOrg projects={this.props.projects} />
 			</div>
 		);
@@ -30,5 +30,6 @@ export default ProjectsEco;
 
 
 ProjectsEco.propTypes = {
-	projects: ProjectListOrg.propTypes.projects
+	projects: ProjectListOrg.propTypes.projects,
+	title: React.PropTypes.string
 };
