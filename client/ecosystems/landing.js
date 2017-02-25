@@ -31,8 +31,16 @@ const baseStyles = {
 
 export class LandingEco extends React.Component {
 	render() {
-		const lorem1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus libero, pulvinar quis imperdiet ut, tempus sed tortor. Suspendisse in pulvinar tortor. Donec feugiat at quam quis sodales. Cras tellus lorem, porttitor ac pretium sit amet, vestibulum in neque. Sed.';
-		const lorem2 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nibh sapien, nec molestie leo.';
+		const bodyElements = this.props.body.map(pBody => (
+			<ParagraphAtom>{pBody}</ParagraphAtom>
+		));
+
+		const linkElements = this.props.links.map(link => (
+			<ParagraphAtom>
+				<LinkAtom href={link.url}>{link.text}</LinkAtom>
+			</ParagraphAtom>
+		));
+
 		return (
 			<div style={baseStyles.page}>
 				<div style={baseStyles.container}>
@@ -40,15 +48,9 @@ export class LandingEco extends React.Component {
 						<AvatarAtom />
 					</div>
 					<div style={baseStyles.introContainer}>
-						<PrimaryHeadingAtom>Welcome</PrimaryHeadingAtom>
-						<ParagraphAtom>{lorem1}</ParagraphAtom>
-						<ParagraphAtom>{lorem2}</ParagraphAtom>
-						<ParagraphAtom>
-							<LinkAtom href="https://github.com/jamiesyme">Github</LinkAtom>
-						</ParagraphAtom>
-						<ParagraphAtom>
-							<LinkAtom href="#">Contact Me</LinkAtom>
-						</ParagraphAtom>
+						<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
+						{bodyElements}
+						{linkElements}
 					</div>
 				</div>
 			</div>
@@ -57,3 +59,28 @@ export class LandingEco extends React.Component {
 };
 
 export default LandingEco;
+
+
+LandingEco.propTypes = {
+	title: React.PropTypes.string,
+	body: React.PropTypes.arrayOf(React.PropTypes.string),
+	links: React.PropTypes.arrayOf(React.PropTypes.shape({
+		text: React.PropTypes.string,
+		url: React.PropTypes.string
+	}))
+};
+
+LandingEco.defaultProps = {
+	title: 'Landing',
+	body: ['paragraph1', 'paragraph2'],
+	links: [
+		{
+			text: 'url1',
+			url: '#'
+		},
+		{
+			text: 'url2',
+			url: '#'
+		}
+	]
+};
