@@ -31,12 +31,14 @@ const baseStyles = {
 
 export class LandingEco extends React.Component {
 	render() {
-		const bodyElements = this.props.body.map(pBody => (
-			<ParagraphAtom>{pBody}</ParagraphAtom>
+		const bodyElements = this.props.body.map((pBody, index) => (
+			<ParagraphAtom key={index.toString()}>
+				{pBody}
+			</ParagraphAtom>
 		));
 
-		const linkElements = this.props.links.map(link => (
-			<ParagraphAtom>
+		const linkElements = this.props.links.map((link, index) => (
+			<ParagraphAtom key={index.toString()}>
 				<LinkAtom href={link.url}>{link.text}</LinkAtom>
 			</ParagraphAtom>
 		));

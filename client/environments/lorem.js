@@ -11,15 +11,38 @@ export class LoremEnv extends React.Component {
 	render() {
 		return (
 			<div>
-				<HeaderEco />
+				<HeaderEco
+					links={[
+						{
+							active: true,
+							text: 'Home',
+							url: '#'
+						}, {
+							active: false,
+							text: 'Projects',
+							url: '#'
+						}, {
+							active: false,
+							text: 'About',
+							url: '#'
+						}, {
+							active: false,
+							text: 'Contact',
+							url: '#'
+						},
+					]} />
+
 				<LandingEco
 					title="Welcome"
 					body={[
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus libero, pulvinar quis imperdiet ut, tempus sed tortor. Suspendisse in pulvinar tortor. Donec feugiat at quam quis sodales. Cras tellus lorem, porttitor ac pretium sit amet, vestibulum in neque. Sed',
 						'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nibh sapien, nec molestie leo.'
 					]} />
+
 				<ProjectsEco />
+
 				<AboutEco />
+
 				<ContactEco />
 			</div>
 		);

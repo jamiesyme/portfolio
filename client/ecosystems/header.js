@@ -2,7 +2,7 @@ import React from 'react';
 
 import ColorPaletteAtom from '../atoms/color-palette';
 import LogoAtom from '../atoms/logo';
-import NavigationBarMole from '../molecules/navigation-bar';
+import NavigationBarOrg from '../organisms/navigation-bar';
 
 
 const baseStyles = {
@@ -21,7 +21,7 @@ const baseStyles = {
 	nav: {
 		float: 'right'
 	}
-}
+};
 
 
 export class HeaderEco extends React.Component {
@@ -31,7 +31,7 @@ export class HeaderEco extends React.Component {
 				<div style={baseStyles.innerHeader}>
 					<LogoAtom />
 					<div style={baseStyles.nav}>
-						<NavigationBarMole />
+						<NavigationBarOrg links={this.props.links} />
 					</div>
 				</div>
 			</header>
@@ -40,3 +40,12 @@ export class HeaderEco extends React.Component {
 };
 
 export default HeaderEco;
+
+
+HeaderEco.propTypes = {
+	links: React.PropTypes.arrayOf(React.PropTypes.shape({
+		active: React.PropTypes.bool,
+		text: React.PropTypes.string,
+		url: React.PropTypes.string
+	}))
+};
