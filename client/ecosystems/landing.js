@@ -5,6 +5,8 @@ import LinkAtom from '../atoms/link';
 import ParagraphAtom from '../atoms/paragraph';
 import PrimaryHeadingAtom from '../atoms/primary-heading';
 
+import { parseMarkdown } from '../utils/markdown';
+
 
 const baseStyles = {
 	page: {
@@ -31,17 +33,26 @@ const baseStyles = {
 
 export class LandingEco extends React.Component {
 	render() {
-		const bodyElements = this.props.body.map((pBody, index) => (
-			<ParagraphAtom key={index.toString()}>
-				{pBody}
-			</ParagraphAtom>
-		));
-
-		const linkElements = this.props.links.map((link, index) => (
-			<ParagraphAtom key={index.toString()}>
-				<LinkAtom href={link.url}>{link.text}</LinkAtom>
-			</ParagraphAtom>
-		));
+		const bodyTree = parseMarkdown(this.props.body);
+		const bodyElements = bodyTree.map((paragraph, index) => {
+			const paragraphElements = paragraph.map((element, index) => {
+				if (element.type === 'text') {
+					return element.content;
+				} else {
+					return (
+						<LinkAtom key={index.toString()}
+											href={element.url}>
+							{element.content}
+						</LinkAtom>
+					);
+				}
+			});
+			return (
+				<ParagraphAtom key={index.toString()}>
+					{paragraphElements}
+				</ParagraphAtom>
+			);
+		});
 
 		return (
 			<div style={baseStyles.page}>
@@ -52,7 +63,6 @@ export class LandingEco extends React.Component {
 					<div style={baseStyles.introContainer}>
 						<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
 						{bodyElements}
-						{linkElements}
 					</div>
 				</div>
 			</div>
@@ -64,15 +74,6 @@ export default LandingEco;
 
 
 LandingEco.propTypes = {
-	title: React.PropTypes.string,
-	body: React.PropTypes.arrayOf(React.PropTypes.string),
-	links: React.PropTypes.arrayOf(React.PropTypes.shape({
-		text: React.PropTypes.string,
-		url: React.PropTypes.string
-	}))
-};
-
-LandingEco.defaultProps = {
-	body: [],
-	links: []
+	body: React.PropTypes.string,
+	title: React.PropTypes.string
 };
