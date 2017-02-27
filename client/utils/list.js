@@ -8,11 +8,11 @@ import { isFunction } from 'underscore';
  *   the given index.
  */
 export function insertListPadding(list, padding) {
-	for (let i = 0; i < list.length - 1; ++i) {
+	for (let i = 1; i < list.length; i += 2) {
 		if (isFunction(padding)) {
-			list.splice(i + 1, 0, padding(i));
+			list.splice(i, 0, padding(i - 1));
 		} else {
-			list.splice(i + 1, 0, padding);
+			list.splice(i, 0, padding);
 		}
 	}
 };
