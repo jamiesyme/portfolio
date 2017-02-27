@@ -4,7 +4,7 @@ import PaddedListOrg from '../organisms/padded-list';
 import ProjectOrg from '../organisms/project';
 
 
-const projectPadding = 20;
+const projectPadding = 50;
 
 const baseStyles = {
 	list: {
