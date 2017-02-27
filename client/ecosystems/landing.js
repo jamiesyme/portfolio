@@ -5,7 +5,7 @@ import LinkAtom from '../atoms/link';
 import ParagraphAtom from '../atoms/paragraph';
 import PrimaryHeadingAtom from '../atoms/primary-heading';
 
-import { parseMarkdown } from '../utils/markdown';
+import { markdownToReact } from '../utils/react';
 
 
 const baseStyles = {
@@ -33,26 +33,7 @@ const baseStyles = {
 
 export class LandingEco extends React.Component {
 	render() {
-		const bodyTree = parseMarkdown(this.props.body);
-		const bodyElements = bodyTree.map((paragraph, index) => {
-			const paragraphElements = paragraph.map((element, index) => {
-				if (element.type === 'text') {
-					return element.content;
-				} else {
-					return (
-						<LinkAtom key={index.toString()}
-											href={element.url}>
-							{element.content}
-						</LinkAtom>
-					);
-				}
-			});
-			return (
-				<ParagraphAtom key={index.toString()}>
-					{paragraphElements}
-				</ParagraphAtom>
-			);
-		});
+		const bodyElements = markdownToReact(this.props.body);
 
 		return (
 			<div style={baseStyles.page}>

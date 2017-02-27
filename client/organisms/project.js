@@ -1,9 +1,10 @@
 import React from 'react';
 
-import ParagraphAtom from '../atoms/paragraph';
 import ProjectOutlineOrg from '../organisms/project-outline';
 import ProjectScreenshotListOrg from '../organisms/project-screenshot-list';
 import SecondaryHeadingAtom from '../atoms/secondary-heading';
+
+import { markdownToReact } from '../utils/react';
 
 
 const baseStyles = {
@@ -14,13 +15,18 @@ const baseStyles = {
 		padding: 30
 	},
 	screenshots: {
-		float: 'right'
+		float: 'right',
+		marginLeft: 30,
+		marginBottom: 30
 	}
 };
 
 
 export class ProjectOrg extends React.Component {
 	render() {
+		const summaryElements = markdownToReact(this.props.summary);
+		const detailsElements = markdownToReact(this.props.details);
+
 		return (
 			<div style={baseStyles.project}>
 				<SecondaryHeadingAtom>{this.props.title}</SecondaryHeadingAtom>
@@ -29,14 +35,14 @@ export class ProjectOrg extends React.Component {
 					style={baseStyles.screenshots}
 					sources={this.props.screenshots} />
 
-				<ParagraphAtom>{this.props.summary}</ParagraphAtom>
+				{summaryElements}
 
 				<ProjectOutlineOrg
 					languages={this.props.languages}
 					when={this.props.when}
 					where={this.props.where} />
 
-				<ParagraphAtom>{this.props.details}</ParagraphAtom>
+				{detailsElements}
 			</div>
 		);
 	}
@@ -46,7 +52,7 @@ export default ProjectOrg;
 
 
 ProjectOrg.propTypes = {
-	details: React.PropTypes.arrayOf(React.PropTypes.string),
+	details: React.PropTypes.string,
 	languages: React.PropTypes.arrayOf(React.PropTypes.string),
 	screenshots: React.PropTypes.arrayOf(React.PropTypes.string),
 	summary: React.PropTypes.string,
