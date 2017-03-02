@@ -1,25 +1,29 @@
 import { isString } from 'underscore';
 
 
-const BlockType = {
+export const BlockType = {
 	item: 'item',
-	unorderedList: 'unordered list',
-	paragraph: 'paragraph'
+	paragraph: 'paragraph',
+	unorderedList: 'unordered list'
 };
 
-const ElementType = {
-	text: 'text',
-	link: 'link'
+export const ElementType = {
+	image: 'image',
+	link: 'link',
+	text: 'text'
 };
+
 
 /**
  * Parses string as subset of markdown format. This format subset understands
  * the following:
  *   block-level:
- *     paragraphs (separated by a line of whitespace)
  *     bullet lists
+ *     paragraphs
  *   inline-level:
  *     links
+ *     images
+ *     text
  * @param str
  * @return
  * [ // List of blocks
@@ -31,6 +35,10 @@ const ElementType = {
  *         content: '...'
  *       }, {
  *         type: 'link',
+ *         content: '...',
+ *         url: '...'
+ *       }, {
+ *         type: 'image',
  *         content: '...',
  *         url: '...'
  *       }
@@ -111,6 +119,13 @@ export function parseMarkdown(str) {
 };
 
 
+export default {
+	BlockType: BlockType,
+	ElementType: ElementType,
+	parse: parseMarkdown
+};
+
+
 function isLineEmpty(line) {
 	for (let i = 0; i < line.length; ++i) {
 		if (line[i] !== ' ' && line[i] !== '\t') {
@@ -142,7 +157,7 @@ function processInlineElements(block) {
 	let si = 0;
 	while (si < str.length) {
 
-		// This could be the start of a link
+		// This could be the start of a link (or image)
 		if (str[si] === '[') {
 			const i1 = si;                   // Index of '['
 			const i2 = str.indexOf(']', i1); // Index of ']'
@@ -154,19 +169,33 @@ function processInlineElements(block) {
 
 				// It's not a link; false alarm
 				elements.push({
-					type: 'text',
+					type: ElementType.text,
 					content: str.substring(si, i2 + 1)
 				});
 				si = i2 + 1;
 
 			} else {
 
-				// We found a link!
-				elements.push({
-					type: 'link',
-					content: str.substring(i1 + 1, i2),
-					url: str.substring(i3 + 1, i4)
-				});
+				const content = str.substring(i1 + 1, i2);
+				const url = str.substring(i3 + 1, i4);
+
+				// Check if this is an image
+				if (i1 > 0 && str[i1 - 1] === '!') {
+					elements.push({
+						type: ElementType.image,
+						content: content,
+						url: url
+					});
+
+					// Otherwise, we found a link
+				} else {
+					elements.push({
+						type: ElementType.link,
+						content: content,
+						url: url
+					});
+				}
+
 				si = i4 + 1;
 			}
 
@@ -178,14 +207,14 @@ function processInlineElements(block) {
 
 			if (ei < 0) {
 				elements.push({
-					type: 'text',
+					type: ElementType.text,
 					content: str.substring(si)
 				});
 				break;
 
 			} else {
 				elements.push({
-					type: 'text',
+					type: ElementType.text,
 					content: str.substring(si, ei)
 				});
 				si = ei;
