@@ -1,8 +1,8 @@
 import React from 'react';
 
-import AvatarAtom from '../atoms/avatar';
 import LinkAtom from '../atoms/link';
 import ParagraphAtom from '../atoms/paragraph';
+import PictureAtom from '../atoms/picture';
 import PrimaryHeadingAtom from '../atoms/primary-heading';
 
 import { markdownToReact } from '../utils/react';
@@ -15,15 +15,18 @@ const baseStyles = {
 		display: 'flex',
 		margin: 'auto',
 		minHeight: 'calc(100vh - 64px)',
-		paddingBottom: '150px',
+		paddingBottom: '100px',
 		marginTop: '64px', // Header size
 		width: '80%'
 	},
 	container: {
 		display: 'flex'
 	},
-	picContainer: {
+	pictureContainer: {
 		minWidth: '40%'
+	},
+	picture: {
+		size: 250
 	},
 	introContainer: {
 		flexGrow: 1
@@ -38,8 +41,8 @@ export class LandingEco extends React.Component {
 		return (
 			<div style={baseStyles.page}>
 				<div style={baseStyles.container}>
-					<div style={baseStyles.picContainer}>
-						<AvatarAtom />
+					<div style={baseStyles.pictureContainer}>
+						<PictureAtom size={baseStyles.picture.size} />
 					</div>
 					<div style={baseStyles.introContainer}>
 						<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>

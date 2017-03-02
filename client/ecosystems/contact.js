@@ -1,8 +1,9 @@
 import React from 'react';
 
 import ContactForm from '../molecules/contact-form';
-import ParagraphAtom from '../atoms/paragraph';
 import PrimaryHeadingAtom from '../atoms/primary-heading';
+
+import { markdownToReact } from '../utils/react';
 
 
 const baseStyles = {
@@ -10,7 +11,8 @@ const baseStyles = {
 		boxSizing: 'border-box',
 		margin: 'auto',
 		minHeight: 'calc(100vh - 64px)',
-		//paddingBottom: '150px',
+		paddingTop: '50px',
+		//paddingBottom: '100px',
 		width: '80%'
 	},
 	form: {
@@ -21,11 +23,7 @@ const baseStyles = {
 
 export class ContactEco extends React.Component {
 	render() {
-		const bodyElements = this.props.body.map((pBody, index) => (
-			<ParagraphAtom key={index.toString()}>
-				{pBody}
-			</ParagraphAtom>
-		));
+		const bodyElements = markdownToReact(this.props.body);
 
 		return (
 			<div style={baseStyles.container}>
@@ -41,10 +39,6 @@ export default ContactEco;
 
 
 ContactEco.propTypes = {
-	body: React.PropTypes.arrayOf(React.PropTypes.string),
+	body: React.PropTypes.string,
 	title: React.PropTypes.string
-};
-
-ContactEco.defaultProps = {
-	body: []
 };

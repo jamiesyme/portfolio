@@ -12,7 +12,7 @@ const baseStyles = {
 		fontSize: 64,
 		fontWeight: 'bold',
 		marginTop: 0,
-		marginBottom: 52,
+		marginBottom: 50,
 		paddingBottom: 8
 	}
 };

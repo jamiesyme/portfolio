@@ -9,7 +9,8 @@ const baseStyles = {
 		boxSizing: 'border-box',
 		margin: 'auto',
 		minHeight: 'calc(100vh - 64px)',
-		paddingBottom: '150px',
+		paddingTop: '50px',
+		paddingBottom: '100px',
 		width: '80%'
 	}
 };

@@ -35,13 +35,15 @@ export class LoremEnv extends React.Component {
 				<LandingEco
 					title="Welcome"
 					body={`
-My name's Jamie, and I'm a developer of things. While my experience generally lies in desktop applications and backend web development, my passion is more general: I like bending computers to my will.
+My name's Jamie, and I'm a developer of things. While my experience generally lies in desktop applications and backend web development, my passion is more general: I like exploiting a computer's ability to do things for me.
 
-Below you can find some of my [recent projects](#) as examples of this.
+I'm a third-year CIS student at UFV. Todo: more personal hook. If interested, there's a whole section [about me](#) below.
 
-You can also browse all of my public projects on [Github](https://github.com/jamiesyme).
+[Projects](#) - Check out some of my recent projects.
 
-I'm currently in my third-year at UFV. If interested, there's a whole section [about me](#) below.
+[Github](https://github.com/jamiesyme) - Browse all of my public projects.
+
+[Contact](#) - Let's chat!
 					`} />
 
 				<ProjectsEco
@@ -105,12 +107,26 @@ The goal behind the design of the code was to make it as easy as possible to imp
 				<AboutEco
 					title="About"
 					body={[
+						{
+							content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sapien nunc, ultricies eget turpis sed, dapibus tempus libero. Vestibulum in sem velit. Donec sed urna quis tellus rhoncus imperdiet. Integer interdum pretium purus at molestie. Cras et nibh quis mauris scelerisque mollis quis quis risus. Curabitur porta, nulla sed molestie volutpat, nisi arcu varius ipsum, semper ullamcorper ipsum libero vel leo. Mauris sit amet condimentum mauris. Etiam ut sapien ut urna ultricies ultrices."
+						},
+						{
+							content: "Duis eget imperdiet lorem. Nullam a tortor lacinia, maximus sapien finibus, lobortis mauris. Vivamus efficitur tincidunt mi ac lacinia. Nulla convallis, neque eu pharetra consectetur, purus nisl rhoncus quam, vel interdum risus nisi vitae leo. Etiam a dui nec orci finibus viverra sit amet in urna. Donec dapibus ligula felis, vel posuere arcu ultricies eu. In fermentum aliquet cursus. Maecenas consequat mauris nec velit molestie elementum. Aliquam sodales enim pharetra quam tincidunt condimentum id vitae enim."
+						},
+						{
+							content: "Aliquam at nunc venenatis, aliquam nisl at, dictum lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante justo, pulvinar nec faucibus a, porta eu sapien. Mauris consectetur vehicula ipsum, nec rutrum ligula fermentum vel. Morbi risus dui, elementum ut feugiat sit amet, suscipit sit amet nulla. Vestibulum eu tincidunt sapien, vitae lobortis felis."
+						}
 					]}/>
 
 				<ContactEco
 					title="Contact"
-					body={[
-					]}/>
+					body={`
+Whether you have a question about one of my projects, or you'd like to offer an employment opportunity for this summer, I'd love to hear from you!
+
+You can contact me at [jamie@jamiesyme.com](mailto:jamie@jamiesyme.com).
+
+Alternatively, feel free to use the contact form below.
+					`}/>
 			</div>
 		);
 	}
