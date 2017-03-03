@@ -1,5 +1,6 @@
 import Radium from 'radium';
 import React from 'react';
+import ReactScroll from 'react-scroll';
 
 import ColorPaletteAtom from './color-palette';
 import FontPaletteAtom from './font-palette';
@@ -34,16 +35,24 @@ baseStyles.accent = Object.assign(
 
 
 export class NavigationLinkAtom extends React.Component {
+	smoothScroll(e) {
+		e.preventDefault();
+		ReactScroll.scroller.scrollTo(this.props.href.substr(1), {
+			duration: 500,
+			offset: -64,
+			smooth: true
+		});
+	}
+
 	render() {
-		if (this.props.accent) {
-			return (
-				<a href={this.props.href} style={baseStyles.accent}>{this.props.text}</a>
-			);
-		} else {
-			return (
-				<a href={this.props.href} style={baseStyles.normal}>{this.props.text}</a>
-			);
-		}
+		const aStyle = this.props.accent ? baseStyles.accent : baseStyles.normal;
+		return (
+				<a style={aStyle}
+					 href={this.props.href}
+					 onClick={this.smoothScroll.bind(this)}>
+					{this.props.text}
+				</a>
+		);
 	}
 };
 NavigationLinkAtom = Radium(NavigationLinkAtom);

@@ -11,6 +11,7 @@ export class NavigationBarOrg extends React.Component {
 				<NavigationLinkAtom key={key}
 														accent={link.active}
 														href={link.url}
+														smoothScroll={true}
 														text={link.text} />
 			);
 		});

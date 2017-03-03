@@ -9,7 +9,19 @@ import { markdownToReact } from '../utils/react';
 
 
 const baseStyles = {
-	page: {
+	container: {
+		display: 'flex'
+	},
+	introContainer: {
+		flexGrow: 1
+	},
+	pictureContainer: {
+		minWidth: '40%'
+	},
+	picture: {
+		size: 250
+	},
+	section: {
 		alignItems: 'center',
 		boxSizing: 'border-box',
 		display: 'flex',
@@ -18,18 +30,6 @@ const baseStyles = {
 		paddingBottom: '100px',
 		marginTop: '64px', // Header size
 		width: '80%'
-	},
-	container: {
-		display: 'flex'
-	},
-	pictureContainer: {
-		minWidth: '40%'
-	},
-	picture: {
-		size: 250
-	},
-	introContainer: {
-		flexGrow: 1
 	}
 };
 
@@ -39,7 +39,8 @@ export class LandingEco extends React.Component {
 		const bodyElements = markdownToReact(this.props.body);
 
 		return (
-			<div style={baseStyles.page}>
+			<section id={this.props.id}
+							 style={baseStyles.section}>
 				<div style={baseStyles.container}>
 					<div style={baseStyles.pictureContainer}>
 						<PictureAtom size={baseStyles.picture.size} />
@@ -49,7 +50,7 @@ export class LandingEco extends React.Component {
 						{bodyElements}
 					</div>
 				</div>
-			</div>
+			</section>
 		);
 	}
 };
@@ -59,5 +60,6 @@ export default LandingEco;
 
 LandingEco.propTypes = {
 	body: React.PropTypes.string,
+	id: React.PropTypes.string,
 	title: React.PropTypes.string
 };

@@ -1,8 +1,11 @@
+import $ from 'jquery';
 import React from 'react';
 
 import ColorPaletteAtom from '../atoms/color-palette';
 import LogoAtom from '../atoms/logo';
 import NavigationBarOrg from '../organisms/navigation-bar';
+
+import { onConditionOrLast } from '../utils/list';
 
 
 const baseStyles = {
@@ -25,13 +28,63 @@ const baseStyles = {
 
 
 export class HeaderEco extends React.Component {
+	constructor(props) {
+		super(props);
+
+		const links = this.props.links;
+		links.forEach(link => {
+			link.active = false;
+			link.url = link.url || link.sectionId;
+		});
+		this.state = { links: links };
+	}
+
+	componentDidMount() {
+		$(document).scroll(() => {
+			this.onScroll();
+		});
+
+		// Trigger the scroll so one of the links will be marked as active
+		$(document).scroll();
+	}
+
+	componentWillUnmount() {
+		// This will remove all scroll handlers, which works, but we should really
+		// only be removing the scroll handler that we added.
+		$(document).off('scroll');
+	}
+
+	onScroll() {
+		const links = this.state.links;
+		links.forEach(link => link.active = false);
+
+		// If two thirds of the section is on screen, it should be marked as active
+		const scrollTop = $(document).scrollTop() + baseStyles.innerHeader.height;
+		onConditionOrLast(
+			links,
+			link => {
+				if (!link.sectionId) {
+					return false;
+				}
+				const $section = $(link.sectionId);
+				const bottom = ($section.position().top +
+												$section.outerHeight(true) -
+												$(window).outerHeight() / 3);
+				return scrollTop < bottom;
+			},
+			link => link.active = true
+		);
+
+		this.setState({ links: links });
+	}
+
 	render() {
 		return (
 			<header style={baseStyles.header}>
 				<div style={baseStyles.innerHeader}>
 					<LogoAtom />
 					<div style={baseStyles.nav}>
-						<NavigationBarOrg links={this.props.links} />
+						<NavigationBarOrg links={this.state.links} />
 					</div>
 				</div>
 			</header>
@@ -44,8 +97,8 @@ export default HeaderEco;
 
 HeaderEco.propTypes = {
 	links: React.PropTypes.arrayOf(React.PropTypes.shape({
-		active: React.PropTypes.bool,
+		sectionId: React.PropTypes.string, // Including '#'
 		text: React.PropTypes.string,
-		url: React.PropTypes.string
+		url: React.PropTypes.string // If sectionId is not specified
 	}))
 };

@@ -7,16 +7,16 @@ import { markdownToReact } from '../utils/react';
 
 
 const baseStyles = {
-	container: {
+	form: {
+		marginTop: '50px'
+	},
+	section: {
 		boxSizing: 'border-box',
 		margin: 'auto',
 		minHeight: 'calc(100vh - 64px)',
 		paddingTop: '50px',
 		//paddingBottom: '100px',
 		width: '80%'
-	},
-	form: {
-		marginTop: '50px'
 	}
 };
 
@@ -26,11 +26,12 @@ export class ContactEco extends React.Component {
 		const bodyElements = markdownToReact(this.props.body);
 
 		return (
-			<div style={baseStyles.container}>
+			<section id={this.props.id}
+							 style={baseStyles.section}>
 				<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
 				{bodyElements}
 				<ContactForm style={baseStyles.form} />
-			</div>
+			</section>
 		);
 	}
 };
@@ -40,5 +41,6 @@ export default ContactEco;
 
 ContactEco.propTypes = {
 	body: React.PropTypes.string,
+	id: React.PropTypes.string,
 	title: React.PropTypes.string
 };

@@ -5,7 +5,7 @@ import ProjectListOrg from '../organisms/project-list';
 
 
 const baseStyles = {
-	container: {
+	section: {
 		boxSizing: 'border-box',
 		margin: 'auto',
 		minHeight: 'calc(100vh - 64px)',
@@ -19,10 +19,11 @@ const baseStyles = {
 export class ProjectsEco extends React.Component {
 	render() {
 		return (
-			<div style={baseStyles.container}>
+			<section id={this.props.id}
+							 style={baseStyles.section}>
 				<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
 				<ProjectListOrg projects={this.props.projects} />
-			</div>
+			</section>
 		);
 	}
 };
@@ -32,5 +33,6 @@ export default ProjectsEco;
 
 ProjectsEco.propTypes = {
 	projects: ProjectListOrg.propTypes.projects,
+	id: React.PropTypes.string,
 	title: React.PropTypes.string
 };

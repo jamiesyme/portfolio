@@ -7,32 +7,36 @@ import LandingEco from '../ecosystems/landing';
 import ProjectsEco from '../ecosystems/projects';
 
 
-export class LoremEnv extends React.Component {
+export class NormalEnv extends React.Component {
 	render() {
+		const sectionId = {
+			about: 'about',
+			contact: 'contact',
+			landing: 'landing',
+			projects: 'projects'
+		};
+
 		return (
 			<div>
 				<HeaderEco
 					links={[
 						{
-							active: true,
-							text: 'Home',
-							url: '#'
+							sectionId: '#' + sectionId.landing,
+							text: 'Home'
 						}, {
-							active: false,
-							text: 'Projects',
-							url: '#'
+							sectionId: '#' + sectionId.projects,
+							text: 'Projects'
 						}, /*{
-							active: false,
-							text: 'About',
-							url: '#'
+							sectionId: '#' + sectionId.about,
+							text: 'About'
 						},*/ {
-							active: false,
-							text: 'Contact',
-							url: '#'
-						},
+							sectionId: '#' + sectionId.contact,
+							text: 'Contact'
+						}
 					]} />
 
 				<LandingEco
+					id={sectionId.landing}
 					title="Welcome"
 					body={`
 My name's Jamie, and I'm a developer of things. While my experience generally lies in desktop applications and backend web development, my passion is more general: I like exploiting a computer's ability to do things for me.
@@ -47,6 +51,7 @@ I'm a third-year CIS student at UFV. Todo: more personal hook. If interested, th
 					`} />
 
 				<ProjectsEco
+					id={sectionId.projects}
 					title="Projects"
 					projects={[
 						{
@@ -105,6 +110,7 @@ The goal behind the design of the code was to make it as easy as possible to imp
 					]} />
 
 				{/*<AboutEco
+					id={sectionId.about}
 					title="About"
 					body={[
 						{
@@ -119,6 +125,7 @@ The goal behind the design of the code was to make it as easy as possible to imp
 					]}/>*/}
 
 				<ContactEco
+					id={sectionId.contact}
 					title="Contact"
 					body={`
 Whether you have a question about one of my projects, or you'd like to offer an employment opportunity for this summer, I'd love to hear from you!
@@ -132,4 +139,4 @@ Alternatively, feel free to use the contact form below.
 	}
 };
 
-export default LoremEnv;
+export default NormalEnv;

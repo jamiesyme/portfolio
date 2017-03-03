@@ -16,3 +16,20 @@ export function insertListPadding(list, padding) {
 		}
 	}
 };
+
+
+/**
+ * Calls a function on the first item in a list that passes a condition, but
+ * defaults to the last item in the list if none of the items passed.
+ * @param list
+ * @param condition - function accepting the item to test, returns a bool
+ * @param trigger - function accepting the item that passed the condition
+ */
+export function onConditionOrLast(list, condition, trigger) {
+	for (let i = 0; i < list.length; ++i) {
+		if (i + 1 === list.length || condition(list[i])) {
+			trigger(list[i]);
+			break;
+		}
+	}
+};

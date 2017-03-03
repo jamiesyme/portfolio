@@ -24,11 +24,13 @@
   },
   "dependencies": {
     "express": "^4.14.1",
+    "jquery": "^3.1.1",
     "normalize.css": "^5.0.0",
     "radium": "^0.18.1",
     "react": "^15.4.1",
     "react-autosize-textarea": "^0.3.6",
     "react-dom": "^15.4.1",
+    "react-scroll": "^1.4.7",
     "underscore": "^1.8.3"
   }
 }
