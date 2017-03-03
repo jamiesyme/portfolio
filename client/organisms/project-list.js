@@ -9,7 +9,8 @@ const projectPadding = 50;
 const baseStyles = {
 	list: {
 		list: {
-			padding: projectPadding
+			paddingLeft: projectPadding,
+			paddingRight: projectPadding
 		}
 	}
 };

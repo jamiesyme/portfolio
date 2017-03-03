@@ -21,11 +21,11 @@ export class LoremEnv extends React.Component {
 							active: false,
 							text: 'Projects',
 							url: '#'
-						}, {
+						}, /*{
 							active: false,
 							text: 'About',
 							url: '#'
-						}, {
+						},*/ {
 							active: false,
 							text: 'Contact',
 							url: '#'
@@ -104,7 +104,7 @@ The goal behind the design of the code was to make it as easy as possible to imp
 						}
 					]} />
 
-				<AboutEco
+				{/*<AboutEco
 					title="About"
 					body={[
 						{
@@ -116,7 +116,7 @@ The goal behind the design of the code was to make it as easy as possible to imp
 						{
 							content: "Aliquam at nunc venenatis, aliquam nisl at, dictum lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ante justo, pulvinar nec faucibus a, porta eu sapien. Mauris consectetur vehicula ipsum, nec rutrum ligula fermentum vel. Morbi risus dui, elementum ut feugiat sit amet, suscipit sit amet nulla. Vestibulum eu tincidunt sapien, vitae lobortis felis."
 						}
-					]}/>
+					]}/>*/}
 
 				<ContactEco
 					title="Contact"
