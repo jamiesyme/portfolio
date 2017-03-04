@@ -2,21 +2,16 @@
 
 Deployed at [jamiesyme.com](https://jamiesyme.com).
 
-## Building
+
+## Local Dev
 
 Install npm modules: `yarn install`
 
 Build: `yarn run build | build-client | build-server`
 
+Run server: `yarn run start`
 
-## Running Server
-
-Run: `yarn run start`
-
-
-## View in Browser
-
-Visit: `localhost:8080`
+View in browser: `localhost:8080`
 
 
 ## Deploying
