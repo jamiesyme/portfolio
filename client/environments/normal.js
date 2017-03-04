@@ -21,16 +21,16 @@ export class NormalEnv extends React.Component {
 				<HeaderEco
 					links={[
 						{
-							sectionId: '#' + sectionId.landing,
+							targetId: sectionId.landing,
 							text: 'Home'
 						}, {
-							sectionId: '#' + sectionId.projects,
+							targetId: sectionId.projects,
 							text: 'Projects'
 						}, /*{
-							sectionId: '#' + sectionId.about,
+							targetId: sectionId.about,
 							text: 'About'
 						},*/ {
-							sectionId: '#' + sectionId.contact,
+							targetId: sectionId.contact,
 							text: 'Contact'
 						}
 					]} />
@@ -71,7 +71,10 @@ The code was split into a few different components:
 The goal behind the design of the code was to make it as easy as possible to implement new types of modules. As an example, here are the [header](https://github.com/jamiesyme/minfo/blob/master/src/audio-module.h) and [source](https://github.com/jamiesyme/minfo/blob/master/src/audio-module.c) files for the audio module. The header contains a single function declaration, and the source file is a little over 100 lines long. While LoC isn't the best metric for complexity, it gives a rough idea.
 `,
 							languages: ['C', 'Xlib', 'Cairo/Pango', 'Make'],
-							screenshots: ['', ''],
+							screenshots: [
+								'img/minfo-screen-1.png',
+								'img/minfo-screen-2.jpg'
+							],
 							summary: "Minfo is a lightweight status hub the X Window System. It's goal is to provide easy access to basic info like the time and date, while remaining as unintrusive as possible.",
 							title: 'Minfo',
 							when: "Jan '17 - Present",

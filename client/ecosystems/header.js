@@ -32,10 +32,7 @@ export class HeaderEco extends React.Component {
 		super(props);
 
 		const links = this.props.links;
-		links.forEach(link => {
-			link.active = false;
-			link.url = link.url || link.sectionId;
-		});
+		links.forEach(link => link.active = false);
 		this.state = { links: links };
 	}
 
@@ -63,10 +60,10 @@ export class HeaderEco extends React.Component {
 		onConditionOrLast(
 			links,
 			link => {
-				if (!link.sectionId) {
+				if (!link.targetId) {
 					return false;
 				}
-				const $section = $(link.sectionId);
+				const $section = $('#' + link.targetId);
 				const bottom = ($section.position().top +
 												$section.outerHeight(true) -
 												$(window).outerHeight() / 3);
@@ -97,8 +94,8 @@ export default HeaderEco;
 
 HeaderEco.propTypes = {
 	links: React.PropTypes.arrayOf(React.PropTypes.shape({
-		sectionId: React.PropTypes.string, // Including '#'
-		text: React.PropTypes.string,
-		url: React.PropTypes.string // If sectionId is not specified
+		externalUrl: React.PropTypes.string,
+		targetId: React.PropTypes.string, // If externalUrl is not specified
+		text: React.PropTypes.string
 	}))
 };

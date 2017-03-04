@@ -9,9 +9,9 @@ export class NavigationBarOrg extends React.Component {
 			const key = index.toString();
 			return (
 				<NavigationLinkAtom key={key}
-														accent={link.active}
-														href={link.url}
-														smoothScroll={true}
+														active={link.active}
+														externalUrl={link.externalUrl}
+														targetId={link.targetId}
 														text={link.text} />
 			);
 		});
@@ -30,7 +30,8 @@ export default NavigationBarOrg;
 NavigationBarOrg.propTypes = {
 	links: React.PropTypes.arrayOf(React.PropTypes.shape({
 		active: React.PropTypes.bool,
-		text: React.PropTypes.string,
-		url: React.PropTypes.string
+		externalUrl: React.PropTypes.string,
+		targetId: React.PropTypes.string, // If externalUrl is not specified
+		text: React.PropTypes.string
 	}))
 };

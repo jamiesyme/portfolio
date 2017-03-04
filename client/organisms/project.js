@@ -65,14 +65,7 @@ ProjectOrg.propTypes = {
 };
 
 ProjectOrg.defaultProps = {
-	details: ['Details.'],
-	languages: ['lang1', 'lang2'],
-	screenshots: ['', ''],
-	summary: 'Summary.',
-	title: 'Title',
-	when: 'When',
-	where: [{
-		text: 'Link',
-		url: '#'
-	}]
+	languages: [],
+	screenshots: [],
+	where: []
 };

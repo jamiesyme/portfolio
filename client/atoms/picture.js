@@ -23,7 +23,7 @@ export class PictureAtom extends React.Component {
 		);
 
 		return (
-			<div style={imgStyle}></div>
+			<img style={imgStyle} src={this.props.src} />
 		);
 	}
 };

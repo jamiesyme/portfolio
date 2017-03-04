@@ -9,7 +9,7 @@ const screenshotPadding = 20;
 const baseStyles = {
 	list: {},
 	img: {
-		height: 250,
+		height: 'auto',
 		margin: 0,
 		width: 250
 	}

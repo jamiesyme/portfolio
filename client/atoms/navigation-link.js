@@ -27,17 +27,19 @@ const baseStyles = {
 		}
 	}
 };
-baseStyles.accent = Object.assign(
+baseStyles.active = Object.assign(
 	{},
 	baseStyles.normal,
-	{ color: ColorPaletteAtom.accent }
+	{
+		color: ColorPaletteAtom.accent
+	}
 );
 
 
 export class NavigationLinkAtom extends React.Component {
 	smoothScroll(e) {
 		e.preventDefault();
-		ReactScroll.scroller.scrollTo(this.props.href.substr(1), {
+		ReactScroll.scroller.scrollTo(this.props.targetId, {
 			duration: 500,
 			offset: -64,
 			smooth: true
@@ -45,11 +47,14 @@ export class NavigationLinkAtom extends React.Component {
 	}
 
 	render() {
-		const aStyle = this.props.accent ? baseStyles.accent : baseStyles.normal;
+		let aStyle = this.props.active ? baseStyles.active : baseStyles.normal;
+		let onClick = !this.props.externalUrl ? this.smoothScroll.bind(this) : null;
+		let href = this.props.externalUrl || '#' + this.props.targetId;
+
 		return (
 				<a style={aStyle}
-					 href={this.props.href}
-					 onClick={this.smoothScroll.bind(this)}>
+					 href={href}
+					 onClick={onClick}>
 					{this.props.text}
 				</a>
 		);
@@ -61,13 +66,14 @@ export default NavigationLinkAtom;
 
 
 NavigationLinkAtom.propTypes = {
-	accent: React.PropTypes.bool,
-	href: React.PropTypes.string,
+	active: React.PropTypes.bool,
+	externalUrl: React.PropTypes.string,
+	targetId: React.PropTypes.string,
 	text: React.PropTypes.string
 };
 
 NavigationLinkAtom.defaultProps = {
-	accent: false,
-	href: '#',
+	active: false,
+	targetId: '#',
 	text: 'NavLink'
 };
