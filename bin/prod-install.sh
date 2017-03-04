@@ -2,10 +2,14 @@
 
 # Using Ubuntu 16.04.2 LTS
 
-# Done before this script:
+# Run before this script:
 #   apt-get update && apt-get install -y git
 #   git clone https://github.com/jamiesyme/portfolio.git /opt/portfolio
 #   cd /opt/portfolio
+# These files are also expected (for Nginx):
+#   /opt/ssl/jamiesyme.com.pem
+#   /opt/ssl/jamiesyme.com.key
+# These files originate from CloudFlare.
 
 # Ufw is used to block all ports except SSH, HTTP, and HTTPS
 apt-get install -y ufw
@@ -22,15 +26,11 @@ cp config/nginx.conf /etc/nginx/sites-available/jamiesyme.com
 ln -s /etc/nginx/sites-available/jamiesyme.com /etc/nginx/sites-enabled/jamiesyme.com
 nginx -s reload
 
-# NOTE: Nginx expects to find the following files:
-#  /opt/ssl/jamiesyme.com.pem
-#  /opt/ssl/jamiesyme.com.key
-# You can retrieve these files from CloudFlare
-
 # NVM will manage Node for us
 apt-get install -y build-essential libssl-dev
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-source ~/.profile
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install node
 
 # Yarn is used to install our dependencies
