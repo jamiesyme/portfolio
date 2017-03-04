@@ -13,13 +13,14 @@ ufw default deny
 ufw allow ssh
 ufw allow http
 ufw allow https
-ufw enable
+ufw --force enable
 
 # Nginx is used as a proxy for our server
 # It also handles HTTPS for us
 apt-get install -y nginx
 cp config/nginx.conf /etc/nginx/sites-available/jamiesyme.com
 ln -s /etc/nginx/sites-available/jamiesyme.com /etc/nginx/sites-enabled/jamiesyme.com
+nginx -s reload
 
 # NOTE: Nginx expects to find the following files:
 #  /opt/ssl/jamiesyme.com.pem
