@@ -1,6 +1,6 @@
 # My Portfolio
 
-Deployed at jamiesyme.com
+Deployed at [jamiesyme.com](https://jamiesyme.com).
 
 ## Building
 
@@ -21,11 +21,11 @@ Visit: `localhost:8080`
 
 ## Deploying
 
-1) Setup SSH cert settings (see comments `bin/prod-install.sh`)
-2) Clone repo & cd
-3) `bin/prod-install.sh`
-4) `bin/prod-update.sh`
+1. Setup SSH cert settings (see comments in `bin/prod-install.sh`)
+2. Clone repo & cd
+3. `bin/prod-install.sh`
+4. `bin/prod-update.sh`
 
-After this, `bin/prod-update.sh` can be called to update.
+After this, `bin/prod-update.sh` can be used to update.
 
 Note: the app will not start automatically on startup.
