@@ -27,7 +27,7 @@ const baseStyles = {
 };
 
 
-export class ContactForm extends React.Component {
+export class ContactFormMole extends React.Component {
 	render() {
 		const formStyle = Object.assign(
 			{},
@@ -57,4 +57,4 @@ export class ContactForm extends React.Component {
 	}
 };
 
-export default ContactForm;
+export default ContactFormMole;

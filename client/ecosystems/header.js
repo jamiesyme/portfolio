@@ -19,7 +19,8 @@ const baseStyles = {
 	innerHeader: {
 		height: 64,
 		margin: 'auto',
-		width: 960
+		width: '80%',
+		maxWidth: '1024px'
 	},
 	nav: {
 		float: 'right'

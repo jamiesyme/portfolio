@@ -4,6 +4,7 @@ import LinkAtom from '../atoms/link';
 import ParagraphAtom from '../atoms/paragraph';
 import PictureAtom from '../atoms/picture';
 import PrimaryHeadingAtom from '../atoms/primary-heading';
+import SectionAtom from '../atoms/section';
 
 import { markdownToReact } from '../utils/react';
 
@@ -23,13 +24,9 @@ const baseStyles = {
 	},
 	section: {
 		alignItems: 'center',
-		boxSizing: 'border-box',
 		display: 'flex',
-		margin: 'auto',
-		minHeight: 'calc(100vh - 64px)',
-		paddingBottom: '100px',
-		marginTop: '64px', // Header size
-		width: '80%'
+		paddingTop: 0,
+		marginTop: '64px' // Header size
 	}
 };
 
@@ -39,7 +36,7 @@ export class LandingEco extends React.Component {
 		const bodyElements = markdownToReact(this.props.body);
 
 		return (
-			<section id={this.props.id}
+			<SectionAtom id={this.props.id}
 							 style={baseStyles.section}>
 				<div style={baseStyles.container}>
 					<div style={baseStyles.pictureContainer}>
@@ -50,7 +47,7 @@ export class LandingEco extends React.Component {
 						{bodyElements}
 					</div>
 				</div>
-			</section>
+			</SectionAtom>
 		);
 	}
 };

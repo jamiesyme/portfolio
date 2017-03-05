@@ -1,7 +1,8 @@
 import React from 'react';
 
-import ContactForm from '../molecules/contact-form';
+import ContactFormMole from '../molecules/contact-form';
 import PrimaryHeadingAtom from '../atoms/primary-heading';
+import SectionAtom from '../atoms/section';
 
 import { markdownToReact } from '../utils/react';
 
@@ -11,12 +12,7 @@ const baseStyles = {
 		marginTop: '50px'
 	},
 	section: {
-		boxSizing: 'border-box',
-		margin: 'auto',
-		minHeight: 'calc(100vh - 64px)',
-		paddingTop: '50px',
-		//paddingBottom: '100px',
-		width: '80%'
+		paddingBottom: 0
 	}
 };
 
@@ -26,12 +22,12 @@ export class ContactEco extends React.Component {
 		const bodyElements = markdownToReact(this.props.body);
 
 		return (
-			<section id={this.props.id}
-							 style={baseStyles.section}>
+			<SectionAtom id={this.props.id}
+									 style={baseStyles.section}>
 				<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
 				{bodyElements}
-				<ContactForm style={baseStyles.form} />
-			</section>
+				<ContactFormMole style={baseStyles.form} />
+			</SectionAtom>
 		);
 	}
 };
