@@ -78,12 +78,25 @@ url = "https://github.com/jamiesyme/portfolio"
 
 [projects.2]
 details = """
-TODO: write description. Based on Doom, more analagous to Wolfenstein 3D.
+Inspiration for this rendering engine came from the [original Doom game](https://en.wikipedia.org/wiki/Doom_%281993_video_game%29), which used a similar technique to render 3D graphics on far less powerful hardware. The final result, however, is more analogous to [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D). 
+
+My intention of this project wasn't to create a super efficient rendering engine to be used in actual games, but rather to explore how you could render a 3D environment without rasterization or ray tracing. As a result, I discovered that the technique is similar to ray tracing, though 3D graphics enthusiasts would probably classify it as ray casting.
+
+Features:
++ First-person navigation using keyboard controls
++ Level defined as 2D array of tiles
++ Texture-mapping based on tile-type
++ Reflection with varying opacity
++ You can see yourself in the mirror!
+
+In the end, I was left with a pure JavaScript implementation capable of running at a decent framerate on modern hardware, and I quenched my thirst of wanting to figure out how games ran before rasterization and GPUs blew up. If I were to do this project again (which I likely will in the future), I would love to play around with multi-leveled rendering, as well as lighting.
 """
 stack = ["JavaScript"]
-screenshots = ["", ""]
+screenshots = ["img/jdoom-screen-1.png",
+               "img/jdoom-screen-2.png",
+               "img/jdoom-screen-3.jpg"]
 summary = """
-JDoom is a 3D ray casting rendering demo. It uses the player's horizontal position and angle within a 2D grid of walls to simulate a 3D environment."""
+JDoom is a 3D ray casting rendering demo. It uses the player's horizontal position and rotation within a 2D grid of walls to simulate a 3D environment."""
 title = "JDoom"
 when = "Oct '15 - Nov '15"
 [[projects.2.where]]
