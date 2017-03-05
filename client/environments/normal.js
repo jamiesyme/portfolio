@@ -44,6 +44,9 @@ export class NormalEnv extends React.Component {
 						},*/ {
 							targetId: contactInfo.id,
 							text: 'Contact'
+						}, {
+							url: 'f/resume.pdf',
+							text: 'Resume'
 						}
 					]} />
 

@@ -30,10 +30,10 @@ const baseStyles = {
 export class HeaderEco extends React.Component {
 	constructor(props) {
 		super(props);
-
-		const links = this.props.links;
-		links.forEach(link => link.active = false);
-		this.state = { links: links };
+		this.state = {
+			links: this.props.links
+		};
+		this.state.links.forEach(link => link.active = false);
 	}
 
 	componentDidMount() {
@@ -93,9 +93,5 @@ export default HeaderEco;
 
 
 HeaderEco.propTypes = {
-	links: React.PropTypes.arrayOf(React.PropTypes.shape({
-		externalUrl: React.PropTypes.string,
-		targetId: React.PropTypes.string, // If externalUrl is not specified
-		text: React.PropTypes.string
-	}))
+	links: NavigationBarOrg.propTypes.links
 };

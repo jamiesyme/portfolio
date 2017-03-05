@@ -48,8 +48,8 @@ export class NavigationLinkAtom extends React.Component {
 
 	render() {
 		let aStyle = this.props.active ? baseStyles.active : baseStyles.normal;
-		let onClick = !this.props.externalUrl ? this.smoothScroll.bind(this) : null;
-		let href = this.props.externalUrl || '#' + this.props.targetId;
+		let onClick = !this.props.url ? this.smoothScroll.bind(this) : null;
+		let href = this.props.url || '#' + this.props.targetId;
 
 		return (
 				<a style={aStyle}
@@ -67,9 +67,9 @@ export default NavigationLinkAtom;
 
 NavigationLinkAtom.propTypes = {
 	active: React.PropTypes.bool,
-	externalUrl: React.PropTypes.string,
-	targetId: React.PropTypes.string,
-	text: React.PropTypes.string
+	targetId: React.PropTypes.string, // Used if url is not specified
+	text: React.PropTypes.string,
+	url: React.PropTypes.string
 };
 
 NavigationLinkAtom.defaultProps = {
