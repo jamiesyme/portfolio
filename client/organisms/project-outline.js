@@ -42,7 +42,7 @@ export class ProjectOutlineOrg extends React.Component {
 			this.props.style
 		);
 
-		const langText = this.props.languages.join(', ');
+		const stackText = this.props.stack.join(', ');
 
 		const whereItems = this.props.where.map((item, index) => (
 			<LinkAtom key={'l' + index.toString()} href={item.url}>
@@ -57,9 +57,9 @@ export class ProjectOutlineOrg extends React.Component {
 		return (
 			<div style={containerStyle}>
 				<div style={baseStyles.entry}>
-					<div style={baseStyles.entryName}>Languages</div>
+					<div style={baseStyles.entryName}>Stack</div>
 					<ParagraphAtom style={baseStyles.entryValue}>
-						{langText}
+						{stackText}
 					</ParagraphAtom>
 				</div>
 
@@ -85,8 +85,7 @@ export default ProjectOutlineOrg;
 
 
 ProjectOutlineOrg.propTypes = {
-	languages: React.PropTypes.arrayOf(React.PropTypes.string),
-	style: React.PropTypes.object,
+	stack: React.PropTypes.arrayOf(React.PropTypes.string),
 	when: React.PropTypes.string,
 	where: React.PropTypes.arrayOf(
 		React.PropTypes.shape({
@@ -97,6 +96,6 @@ ProjectOutlineOrg.propTypes = {
 };
 
 ProjectOutlineOrg.defaultProps = {
-	languages: [],
+	stack: [],
 	where: []
 };

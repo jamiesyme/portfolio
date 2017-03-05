@@ -1,13 +1,13 @@
 {
   "name": "jamiesyme.com",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "author": "Jamie Syme <jamie.d.syme@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build-client": "babel client -d tmp && browserify tmp/app.js -o build/bundle.js && rm -rf tmp",
+    "build-client": "babel client -d tmp --copy-files && browserify -t [ stringify --extensions [.toml] ] tmp/app.js -o build/bundle.js && rm -rf tmp",
     "build-server": "babel server -d build",
-    "build": "babel client -d tmp && browserify tmp/app.js -o build/bundle.js && rm -rf tmp && babel server -d build",
+    "build": "yarn run build-client && yarn run build-server",
     "start": "(cd build && node app.js)"
   },
   "babel": {
@@ -31,6 +31,7 @@
     "react-autosize-textarea": "^0.3.6",
     "react-dom": "^15.4.1",
     "react-scroll": "^1.4.7",
+    "stringify": "^5.1.0",
     "toml": "^2.3.2",
     "underscore": "^1.8.3"
   }

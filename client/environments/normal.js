@@ -9,34 +9,24 @@ import LandingEco from '../ecosystems/landing';
 import ProjectsEco from '../ecosystems/projects';
 
 
+const ContentRaw = require('../public/content.toml');
+const Content = Toml.parse(ContentRaw);
+
+
 export class NormalEnv extends React.Component {
-	constructor() {
-		super();
-		const self = this;
-		$.get('f/content.toml', (data) => {
-			self.setState({
-				content: Toml.parse(data)
-			});
-		});
-	}
-
 	render() {
-		if (!this.state || !this.state.content) {
-			return null;
-		}
-
-		const landingInfo = Object.assign({}, this.state.content.landing);
+		const landingInfo = Object.assign({}, Content.landing);
 
 		const projectsInfo = Object.assign(
 			{},
-			this.state.content.projects,
+			Content.projects,
 			{ projects: [] }
 		);
-		for (let i = 0; !!this.state.content.projects[i.toString()]; ++i) {
-			projectsInfo.projects.push(this.state.content.projects[i.toString()]);
+		for (let i = 0; !!Content.projects[i.toString()]; ++i) {
+			projectsInfo.projects.push(Content.projects[i.toString()]);
 		}
 
-		const contactInfo = Object.assign({}, this.state.content.contact);
+		const contactInfo = Object.assign({}, Content.contact);
 
 		return (
 			<div>

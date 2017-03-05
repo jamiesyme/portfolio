@@ -38,7 +38,7 @@ export class ProjectOrg extends React.Component {
 				{summaryElements}
 
 				<ProjectOutlineOrg
-					languages={this.props.languages}
+					stack={this.props.stack}
 					when={this.props.when}
 					where={this.props.where} />
 
@@ -53,7 +53,7 @@ export default ProjectOrg;
 
 ProjectOrg.propTypes = {
 	details: React.PropTypes.string,
-	languages: React.PropTypes.arrayOf(React.PropTypes.string),
+	stack: React.PropTypes.arrayOf(React.PropTypes.string),
 	screenshots: React.PropTypes.arrayOf(React.PropTypes.string),
 	summary: React.PropTypes.string,
 	title: React.PropTypes.string,
