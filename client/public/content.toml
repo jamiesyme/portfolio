@@ -6,15 +6,15 @@
 id = "landing"
 title = "Welcome"
 body = """
-My name's Jamie, and I'm a developer of things. While my experience generally lies in desktop applications and backend web development, my passion is more general: I like exploiting a computer's ability to do things for me.
+My name's Jamie, and I'm a developer of things! While my experience generally lies in desktop applications and backend web development, I really just like exploiting a computer's ability to do things for me.
 
-I'm a third-year CIS student at UFV. Todo: more personal hook. If interested, there's a whole section [about me](#) below.
+I'm currently a third-year CIS student at UFV. I have a soft spot for Emma Stone and Ryan Gosling, especially when they're in a movie together (seriously though, who wouldn't? Have you seen La La Land?). No, I don't have ADD, and yes, I can fit up to 14 grapes in my mouth. [Yeah... this probably needs some editing]
 
 [Projects](#) - Check out some of my recent projects.
 
 [Github](https://github.com/jamiesyme) - Browse all of my public projects.
 
-[Contact](#) - Let's chat!
+[Contact](#) - Tell me about your day.
 """
 
 
