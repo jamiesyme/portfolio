@@ -17,7 +17,10 @@ const baseStyles = {
 	screenshots: {
 		float: 'right',
 		marginLeft: 30,
-		marginBottom: 30
+		marginBottom: 30,
+		'@media (max-width: 768px)': {
+			display: 'none'
+		}
 	}
 };
 

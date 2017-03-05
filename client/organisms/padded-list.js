@@ -1,3 +1,4 @@
+import Radium from 'radium';
 import React from 'react';
 
 
@@ -48,6 +49,7 @@ export class PaddedListOrg extends React.Component {
 		);
 	}
 };
+PaddedListOrg = Radium(PaddedListOrg);
 
 export default PaddedListOrg;
 
