@@ -46,7 +46,7 @@ stack = ["C",
          "Cairo/Pango",
          "Make"]
 screenshots = ["img/minfo-screen-1.png",
-               "img/minfo-screen-2.jpg"]
+               ]#"img/minfo-screen-2.jpg"]
 summary = """
 Minfo is a lightweight status hub for the X Window System on Linux. It's goal is to provide easy access to basic info like the time and date, while remaining as unintrusive as possible."""
 title = "Minfo"
@@ -94,7 +94,7 @@ In the end, I was left with a pure JavaScript implementation capable of running 
 stack = ["JavaScript"]
 screenshots = ["img/jdoom-screen-1.png",
                "img/jdoom-screen-2.png",
-               "img/jdoom-screen-3.jpg"]
+               ]#"img/jdoom-screen-3.jpg"]
 summary = """
 JDoom is a 3D ray casting rendering demo. It uses the player's horizontal position and rotation within a 2D grid of walls to simulate a 3D environment."""
 title = "JDoom"
