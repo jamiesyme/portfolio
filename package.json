@@ -23,6 +23,9 @@
     "browserify": "^13.1.1"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "email-validator": "^1.0.7",
+    "emailjs": "^1.0.8",
     "express": "^4.14.1",
     "jquery": "^3.1.1",
     "normalize.css": "^5.0.0",

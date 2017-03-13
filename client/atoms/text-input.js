@@ -17,15 +17,14 @@ const baseStyles = {
 		lineHeight: 1.6,
 		padding: 10,
 		':focus': {
-			border: '1px solid ' + ColorPaletteAtom.accent,
-			boxShadow: '0 0 2px ' + ColorPaletteAtom.accent,
+			boxShadow: '0 0 2px black',
 			outline: 'none'
 		}
 	}
 };
 
 
-export class TextInput extends React.Component {
+export class TextInputAtom extends React.Component {
 	render() {
 		const inputStyle = Object.assign(
 			{},
@@ -36,25 +35,28 @@ export class TextInput extends React.Component {
 		return (
 			<input
 				style={inputStyle}
+				id={this.props.id}
+				onFocus={this.props.onFocus}
 				placeholder={this.props.placeholder}
 				required={this.props.required}
 				type={this.props.type} />
 		);
 	}
 };
-TextInput = Radium(TextInput);
+TextInputAtom = Radium(TextInputAtom);
 
-export default TextInput;
+export default TextInputAtom;
 
 
-TextInput.propTypes = {
+TextInputAtom.propTypes = {
+	id: React.PropTypes.string,
+	//onFocus: React.PropTypes.function,
 	placeholder: React.PropTypes.string,
 	required: React.PropTypes.bool,
 	type: React.PropTypes.string
 };
 
-TextInput.defaultProps = {
-	placeholder: '',
+TextInputAtom.defaultProps = {
 	required: true,
 	type: 'text'
 };

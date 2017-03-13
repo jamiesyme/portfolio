@@ -19,8 +19,7 @@ const baseStyles = {
 		padding: 10,
 		width: '100%',
 		':focus': {
-			border: '1px solid ' + ColorPaletteAtom.accent,
-			boxShadow: '0 0 2px ' + ColorPaletteAtom.accent,
+			boxShadow: '0 0 2px black',
 			outline: 'none'
 		}
 	}
@@ -40,6 +39,8 @@ export class TextInputArea extends React.Component {
 		return (
 			<RadiumTextareaAutosize
 				style={inputAreaStyle}
+				id={this.props.id}
+				onFocus={this.props.onFocus}
 				placeholder={this.props.placeholder}
 				required={this.props.required}
 				rows={this.props.minRows} />
@@ -52,13 +53,14 @@ export default TextInputArea;
 
 
 TextInputArea.propTypes = {
+	id: React.PropTypes.string,
 	minRows: React.PropTypes.number,
+	//onFocus: React.PropTypes.function,
 	placeholder: React.PropTypes.string,
 	required: React.PropTypes.bool
 };
 
 TextInputArea.defaultProps = {
 	minRows: 3,
-	placeholder: '',
 	required: true
 };

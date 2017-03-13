@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ContactFormMole from '../molecules/contact-form';
+import ContactFormOrg from '../organisms/contact-form';
 import PrimaryHeadingAtom from '../atoms/primary-heading';
 import SectionAtom from '../atoms/section';
 
@@ -26,7 +26,7 @@ export class ContactEco extends React.Component {
 									 style={baseStyles.section}>
 				<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
 				{bodyElements}
-				<ContactFormMole style={baseStyles.form} />
+				<ContactFormOrg style={baseStyles.form} />
 			</SectionAtom>
 		);
 	}

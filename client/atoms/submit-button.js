@@ -18,8 +18,7 @@ const baseStyles = {
 		lineHeight: 1.6,
 		padding: 10,
 		':focus': {
-			border: '1px solid ' + ColorPaletteAtom.accent,
-			boxShadow: '0 0 2px ' + ColorPaletteAtom.accent,
+			boxShadow: '0 0 2px black',
 			outline: 'none'
 		}
 	}
@@ -35,7 +34,12 @@ export class SubmitButton extends React.Component {
 		);
 
 		return (
-				<button style={buttonStyle} type="submit">{this.props.text}</button>
+				<button style={buttonStyle}
+								id={this.props.id}
+								onClick={this.props.onClick}
+								type="button">
+					{this.props.text}
+				</button>
 		);
 	}
 };
@@ -45,6 +49,8 @@ export default SubmitButton;
 
 
 SubmitButton.propTypes = {
+	id: React.PropTypes.string,
+	//onClick: React.PropTypes.function,
 	text: React.PropTypes.string
 };
 
