@@ -11,7 +11,7 @@ import { onConditionOrLast } from '../utils/list';
 const baseStyles = {
 	header: {
 		backgroundColor: ColorPaletteAtom.bg,
-		borderBottom: '1px solid ' + ColorPaletteAtom.heavy,
+		borderBottom: '1px solid ' + ColorPaletteAtom.medium,
 		position: 'fixed',
 		top: '0',
 		width: '100%'

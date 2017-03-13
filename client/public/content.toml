@@ -37,6 +37,7 @@ id = "projects"
 title = "Projects"
 
 [projects.0]
+id = "minfo"
 details = """
 I developed Minfo because I was tired of my default, ugly status bar sitting at the bottom of my desktop. I tried customizing it, but it just never felt like it belonged. I tried Conky as well, which was a lot more flexible, but it still didn't behave how I wanted. So, I decided to write something custom.
 
@@ -67,6 +68,7 @@ text = "Github"
 url = "https://github.com/jamiesyme/minfo"
 
 [projects.1]
+id = "portfolio"
 details = """
 TODO: write description.
 """
@@ -88,6 +90,7 @@ text = "Github"
 url = "https://github.com/jamiesyme/portfolio"
 
 [projects.2]
+id = "jdoom"
 details = """
 Inspiration for this rendering engine came from the [original Doom game](https://en.wikipedia.org/wiki/Doom_%281993_video_game%29), which used a similar technique to render 3D graphics on far less powerful hardware. The final result, however, is more analogous to [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D). 
 

@@ -6,7 +6,7 @@ import FontPaletteAtom from './font-palette';
 
 const baseStyles = {
 	heading: {
-		color: ColorPaletteAtom.heavy,
+		color: ColorPaletteAtom.medium,
 		fontFamily: FontPaletteAtom.heavy,
 		fontSize: 48,
 		fontWeight: 'bold',

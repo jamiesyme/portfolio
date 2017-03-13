@@ -21,6 +21,11 @@ const baseStyles = {
 		'@media (max-width: 768px)': {
 			display: 'none'
 		}
+	},
+	id: {
+		position: 'relative',
+		top: '-128px',
+		visibility: 'hidden'
 	}
 };
 
@@ -32,6 +37,8 @@ export class ProjectOrg extends React.Component {
 
 		return (
 			<div style={baseStyles.project}>
+				<div style={baseStyles.id} id={this.props.id}></div>
+
 				<SecondaryHeadingAtom>{this.props.title}</SecondaryHeadingAtom>
 
 				<ProjectScreenshotListOrg
