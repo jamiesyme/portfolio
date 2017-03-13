@@ -7,6 +7,9 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+# Get the website variables
+[ -s "config/env.sh" ] && \. "config/env.sh"
+
 git pull origin master
 
 yarn install
