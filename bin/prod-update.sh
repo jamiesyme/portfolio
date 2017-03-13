@@ -1,14 +1,11 @@
 #! /bin/bash
 
-# After using install-commands.sh
+# After using prod_install.sh
 # Be sure $PWD is /opt/portfolio
 
 # This is required if this is run immediately after prod-install.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Get the website variables
-[ -s "config/env.sh" ] && \. "config/env.sh"
 
 git pull origin master
 
@@ -17,4 +14,4 @@ mkdir -p build
 yarn run build
 
 pm2 stop node
-(cd build && pm2 start node -- app.js)
+pm2 start config/env.json

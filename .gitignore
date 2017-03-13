@@ -1,4 +1,5 @@
 /build/
 /node_modules/
 /tmp/
+/config/env.json
 /config/env.sh
