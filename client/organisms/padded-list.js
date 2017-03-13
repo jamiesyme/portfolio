@@ -5,8 +5,21 @@ import React from 'react';
 const baseStyles = {
 	list: {
 		listStyleType: 'none',
-		margin: 0,
-		padding: 0
+		// The margin and padding are done this way to avoid mixing shorthand and
+		// longhand forms. This is because of the style property that is passed into
+		// the padded list which often modifies a particular side of padding/margin.
+		// Doing it this way also avoids filling the console with warnings from
+		// Radium (due to the shorthand/longhand issue mentioned above).
+		//margin: 0,
+		//padding: 0
+		marginLeft:    0,
+		marginRight:   0,
+		marginTop:     0,
+		marginBottom:  0,
+		paddingLeft:   0,
+		paddingRight:  0,
+		paddingTop:    0,
+		paddingBottom: 0
 	},
 	item: {}
 };
