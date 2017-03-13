@@ -35,6 +35,15 @@ export class LandingEco extends React.Component {
 	render() {
 		const bodyElements = markdownToReact(this.props.body);
 
+		const linkElements = this.props.links.map((link, index) => (
+			<ParagraphAtom key={index.toString()}>
+				<LinkAtom targetId={link.targetId}
+									url={link.url}>
+					{link.title}
+				</LinkAtom> - {link.description}
+			</ParagraphAtom>
+		));
+
 		return (
 			<SectionAtom id={this.props.id}
 							 style={baseStyles.section}>
@@ -45,6 +54,7 @@ export class LandingEco extends React.Component {
 					<div style={baseStyles.introContainer}>
 						<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
 						{bodyElements}
+						{linkElements}
 					</div>
 				</div>
 			</SectionAtom>
@@ -58,5 +68,13 @@ export default LandingEco;
 LandingEco.propTypes = {
 	body: React.PropTypes.string,
 	id: React.PropTypes.string,
+	links: React.PropTypes.arrayOf(
+		React.PropTypes.shape({
+			description: React.PropTypes.string,
+			targetId: React.PropTypes.string,
+			title: React.PropTypes.string,
+			url: React.PropTypes.string
+		})
+	),
 	title: React.PropTypes.string
 };

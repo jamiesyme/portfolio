@@ -6,16 +6,26 @@
 id = "landing"
 title = "Welcome"
 body = """
-My name's Jamie, and I'm a developer of things! While my experience generally lies in desktop applications and backend web development, I really just like exploiting a computer's ability to do things for me.
+My name's Jamie, and I'm a developer of things. While my experience generally lies in desktop applications and backend web development, I really just like exploiting a computer's ability to do things for me.
 
-I'm currently a third-year CIS student at UFV. I have a soft spot for Emma Stone and Ryan Gosling, especially when they're in a movie together (seriously though, who wouldn't? Have you seen La La Land?). No, I don't have ADD, and yes, I can fit up to 14 grapes in my mouth. [Yeah... this probably needs some editing]
+In the past, I've focused on games and game engines. Arguably my biggest driving force for getting into programming was my interest in creating a Minecraft clone (one with much better water physics).
 
-[Projects](#) - Check out some of my recent projects.
+At present, my interest leans more towards "useful" applications: programs that serve to make my life easier. As a Linux user, it's time to take advantage of that flexibility!
 
-[Github](https://github.com/jamiesyme) - Browse all of my public projects.
-
-[Contact](#) - Tell me about your day.
+In the future, I'll probably continue making "useful" applications, but with a focus on IoT integration. I would also love to play around with neural networks and deep learning.
 """
+[[landing.links]]
+title = "Projects"
+description = "Check out some of my recent projects."
+targetId = "projects"
+[[landing.links]]
+title = "Github"
+description = "Browse all of my public projects."
+url = "https://github.com/jamiesyme"
+[[landing.links]]
+title = "Contact"
+description = "Pop the question."
+targetId = "contact"
 
 
 ########################################
@@ -80,16 +90,17 @@ url = "https://github.com/jamiesyme/portfolio"
 details = """
 Inspiration for this rendering engine came from the [original Doom game](https://en.wikipedia.org/wiki/Doom_%281993_video_game%29), which used a similar technique to render 3D graphics on far less powerful hardware. The final result, however, is more analogous to [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D). 
 
-My intention of this project wasn't to create a super efficient rendering engine to be used in actual games, but rather to explore how you could render a 3D environment without rasterization or ray tracing. As a result, I discovered that the technique is similar to ray tracing, though 3D graphics enthusiasts would probably classify it as ray casting.
+My intention of this project wasn't to create a super efficient rendering engine to be used in actual games, but rather to explore how you could render a 3D environment without rasterization or ray tracing. As a result, I discovered that the technique is actually quite similar to ray tracing, though 3D graphics enthusiasts would explicitly classify it as ray casting.
 
 Features:
++ All rendering done through direct pixel manipulation
 + First-person navigation using keyboard controls
 + Level defined as 2D array of tiles
 + Texture-mapping based on tile-type
 + Reflection with varying opacity
 + You can see yourself in the mirror!
 
-In the end, I was left with a pure JavaScript implementation capable of running at a decent framerate on modern hardware, and I quenched my thirst of wanting to figure out how games ran before rasterization and GPUs blew up. If I were to do this project again (which I likely will in the future), I would love to play around with multi-leveled rendering, as well as lighting.
+In the end, I was left with a pure JavaScript implementation capable of running at a decent framerate on modern hardware. I quenched my thirst of wanting to learn how games ran before rasterization/GPUs blew up. If I were to do this project again (which I likely will in the future), I would love to play around with floor and ceiling heights, as well as lighting effects.
 """
 stack = ["JavaScript"]
 screenshots = ["img/jdoom-screen-1.png",
@@ -126,8 +137,6 @@ Aliquam at nunc venenatis, aliquam nisl at, dictum lorem. Class aptent taciti so
 id = "contact"
 title = "Contact"
 body = """
-Whether you have a question about one of my projects, or you'd like to offer an employment opportunity for this summer, I'd love to hear from you!
-
 You can contact me at [jamie@jamiesyme.com](mailto:jamie@jamiesyme.com).
 
 Alternatively, feel free to use the contact form below.

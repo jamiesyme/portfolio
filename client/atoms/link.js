@@ -1,5 +1,6 @@
 import Radium from 'radium';
 import React from 'react';
+import ReactScroll from 'react-scroll';
 
 import ColorPaletteAtom from './color-palette';
 import FontPaletteAtom from './font-palette';
@@ -21,9 +22,25 @@ const baseStyles = {
 
 
 export class LinkAtom extends React.Component {
+	smoothScroll(e) {
+		e.preventDefault();
+		ReactScroll.scroller.scrollTo(this.props.targetId, {
+			duration: 500,
+			offset: -64,
+			smooth: true
+		});
+	}
+
 	render() {
+		const onClick = !this.props.url ? this.smoothScroll.bind(this) : null;
+		const href = this.props.url || '#' + this.props.targetId;
+
 		return (
-			<a style={baseStyles.a} href={this.props.href}>{this.props.children}</a>
+			<a style={baseStyles.a}
+				 href={href}
+				 onClick={onClick}>
+				{this.props.children}
+			</a>
 		);
 	}
 };
@@ -33,9 +50,10 @@ export default LinkAtom;
 
 
 LinkAtom.propTypes = {
-	href: React.PropTypes.string
+	targetId: React.PropTypes.string, // Used if url is not specified
+	url: React.PropTypes.string
 };
 
 LinkAtom.defaultProps = {
-	href: '#'
+	targetId: '#'
 };

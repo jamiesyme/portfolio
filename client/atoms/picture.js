@@ -5,6 +5,7 @@ const baseStyles = {
 	img: {
 		backgroundColor: 'rgb(200, 200, 200)',
 		borderRadius: '50%',
+		display: 'block',
 		margin: 'auto'
 	}
 };
