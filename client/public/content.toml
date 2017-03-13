@@ -13,7 +13,7 @@ In the past, I've focused on games and game engines. Arguably my biggest driving
 
 At present, my interest leans more towards "useful" applications: programs that serve to make my life easier. As a Linux user, it's time to take advantage of that flexibility!
 
-In the future, I'll probably continue making "useful" applications, but with a focus on IoT integration. I would also love to play around with neural networks and deep learning.
+In the future, I'll probably continue making "useful" applications, but with a focus on IoT integration. I would also love to play around with neural networks and deep learning algorithms.
 """
 [[landing.links]]
 title = "Projects"
@@ -81,6 +81,8 @@ One interesting aspect of this project was the use of Atomic Design. Google is y
 After using this structure for my portfolio, I would say it's not very useful for smaller projects; I spent a lot of time fussing over minor details like finding the line between what classifies as an organism and a molecule (definitions which I still haven't completely worked out). I think Atomic Design would be a lot more useful on medium/large projects, and I plan on trying it out again sometime in the future.
 
 As for the deployment details, I chose Hover for my domain provider, DigitalOcean for my server hosting, and PM2 for managing the server application. All of these are tools that I haven't used before, but they've all worked out exceptionally well. I also set up the free version of Cloudflare in front of my server for some extra protection, SSL, and CDN capabilities. Finally, I used Nginx to redirect web requests to node, and used ufw as a firewall to block any unwanted traffic.
+
+This project is still in progress. I want to make it less content-heavy (I feel like things are more wordy than necessary), add some more color to the design, and make it mobile-friendly. Cleaning up the code and patching some of the hacks are definitely on the list as well. Besides that, I'll just be updating my resume and the projects as time goes on.
 """
 stack = ["JavaScript",
          "React",
