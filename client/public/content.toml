@@ -5,6 +5,7 @@
 [landing]
 id = "landing"
 title = "Welcome"
+avatar = "img/avatar.jpg"
 body = """
 My name's Jamie, and I'm a developer of things. While my experience generally lies in desktop applications and backend web development, I really just like exploiting a computer's ability to do things for me.
 

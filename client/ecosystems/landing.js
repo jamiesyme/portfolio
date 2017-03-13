@@ -49,7 +49,8 @@ export class LandingEco extends React.Component {
 							 style={baseStyles.section}>
 				<div style={baseStyles.container}>
 					<div style={baseStyles.pictureContainer}>
-						<PictureAtom size={baseStyles.picture.size} />
+						<PictureAtom size={baseStyles.picture.size}
+												 src={this.props.avatar} />
 					</div>
 					<div style={baseStyles.introContainer}>
 						<PrimaryHeadingAtom>{this.props.title}</PrimaryHeadingAtom>
