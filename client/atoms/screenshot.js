@@ -4,7 +4,7 @@ import React from 'react';
 const baseStyles = {
 	img: {
 		backgroundColor: '#DDD',
-		boxShadow: '2px 2px 5px #555',
+		boxShadow: '0px 0px 5px black',
 		height: 250,
 		margin: 20,
 		width: 250

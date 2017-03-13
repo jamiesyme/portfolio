@@ -70,14 +70,28 @@ url = "https://github.com/jamiesyme/minfo"
 [projects.1]
 id = "portfolio"
 details = """
-TODO: write description.
+There is no one particular part of this project that stands out as being exceptional, nor is there any area that was exceptionally difficult to implement. The real challenge for me during this project was learning React, and then using it to put together a website in time for sending out applications. I'll have to wait before I can tell whether I achieved that goal or not.
+
+One interesting aspect of this project was the use of Atomic Design. Google is your friend here, but the general idea is that you categorize your components by simplicity:
++ Atoms are dumb
++ Molecules are also dumb, but they're composed of multiple atoms and other molecules
++ Organisms are dynamic, and they're composed from atoms, molecules, and other organisms
++ Ecosystems are considered sections of the page
++ Environments are where all of the data is controlled from 
+After using this structure for my portfolio, I would say it's not very useful for smaller projects; I spent a lot of time fussing over minor details like finding the line between what classifies as an organism and a molecule (definitions which I still haven't completely worked out). I think Atomic Design would be a lot more useful on medium/large projects, and I plan on trying it out again sometime in the future.
+
+As for the deployment details, I chose Hover for my domain provider, DigitalOcean for my server hosting, and PM2 for managing the server application. All of these are tools that I haven't used before, but they've all worked out exceptionally well. I also set up the free version of Cloudflare in front of my server for some extra protection, SSL, and CDN capabilities. Finally, I used Nginx to redirect web requests to node, and used ufw as a firewall to block any unwanted traffic.
 """
 stack = ["JavaScript",
          "React",
          "Node.js",
          "Yarn",
-         "Babel"]
-screenshots = ["", ""]
+         "Babel",
+         "PM2",
+         "Nginx",
+         "Cloudflare"]
+screenshots = ["img/portfolio-screen-1.png",
+               "img/portfolio-screen-2.png"]
 summary = """
 [jamiesyme.com](localhost:8080) is my online portfolio. It's goal is to showcase my recent work, to tell employers a little about who I am, and to provide a means of contact."""
 title = "jamiesyme.com"
