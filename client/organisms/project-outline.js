@@ -45,7 +45,7 @@ export class ProjectOutlineOrg extends React.Component {
 		const stackText = this.props.stack.join(', ');
 
 		const whereItems = this.props.where.map((item, index) => (
-			<LinkAtom key={'l' + index.toString()} href={item.url}>
+			<LinkAtom key={'l' + index.toString()} url={item.url}>
 				{item.text}
 			</LinkAtom>
 		));

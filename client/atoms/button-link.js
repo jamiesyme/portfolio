@@ -38,6 +38,7 @@ export default ButtonLinkAtom;
 
 
 ButtonLinkAtom.propTypes = {
+	// Switch to url & targetId like other links
 	href: React.PropTypes.string
 };
 

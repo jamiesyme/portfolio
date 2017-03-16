@@ -74,6 +74,5 @@ NavigationLinkAtom.propTypes = {
 
 NavigationLinkAtom.defaultProps = {
 	active: false,
-	targetId: '#',
-	text: 'NavLink'
+	targetId: ''
 };

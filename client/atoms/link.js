@@ -55,5 +55,5 @@ LinkAtom.propTypes = {
 };
 
 LinkAtom.defaultProps = {
-	targetId: '#'
+	targetId: ''
 };
