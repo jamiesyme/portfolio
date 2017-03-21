@@ -9,12 +9,14 @@ const baseStyles = {
 	input: {
 		border: '1px solid ' + ColorPaletteAtom.heavy,
 		borderRadius: '3px',
+		boxShadow: 'none',
 		color: ColorPaletteAtom.body,
 		display: 'block',
 		fontFamily: FontPaletteAtom.body,
 		fontSize: 18,
 		letterSpacing: 0.5,
 		lineHeight: 1.6,
+		outline: 'none',
 		padding: 10,
 		':focus': {
 			boxShadow: '0 0 2px black',

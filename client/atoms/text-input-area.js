@@ -10,12 +10,14 @@ const baseStyles = {
 	inputArea: {
 		border: '1px solid ' + ColorPaletteAtom.heavy,
 		borderRadius: '3px',
+		boxShadow: 'none',
 		color: ColorPaletteAtom.body,
 		display: 'block',
 		fontFamily: FontPaletteAtom.body,
 		fontSize: 18,
 		letterSpacing: 0.5,
 		lineHeight: 1.6,
+		outline: 'none',
 		padding: 10,
 		width: '100%',
 		':focus': {
