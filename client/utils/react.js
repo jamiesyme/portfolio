@@ -100,7 +100,7 @@ baseOptions.createImage = function(element, index, options) {
 baseOptions.createLink = function(element, index, options) {
 	return (
 		<LinkAtom key={index.toString()}
-							href={element.url}>
+							url={element.url}>
 			{element.content}
 		</LinkAtom>
 	);
