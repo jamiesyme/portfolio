@@ -51,9 +51,10 @@ I'm also hoping to improve the design of the web client, as well as add support 
 """
 stack = ["Go",
          "Postgres",
+	 "Bootstrap",
 	 "Nginx",
-	 "DigitalOcean",
-	 "Amazon S3"]
+	 "Amazon S3",
+	 "DigitalOcean"]
 screenshots = ["img/videoso-screen-1.png"]
 summary = """
 Videoso is an early prototype of a video sharing platform. It's goal is to allow users to upload and share videos, much like YouTube, but with a tweaked subscription system (not yet implemented).
