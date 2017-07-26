@@ -52,6 +52,7 @@ I'm also hoping to improve the design of the web client, as well as add support 
 stack = ["Go",
          "Postgres",
 	 "Bootstrap",
+	 "jQuery",
 	 "Nginx",
 	 "Amazon S3",
 	 "DigitalOcean"]
