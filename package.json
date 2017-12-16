@@ -6,7 +6,7 @@
   "author": "Jamie Syme <jamie.d.syme@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack && cp src/*.css src/*.html dist"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -1,0 +1,9 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	background: url(https://images.pexels.com/photos/164005/pexels-photo-164005.jpeg?w=1920&h=1080&auto=compress&cs=tinysrgb) center center no-repeat fixed;
+	background-size: cover;
+	overflow: hidden;
+}
