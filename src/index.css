@@ -23,6 +23,7 @@ body {
 	color: white;
 	display: flex;
 	height: 3.2rem;
+	padding: 0 1.0rem 0 1.0rem;
 }
 
 .start-bar button {
@@ -41,10 +42,35 @@ body {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
-.start-bar .applications, .clock {
+.start-bar > .apps-button, .clock-button {
 	flex: none;
 }
 
-.start-bar .open-applications {
+.start-bar > .open-apps-list {
 	flex: 1 1 auto;
+}
+
+.start-bar > .apps-list {
+	background-color: rgb(48, 48, 48);
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	display: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 0.5rem 0 0.5rem 0;
+	position: absolute;
+	top: 3.2rem;
+	width: 24.0rem;
+}
+
+.start-bar > .apps-list > li {
+	display: block;
+	height: 3.2rem;
+}
+
+.start-bar > .apps-list > li button {
+	display: block;
+	padding: 0 1.0rem 0 2.0rem;
+	text-align: left;
+	width: 100%;
 }
