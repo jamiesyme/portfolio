@@ -15,7 +15,7 @@ body {
 	overflow: hidden;
 }
 
-.start-bar {
+.taskbar {
 	background-color: rgb(35, 35, 35);
 	color: white;
 	display: flex;
@@ -24,7 +24,7 @@ body {
 	padding: 0 1.0rem 0 1.0rem;
 }
 
-.start-bar button {
+.taskbar button {
 	background-color: transparent;
 	border: none;
 	color: white;
@@ -32,23 +32,23 @@ body {
 	padding: 0 1.0rem 0 1.0rem;
 }
 
-.start-bar button:focus {
+.taskbar button:focus {
 	outline: none;
 }
 
-.start-bar button:hover {
+.taskbar button:hover {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
-.start-bar > .apps-button, .clock-button {
+.apps-list-button, .clock-button {
 	flex: none;
 }
 
-.start-bar > .open-apps-list {
+.open-apps-list {
 	flex: 1 1 auto;
 }
 
-.start-bar > .apps-list {
+.apps-list {
 	background-color: rgb(48, 48, 48);
 	border-bottom-left-radius: 0.5rem;
 	border-bottom-right-radius: 0.5rem;
@@ -61,12 +61,12 @@ body {
 	width: 24.0rem;
 }
 
-.start-bar > .apps-list > li {
+.apps-list > li {
 	display: block;
 	height: 3.2rem;
 }
 
-.start-bar > .apps-list > li button {
+.apps-list > li > button {
 	display: block;
 	padding: 0 1.0rem 0 2.0rem;
 	text-align: left;

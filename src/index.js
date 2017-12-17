@@ -1,8 +1,8 @@
-const $appsButton = $('.apps-button');
+const $appsListButton = $('.apps-list-button');
 const $appsList = $('.apps-list');
 const $desktop = $('.desktop');
 
-$appsButton.click(e => {
+$appsListButton.click(e => {
 	$appsList.toggle();
 });
 
