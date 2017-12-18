@@ -81,3 +81,84 @@ body {
 	background-size: cover;
 	flex: 1 1 auto;
 }
+
+.window {
+	background-color: rgba(128, 128, 128, 0.3);
+	border-radius: 0.7rem;
+	position: absolute;
+}
+
+.resize-handle-n,
+.resize-handle-e,
+.resize-handle-s,
+.resize-handle-w,
+.resize-handle-ne,
+.resize-handle-se,
+.resize-handle-sw,
+.resize-handle-nw {
+	position: absolute;
+}
+
+.resize-handle-n {
+	cursor: ns-resize;
+	height: 0.8rem;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+
+.resize-handle-e {
+	cursor: ew-resize;
+	height: 100%;
+	right: 0;
+	top: 0;
+	width: 0.8rem;
+}
+
+.resize-handle-s {
+	bottom: 0;
+	cursor: ns-resize;
+	height: 0.8rem;
+	left: 0;
+	width: 100%;
+}
+
+.resize-handle-w {
+	cursor: ew-resize;
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 0.8rem;
+}
+
+.resize-handle-ne {
+	cursor: nesw-resize;
+	height: 0.8rem;
+	right: 0;
+	top: 0;
+	width: 0.8rem;
+}
+
+.resize-handle-se {
+	bottom: 0;
+	cursor: nwse-resize;
+	height: 0.8rem;
+	right: 0;
+	width: 0.8rem;
+}
+
+.resize-handle-sw {
+	bottom: 0;
+	cursor: nesw-resize;
+	height: 0.8rem;
+	left: 0;
+	width: 0.8rem;
+}
+
+.resize-handle-nw {
+	cursor: nwse-resize;
+	height: 0.8rem;
+	left: 0;
+	top: 0;
+	width: 0.8rem;
+}
