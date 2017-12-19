@@ -22,6 +22,7 @@ body {
 	flex: none;
 	height: 3.2rem;
 	padding: 0 1.0rem 0 1.0rem;
+	z-index: 1;
 }
 
 .taskbar button {
@@ -80,12 +81,39 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	flex: 1 1 auto;
+	z-index: 0;
 }
 
 .window {
-	background-color: rgba(128, 128, 128, 0.3);
+	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
 	border-radius: 0.7rem;
+	display: flex;
+	flex-direction: column;
 	position: absolute;
+	z-index: 0;
+}
+
+.window .title-bar {
+	box-sizing: border-box;
+	background-color: rgb(35, 35, 35);
+	border: 1px solid rgb(96, 96, 96);
+	border-radius: 0.7rem 0.7rem 0 0;
+	flex: 0 0 auto;
+	height: 3.2rem;
+	width: 100%;
+	z-index: 1;
+}
+
+.window .content-area {
+	box-sizing: border-box;
+	background-color: white;
+	border: 1px solid rgb(128, 128, 128);
+	border-radius: 0 0 0.7rem 0.7rem;
+	border-top: none;
+	flex: 1 1 auto;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
 }
 
 .resize-handle-n,
@@ -97,6 +125,7 @@ body {
 .resize-handle-sw,
 .resize-handle-nw {
 	position: absolute;
+	z-index: 2;
 }
 
 .resize-handle-n {

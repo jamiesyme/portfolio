@@ -29,6 +29,9 @@ class Window {
 					x: e.clientX,
 					y: e.clientY
 				}
+				// Drag events result in buggy dragging behaviour, so we disable
+				// them by returning false
+				return false;
 			});
 			$(document).mouseup(e => oldPos = null);
 			$(document).mousemove(e => {
@@ -68,6 +71,39 @@ class Window {
 		enableResizeHandle($e.children('.resize-handle-se'), false, true, true, false);
 		enableResizeHandle($e.children('.resize-handle-sw'), false, false, true, true);
 		enableResizeHandle($e.children('.resize-handle-nw'), true, false, false, true);
+
+		function enableMoveHandle ($h) {
+			let oldPos = null;
+			$h.mousedown(e => {
+				oldPos = {
+					x: e.clientX,
+					y: e.clientY
+				}
+				// Drag events result in buggy dragging behaviour, so we disable
+				// them by returning false
+				return false;
+			});
+			$(document).mouseup(e => oldPos = null);
+			$(document).mousemove(e => {
+				if (!oldPos) {
+					return;
+				}
+				const newPos = {
+					x: e.clientX,
+					y: e.clientY
+				};
+				if (newPos.x != oldPos.x) {
+					const diff = newPos.x - oldPos.x;
+					self.left = self.left + diff;
+				}
+				if (newPos.y != oldPos.y) {
+					const diff = newPos.y - oldPos.y;
+					self.top = self.top + diff;
+				}
+				oldPos = newPos;
+			});
+		}
+		enableMoveHandle($e.children('.title-bar'));
 	}
 
 	get width () {
