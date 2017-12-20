@@ -42,12 +42,48 @@ body {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
+.taskbar .separator {
+	background-color: rgb(48, 48, 48);
+	height: 2.4rem;
+	margin: 0.4rem 1.0rem 0 1.0rem;
+	width: 0.2rem;
+}
+
 .apps-list-button, .clock-button {
 	flex: none;
 }
 
-.open-apps-list {
+.cards {
+	display: flex;
 	flex: 1 1 auto;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.card {
+	display: block;
+	width: 100%;
+	max-width: 18.0rem;
+}
+
+.card > button {
+	color: rgb(196, 196, 196);
+	display: block;
+	height: 100%;
+	text-align: left;
+	width: 100%;
+}
+
+.card.active-card button {
+	color: white;
+}
+
+.card.closed-card button:before {
+	content: '[';
+}
+.card.closed-card button:after {
+	content: ']';
 }
 
 .apps-list {

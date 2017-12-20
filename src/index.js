@@ -14,15 +14,18 @@ $desktop.click(e => {
 
 
 class Window {
-	constructor ($e) {
-		this.$element = $e;
+	constructor () {
+		this.$window = $('.window');
+		this.$card = $('.card');
 		this._geometry = {
-			width:  $e.width(),
-			height: $e.height(),
-			top:    $e.position().top,
-			left:   $e.position().left
+			width:  this.$window.width(),
+			height: this.$window.height(),
+			top:    this.$window.position().top,
+			left:   this.$window.position().left
 		};
 		this._savedGeometry = this._geometry;
+		this._maximized = false;
+		this._minimized = false;
 
 		const self = this;
 		function enableResizeHandle ($h, dn, de, ds, dw) {
@@ -66,14 +69,14 @@ class Window {
 				oldPos = newPos;
 			});
 		}
-		enableResizeHandle($e.children('.resize-handle-n'), true, false, false, false);
-		enableResizeHandle($e.children('.resize-handle-e'), false, true, false, false);
-		enableResizeHandle($e.children('.resize-handle-s'), false, false, true, false);
-		enableResizeHandle($e.children('.resize-handle-w'), false, false, false, true);
-		enableResizeHandle($e.children('.resize-handle-ne'), true, true, false, false);
-		enableResizeHandle($e.children('.resize-handle-se'), false, true, true, false);
-		enableResizeHandle($e.children('.resize-handle-sw'), false, false, true, true);
-		enableResizeHandle($e.children('.resize-handle-nw'), true, false, false, true);
+		enableResizeHandle(this.$window.children('.resize-handle-n'), true, false, false, false);
+		enableResizeHandle(this.$window.children('.resize-handle-e'), false, true, false, false);
+		enableResizeHandle(this.$window.children('.resize-handle-s'), false, false, true, false);
+		enableResizeHandle(this.$window.children('.resize-handle-w'), false, false, false, true);
+		enableResizeHandle(this.$window.children('.resize-handle-ne'), true, true, false, false);
+		enableResizeHandle(this.$window.children('.resize-handle-se'), false, true, true, false);
+		enableResizeHandle(this.$window.children('.resize-handle-sw'), false, false, true, true);
+		enableResizeHandle(this.$window.children('.resize-handle-nw'), true, false, false, true);
 
 		function enableMoveHandle ($h) {
 			let oldPos = null;
@@ -106,10 +109,18 @@ class Window {
 				oldPos = newPos;
 			});
 		}
-		enableMoveHandle($e.children('.title-bar'));
+		enableMoveHandle(this.$window.children('.title-bar'));
 
-		$e.find('.maximize-button').click(e => {
+		this.$window.find('.maximize-button').click(e => {
 			this.maximized = !this.maximized;
+		});
+
+		this.$window.find('.minimize-button').click(e => {
+			this.minimized = !this.minimized;
+		});
+
+		this.$card.click(e => {
+			this.minimized = !this.minimized;
 		});
 	}
 
@@ -122,9 +133,9 @@ class Window {
 	}
 
 	_applyGeometry () {
-		this.$element.width(this._geometry.width);
-		this.$element.height(this._geometry.height);
-		this.$element.css({
+		this.$window.width(this._geometry.width);
+		this.$window.height(this._geometry.height);
+		this.$window.css({
 			top: this._geometry.top,
 			left: this._geometry.left
 		});
@@ -187,16 +198,34 @@ class Window {
 				top: 0,
 				left: 0
 			};
-			this.$element.addClass('maximized');
+			this.$window.addClass('maximized');
 		} else {
 			this._loadSavedGeometry();
-			this.$element.removeClass('maximized');
+			this.$window.removeClass('maximized');
 		}
 		this._applyGeometry();
 	}
 
 	get maximized () {
 		return this._maximized;
+	}
+
+	set minimized (m) {
+		if (m === this._minimized) {
+			return;
+		}
+		this._minimized = m;
+		if (m) {
+			this.$window.hide();
+			this.$card.addClass('closed-card');
+		} else {
+			this.$window.show();
+			this.$card.removeClass('closed-card');
+		}
+	}
+
+	get minimized () {
+		return this._minimized;
 	}
 
 	center () {
@@ -209,7 +238,7 @@ class Window {
 	}
 }
 
-const window = new Window($('.window'));
+const window = new Window();
 window.width = 600;
 window.height = 400;
 window.center();
