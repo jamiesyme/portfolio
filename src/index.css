@@ -82,6 +82,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	flex: 1 1 auto;
+	position: relative;
 	z-index: 0;
 }
 
@@ -158,6 +159,12 @@ body {
 	height: 100%;
 	width: 100%;
 	z-index: 0;
+}
+
+.maximized .title-bar,
+.maximized .content-area {
+	border: none;
+	border-radius: 0;
 }
 
 .resize-handle-n,

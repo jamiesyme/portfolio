@@ -16,10 +16,13 @@ $desktop.click(e => {
 class Window {
 	constructor ($e) {
 		this.$element = $e;
-		this._width = $e.width();
-		this._height = $e.height();
-		this._top = $e.position().top;
-		this._left = $e.position().left;
+		this._geometry = {
+			width:  $e.width(),
+			height: $e.height(),
+			top:    $e.position().top,
+			left:   $e.position().left
+		};
+		this._savedGeometry = this._geometry;
 
 		const self = this;
 		function enableResizeHandle ($h, dn, de, ds, dw) {
@@ -104,71 +107,105 @@ class Window {
 			});
 		}
 		enableMoveHandle($e.children('.title-bar'));
+
+		$e.find('.maximize-button').click(e => {
+			this.maximized = !this.maximized;
+		});
+	}
+
+	_saveGeometry () {
+		this._savedGeometry = Object.assign({}, this._geometry);
+	}
+
+	_loadSavedGeometry () {
+		this._geometry = this._savedGeometry;
+	}
+
+	_applyGeometry () {
+		this.$element.width(this._geometry.width);
+		this.$element.height(this._geometry.height);
+		this.$element.css({
+			top: this._geometry.top,
+			left: this._geometry.left
+		});
 	}
 
 	get width () {
-		return this._width;
+		return this._geometry.width;
 	}
 	get height () {
-		return this._height;
+		return this._geometry.height;
 	}
 	set width (w) {
-		this.$element.width(w);
-		this._width = w;
+		this._geometry.width = w;
+		this._applyGeometry();
 	}
 	set height (h) {
-		this.$element.height(h);
-		this._height = h;
+		this._geometry.height = h;
+		this._applyGeometry();
 	}
 
 	get top () {
-		return this._top;
+		return this._geometry.top;
 	}
 	get left () {
-		return this._left;
+		return this._geometry.left;
 	}
 	get right () {
-		return this._left + this._width - 1;
+		return this._geometry.left + this._geometry.width - 1;
 	}
 	get bottom () {
-		return this._top + this._height - 1;
+		return this._geometry.top + this._geometry.height - 1;
 	}
 	set top (t) {
-		this._top = t;
-		this.$element.offset({
-			top: this.top,
-			left: this.left
-		});
+		this._geometry.top = t;
+		this._applyGeometry();
 	}
 	set left (l) {
-		this._left = l;
-		this.$element.offset({
-			top: this.top,
-			left: this.left
-		});
+		this._geometry.left = l;
+		this._applyGeometry();
 	}
 	set right (r) {
-		this._left = r + 1 - this._width;
-		this.$element.offset({
-			top: this.top,
-			left: this.left
-		});
+		this._geometry.left = r + 1 - this.width;
+		this._applyGeometry();
 	}
 	set bottom (b) {
-		this._top = b + 1 - this._height;
-		this.$element.offset({
-			top: this.top,
-			left: this.left
-		});
+		this._geometry.top = b + 1 - this.height;
+		this._applyGeometry();
 	}
+
+	set maximized (m) {
+		if (m === this._maximized) {
+			return;
+		}
+		this._maximized = m;
+		if (m) {
+			this._saveGeometry();
+			this._geometry = {
+				width: $desktop.width(),
+				height: $desktop.height(),
+				top: 0,
+				left: 0
+			};
+			this.$element.addClass('maximized');
+		} else {
+			this._loadSavedGeometry();
+			this.$element.removeClass('maximized');
+		}
+		this._applyGeometry();
+	}
+
+	get maximized () {
+		return this._maximized;
+	}
+
 	center () {
 		const dw = $desktop.width();
 		const dh = $desktop.height();
 		const top = (dh - this.height) / 2;
 		const left = (dw - this.width) / 2;
-		this.$element.offset({ top, left });
-		this._top = top;
-		this._left = left;
+		this.top = top;
+		this.left = left;
 	}
 }
 
