@@ -79,11 +79,8 @@ body {
 	color: white;
 }
 
-.card.closed-card button:before {
-	content: '[';
-}
-.card.closed-card button:after {
-	content: ']';
+.card.closed-card button {
+	font-style: italic;
 }
 
 .apps-list {
