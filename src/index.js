@@ -1,5 +1,6 @@
 const $appsListButton = $('.apps-list-button');
 const $appsList = $('.apps-list');
+const $cards = $('.cards');
 const $desktop = $('.desktop');
 
 $appsListButton.click(e => {
@@ -14,9 +15,45 @@ $desktop.click(e => {
 
 
 class Window {
-	constructor () {
-		this.$window = $('.window');
-		this.$card = $('.card');
+	constructor (title) {
+		function createWindowElement (title) {
+			const w = $('<div class="window"></div>');
+			const rhs = [
+				'resize-handle-n',
+				'resize-handle-e',
+				'resize-handle-s',
+				'resize-handle-w',
+				'resize-handle-ne',
+				'resize-handle-se',
+				'resize-handle-sw',
+				'resize-handle-nw',
+			];
+			for (const rh of rhs) {
+				const handle = $('<div />', { 'class': rh });
+				w.append(handle);
+			}
+			const t = $('<div class="title-bar"></div>');
+			t.append($('<div class="title">' + title + '</div>'));
+			const cbs = $('<div class="control-buttons"></div>');
+			cbs.append($('<div class="control-button minimize-button"></button>'));
+			cbs.append($('<div class="control-button maximize-button"></button>'));
+			cbs.append($('<div class="control-button close-button"></button>'));
+			t.append(cbs);
+			w.append(t);
+			w.append($('<div class="content-area"></div>'));
+			$desktop.append(w);
+			return w;
+		}
+		this.$window = createWindowElement(title);
+
+		function createCardElement (title) {
+			const li = $('<li class="card active-card"></li>');
+			li.append($('<button>' + title + '</button>'));
+			$cards.append(li);
+			return li;
+		}
+		this.$card = createCardElement(title);
+
 		this._geometry = {
 			width:  this.$window.width(),
 			height: this.$window.height(),
@@ -119,9 +156,18 @@ class Window {
 			this.minimized = !this.minimized;
 		});
 
+		this.$window.find('.close-button').click(e => {
+			this.remove();
+		});
+
 		this.$card.click(e => {
 			this.minimized = !this.minimized;
 		});
+	}
+
+	remove () {
+		this.$window.remove();
+		this.$card.remove();
 	}
 
 	_saveGeometry () {
@@ -238,7 +284,14 @@ class Window {
 	}
 }
 
-const window = new Window();
+const window = new Window('Projects');
 window.width = 600;
 window.height = 400;
 window.center();
+
+$appsList.find('button').click(e => {
+	const w = new Window('Projects');
+	w.width = 600;
+	w.height = 400;
+	w.center();
+});
