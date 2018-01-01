@@ -14,9 +14,28 @@ $desktop.click(e => {
 });
 
 
+const WindowInfo = {
+	about: {
+		title: 'About',
+		content: require('./about.html'),
+		contentClass: 'app-about',
+	},
+	contact: {
+		title: 'Contact',
+		content: require('./contact.html'),
+		contentClass: 'app-contact',
+	},
+	projects: {
+		title: 'Projects',
+		content: require('./projects.html'),
+		contentClass: 'app-projects',
+	},
+};
+
+
 class Window {
-	constructor (title) {
-		function createWindowElement (title) {
+	constructor (windowInfo) {
+		function createWindowElement (windowInfo) {
 			const w = $('<div class="window"></div>');
 			const rhs = [
 				'resize-handle-n',
@@ -33,26 +52,30 @@ class Window {
 				w.append(handle);
 			}
 			const t = $('<div class="title-bar"></div>');
-			t.append($('<div class="title">' + title + '</div>'));
+			t.append($('<div class="title">' + windowInfo.title + '</div>'));
 			const cbs = $('<div class="control-buttons"></div>');
 			cbs.append($('<div class="control-button minimize-button"></button>'));
 			cbs.append($('<div class="control-button maximize-button"></button>'));
 			cbs.append($('<div class="control-button close-button"></button>'));
 			t.append(cbs);
 			w.append(t);
-			w.append($('<div class="content-area"></div>'));
+			const ca = $('<div />', {
+				'class': ['content-area', windowInfo.contentClass].join(' '),
+				html: windowInfo.content
+			});
+			w.append(ca);
 			$desktop.append(w);
 			return w;
 		}
-		this.$window = createWindowElement(title);
+		this.$window = createWindowElement(windowInfo);
 
-		function createCardElement (title) {
+		function createCardElement (windowInfo) {
 			const li = $('<li class="card active-card"></li>');
-			li.append($('<button>' + title + '</button>'));
+			li.append($('<button>' + windowInfo.title + '</button>'));
 			$cards.append(li);
 			return li;
 		}
-		this.$card = createCardElement(title);
+		this.$card = createCardElement(windowInfo);
 
 		this._geometry = {
 			width:  this.$window.width(),
@@ -284,14 +307,16 @@ class Window {
 	}
 }
 
-const window = new Window('Projects');
-window.width = 600;
-window.height = 400;
-window.center();
 
-$appsList.find('button').click(e => {
-	const w = new Window('Projects');
+function launchApp (appName) {
+	const w = new Window(WindowInfo[appName]);
 	w.width = 600;
 	w.height = 400;
 	w.center();
-});
+}
+
+$appsList.find('.launch-about').click(e => launchApp('about'));
+$appsList.find('.launch-contact').click(e => launchApp('contact'));
+$appsList.find('.launch-projects').click(e => launchApp('projects'));
+
+launchApp('contact');
