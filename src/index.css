@@ -275,3 +275,62 @@ body {
 	top: 0;
 	width: 0.8rem;
 }
+
+.content-area h1 {
+	color: rgb(112, 112, 112);
+	font-family: 'Lato';
+	font-weight: 300;
+	letter-spacing: 0.8rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.app-contact {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.app-contact form {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	max-width: 80.0rem;
+	padding: 0 4.0rem 4.0rem 4.0rem;
+	width: 100%;
+}
+
+.app-contact .form-group {
+	display: flex;
+	margin: 0 0 1.5rem 0;
+}
+
+.app-contact label {
+	display: block;
+	flex: 0 0 auto;
+	width: 10.0rem;
+}
+
+.app-contact label:after {
+	content: ':';
+}
+
+.app-contact input, textarea {
+	display: block;
+	flex: 1;
+}
+
+.app-contact textarea {
+	resize: none;
+}
+
+.app-contact .form-group.grow-vert {
+	flex: 1;
+}
+
+.app-contact button {
+	display: block;
+	margin-left: auto;
+	width: 10.0rem;
+}

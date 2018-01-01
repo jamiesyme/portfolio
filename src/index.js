@@ -19,16 +19,28 @@ const WindowInfo = {
 		title: 'About',
 		content: require('./about.html'),
 		contentClass: 'app-about',
+		initialSize: {
+			width: 1280,
+			height: 800,
+		},
 	},
 	contact: {
 		title: 'Contact',
 		content: require('./contact.html'),
 		contentClass: 'app-contact',
+		initialSize: {
+			width: 640,
+			height: 480,
+		},
 	},
 	projects: {
 		title: 'Projects',
 		content: require('./projects.html'),
 		contentClass: 'app-projects',
+		initialSize: {
+			width: 1280,
+			height: 800,
+		},
 	},
 };
 
@@ -186,6 +198,9 @@ class Window {
 		this.$card.click(e => {
 			this.minimized = !this.minimized;
 		});
+
+		this.width = windowInfo.initialSize.width;
+		this.height = windowInfo.initialSize.height;
 	}
 
 	remove () {
@@ -310,8 +325,6 @@ class Window {
 
 function launchApp (appName) {
 	const w = new Window(WindowInfo[appName]);
-	w.width = 600;
-	w.height = 400;
 	w.center();
 }
 
