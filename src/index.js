@@ -111,6 +111,10 @@ class Window {
 		this._maximized = false;
 		this._minimized = false;
 
+		this._eventHandlers = {
+			resize: [],
+		};
+
 		const self = this;
 		function enableResizeHandle ($h, dn, de, ds, dw) {
 			let oldPos = null;
@@ -255,15 +259,33 @@ class Window {
 		if (w < this.minWidth) {
 			w = this.minWidth;
 		}
-		this._geometry.width = w;
-		this._applyGeometry();
+		if (this._geometry.width !== w) {
+			this._geometry.width = w;
+			this._applyGeometry();
+			for (const eh of this._eventHandlers.resize) {
+				eh({
+					type: 'resize',
+					width: this._geometry.width,
+					height: this._geometry.height,
+				});
+			}
+		}
 	}
 	set height (h) {
 		if (h < this.minHeight) {
 			h = this.minHeight;
 		}
-		this._geometry.height = h;
-		this._applyGeometry();
+		if (this._geometry.height !== h) {
+			this._geometry.height = h;
+			this._applyGeometry();
+			for (const eh of this._eventHandlers.resize) {
+				eh({
+					type: 'resize',
+					width: this._geometry.width,
+					height: this._geometry.height,
+				});
+			}
+		}
 	}
 
 	get top () {
@@ -349,13 +371,63 @@ class Window {
 }
 
 
+class AboutApp {
+	constructor () {
+		this.window = new Window(WindowInfo.about);
+	}
+}
+
+class ContactApp {
+	constructor () {
+		this.window = new Window(WindowInfo.contact);
+	}
+}
+
+class ProjectsApp {
+	constructor () {
+		this.window = new Window(WindowInfo.projects);
+		this.projects = [
+			{ title: 'project-1' },
+			{ title: 'project-2' },
+			{ title: 'project-3' },
+			{ title: 'project-4' },
+			{ title: 'project-5' },
+			{ title: 'project-6' },
+			{ title: 'project-7' },
+		];
+
+		// Load the project tiles
+		const $ul = this.window.$window.find('.project-tiles');
+		const projectTileTmpl = require('./project-tile.html');
+		for (const project of this.projects) {
+			const tileHtml = projectTileTmpl.replace(/{{(.*)}}/, (m, key) => project[key]);
+			const $li = $('<li />');
+			const $project = $(tileHtml);
+			$li.append($project);
+			$ul.append($li);
+		}
+	}
+}
+
+
 function launchApp (appName) {
-	const w = new Window(WindowInfo[appName]);
-	w.center();
+	let app;
+	switch (appName) {
+	case 'about':
+		app = new AboutApp();
+		break;
+	case 'contact':
+		app = new ContactApp();
+		break;
+	case 'projects':
+		app = new ProjectsApp();
+		break;
+	}
+	app.window.center();
 }
 
 $appsList.find('.launch-about').click(e => launchApp('about'));
 $appsList.find('.launch-contact').click(e => launchApp('contact'));
 $appsList.find('.launch-projects').click(e => launchApp('projects'));
 
-launchApp('contact');
+launchApp('projects');

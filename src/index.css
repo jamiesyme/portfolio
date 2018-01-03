@@ -128,7 +128,7 @@ body {
 	z-index: 0;
 }
 
-.window .title-bar {
+.title-bar {
 	box-sizing: border-box;
 	background-color: rgb(35, 35, 35);
 	border: 0.1rem solid rgb(96, 96, 96);
@@ -139,14 +139,14 @@ body {
 	z-index: 1;
 }
 
-.window .title {
+.title-bar .title {
 	color: white;
 	cursor: default;
 	line-height: 3.2rem;
 	text-align: center;
 }
 
-.control-buttons {
+.title-bar .control-buttons {
 	align-items: center;
 	margin-right: 0.7rem;
 	display: flex;
@@ -156,7 +156,7 @@ body {
 	top: 0;
 }
 
-.control-button {
+.title-bar .control-button {
 	box-sizing: border-box;
 	background-color: rgb(112, 112, 112);
 	border: 0.1rem solid rgb(148, 148, 148);
@@ -167,22 +167,22 @@ body {
 	height: 1.3rem;
 }
 
-.minimize-button {
+.title-bar .minimize-button {
 	background-color: rgb(76, 175, 80);
 	border-color: rgb(56, 142, 60);
 }
 
-.maximize-button {
+.title-bar .maximize-button {
 	background-color: rgb(255, 235, 59);
 	border-color: rgb(253, 216, 53);
 }
 
-.close-button {
+.title-bar .close-button {
 	background-color: rgb(229, 57, 53);
 	border-color: rgb(198, 40, 40);
 }
 
-.window .content-area {
+.content-area {
 	box-sizing: border-box;
 	background-color: white;
 	border: 0.1rem solid rgb(128, 128, 128);
@@ -335,4 +335,53 @@ body {
 	display: block;
 	margin-left: auto;
 	width: 10.0rem;
+}
+
+.app-projects {
+	align-items: center;
+	display: flex;
+	overflow: auto;
+	flex-direction: column;
+}
+
+.app-projects .project-tiles {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	list-style-type: none;
+	margin: 3.0rem 5.0rem 5.0rem 5.0rem;
+	max-width: 120.0rem;
+	padding: 0;
+}
+
+.app-projects .project-tile {
+	box-shadow: 0.0rem 0.2rem 1.0rem rgba(0, 0, 0, 0.6);
+	height: 15.0rem;
+	margin: 0 5.0rem 10.0rem 5.0rem;
+	position: relative;
+	width: 15.0rem;
+}
+
+.app-projects .project-tile .cover {
+	height: 100%;
+	width: 100%;
+}
+
+.app-projects .project-tile .title {
+	background-color: rgba(0, 0, 0, 0.8);
+	bottom: 0;
+	color: white;
+	opacity: 0.8;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+.app-projects .project-tile:hover .cover {
+	opacity: 0.8;
+}
+
+.app-projects .project-tile:hover .title {
+	background-color: black;
+	opacity: 1.0;
 }
