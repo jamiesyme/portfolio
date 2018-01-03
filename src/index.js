@@ -46,8 +46,8 @@ const WindowInfo = {
 		content: require('./projects.html'),
 		contentClass: 'app-projects',
 		initialSize: {
-			width: 1280,
-			height: 800,
+			width: 870,
+			height: 720,
 		},
 		minSize: {
 			width: 350,
@@ -57,50 +57,36 @@ const WindowInfo = {
 };
 
 
+function renderTemplate (template, data) {
+	// Regex: /{{.+?}}/
+	// - the dot matches any character
+	// - the plus requires at least one character within {{...}}
+	// - the question mark makes the regex non-greedy
+	return template.replace(/{{(.+?)}}/g, (m, key) => data[key]);
+}
+
+
 class Window {
 	constructor (windowInfo) {
 		function createWindowElement (windowInfo) {
-			const w = $('<div class="window"></div>');
-			const rhs = [
-				'resize-handle-n',
-				'resize-handle-e',
-				'resize-handle-s',
-				'resize-handle-w',
-				'resize-handle-ne',
-				'resize-handle-se',
-				'resize-handle-sw',
-				'resize-handle-nw',
-			];
-			for (const rh of rhs) {
-				const handle = $('<div />', { 'class': rh });
-				w.append(handle);
-			}
-			const t = $('<div class="title-bar"></div>');
-			t.append($('<div class="title">' + windowInfo.title + '</div>'));
-			const cbs = $('<div class="control-buttons"></div>');
-			cbs.append($('<div class="control-button minimize-button"></button>'));
-			cbs.append($('<div class="control-button maximize-button"></button>'));
-			cbs.append($('<div class="control-button close-button"></button>'));
-			t.append(cbs);
-			w.append(t);
-			const ca = $('<div />', {
-				'class': ['content-area', windowInfo.contentClass].join(' '),
-				html: windowInfo.content
-			});
-			w.append(ca);
-			$desktop.append(w);
-			return w;
+			const windowTmpl = require('./window.html');
+			const windowHtml = renderTemplate(windowTmpl, windowInfo);
+			const $window = $(windowHtml);
+			$desktop.append($window);
+			return $window;
 		}
-		this.$window = createWindowElement(windowInfo);
 
 		function createCardElement (windowInfo) {
-			const li = $('<li class="card active-card"></li>');
-			li.append($('<button>' + windowInfo.title + '</button>'));
-			$cards.append(li);
-			return li;
+			const $li = $('<li />', {
+				'class': 'card active-card',
+				content: windowInfo.title,
+			});
+			$cards.append($li);
+			return $li;
 		}
-		this.$card = createCardElement(windowInfo);
 
+		this.$window = createWindowElement(windowInfo);
+		this.$card = createCardElement(windowInfo);
 		this._geometry = {
 			width:  this.$window.width(),
 			height: this.$window.height(),
@@ -110,19 +96,13 @@ class Window {
 		this._savedGeometry = this._geometry;
 		this._maximized = false;
 		this._minimized = false;
-
-		this._eventHandlers = {
-			resize: [],
-		};
+		this._eventHandlers = { resize: [] };
 
 		const self = this;
 		function enableResizeHandle ($h, dn, de, ds, dw) {
 			let oldPos = null;
 			$h.mousedown(e => {
-				oldPos = {
-					x: e.clientX,
-					y: e.clientY
-				}
+				oldPos = { x: e.clientX, y: e.clientY }
 				// Drag events result in buggy dragging behaviour, so we disable
 				// them by returning false
 				return false;
@@ -132,10 +112,7 @@ class Window {
 				if (!oldPos) {
 					return;
 				}
-				const newPos = {
-					x: e.clientX,
-					y: e.clientY
-				};
+				const newPos = { x: e.clientX, y: e.clientY };
 				if (dn && newPos.y != oldPos.y) {
 					const diff = newPos.y - oldPos.y;
 					const newHeight = self.height - diff;
@@ -175,10 +152,7 @@ class Window {
 		function enableMoveHandle ($h) {
 			let oldPos = null;
 			$h.mousedown(e => {
-				oldPos = {
-					x: e.clientX,
-					y: e.clientY
-				}
+				oldPos = { x: e.clientX, y: e.clientY }
 				// Drag events result in buggy dragging behaviour, so we disable
 				// them by returning false
 				return false;
@@ -188,10 +162,7 @@ class Window {
 				if (!oldPos) {
 					return;
 				}
-				const newPos = {
-					x: e.clientX,
-					y: e.clientY
-				};
+				const newPos = { x: e.clientX, y: e.clientY };
 				if (newPos.x != oldPos.x) {
 					const diff = newPos.x - oldPos.x;
 					self.left = self.left + diff;
@@ -301,6 +272,12 @@ class Window {
 		return this._geometry.top + this._geometry.height - 1;
 	}
 	set top (t) {
+		if (t < 0) {
+			t = 0;
+		}
+		if (t >= $desktop.height()) {
+			t = $desktop.height() - 1;
+		}
 		this._geometry.top = t;
 		this._applyGeometry();
 	}
@@ -400,7 +377,7 @@ class ProjectsApp {
 		const $ul = this.window.$window.find('.project-tiles');
 		const projectTileTmpl = require('./project-tile.html');
 		for (const project of this.projects) {
-			const tileHtml = projectTileTmpl.replace(/{{(.*)}}/, (m, key) => project[key]);
+			const tileHtml = renderTemplate(projectTileTmpl, project);
 			const $li = $('<li />');
 			const $project = $(tileHtml);
 			$li.append($project);
