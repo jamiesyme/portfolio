@@ -23,6 +23,10 @@ const WindowInfo = {
 			width: 1280,
 			height: 800,
 		},
+		minSize: {
+			width: 350,
+			height: 380
+		},
 	},
 	contact: {
 		title: 'Contact',
@@ -32,6 +36,10 @@ const WindowInfo = {
 			width: 640,
 			height: 480,
 		},
+		minSize: {
+			width: 350,
+			height: 380
+		},
 	},
 	projects: {
 		title: 'Projects',
@@ -40,6 +48,10 @@ const WindowInfo = {
 		initialSize: {
 			width: 1280,
 			height: 800,
+		},
+		minSize: {
+			width: 350,
+			height: 380
 		},
 	},
 };
@@ -122,8 +134,11 @@ class Window {
 				};
 				if (dn && newPos.y != oldPos.y) {
 					const diff = newPos.y - oldPos.y;
-					self.top = self.top + diff;
-					self.height = self.height - diff;
+					const newHeight = self.height - diff;
+					if (newHeight >= self.minHeight) {
+						self.top = self.top + diff;
+						self.height = newHeight;
+					}
 				}
 				if (de && newPos.x != oldPos.x) {
 					const diff = newPos.x - oldPos.x;
@@ -135,8 +150,11 @@ class Window {
 				}
 				if (dw && newPos.x != oldPos.x) {
 					const diff = newPos.x - oldPos.x;
-					self.left = self.left + diff;
-					self.width = self.width - diff;
+					const newWidth = self.width - diff;
+					if (newWidth >= self.minWidth) {
+						self.left = self.left + diff;
+						self.width = newWidth;
+					}
 				}
 				oldPos = newPos;
 			});
@@ -199,6 +217,8 @@ class Window {
 			this.minimized = !this.minimized;
 		});
 
+		this.minWidth = windowInfo.minSize.width;
+		this.minHeight = windowInfo.minSize.height;
 		this.width = windowInfo.initialSize.width;
 		this.height = windowInfo.initialSize.height;
 	}
@@ -232,10 +252,16 @@ class Window {
 		return this._geometry.height;
 	}
 	set width (w) {
+		if (w < this.minWidth) {
+			w = this.minWidth;
+		}
 		this._geometry.width = w;
 		this._applyGeometry();
 	}
 	set height (h) {
+		if (h < this.minHeight) {
+			h = this.minHeight;
+		}
 		this._geometry.height = h;
 		this._applyGeometry();
 	}
