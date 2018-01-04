@@ -14,49 +14,6 @@ $desktop.click(e => {
 });
 
 
-const WindowInfo = {
-	about: {
-		title: 'About',
-		content: require('./about.html'),
-		contentClass: 'app-about',
-		initialSize: {
-			width: 1280,
-			height: 800,
-		},
-		minSize: {
-			width: 350,
-			height: 380
-		},
-	},
-	contact: {
-		title: 'Contact',
-		content: require('./contact.html'),
-		contentClass: 'app-contact',
-		initialSize: {
-			width: 640,
-			height: 480,
-		},
-		minSize: {
-			width: 350,
-			height: 380
-		},
-	},
-	projects: {
-		title: 'Projects',
-		content: require('./projects.html'),
-		contentClass: 'app-projects',
-		initialSize: {
-			width: 870,
-			height: 720,
-		},
-		minSize: {
-			width: 350,
-			height: 380
-		},
-	},
-};
-
-
 function renderTemplate (template, data) {
 	// Regex: /{{.+?}}/
 	// - the dot matches any character
@@ -67,6 +24,18 @@ function renderTemplate (template, data) {
 
 
 class Window {
+	/**
+	 * @param {object} windowInfo
+	 * @param {string} windowInfo.title
+	 * @param {string} windowInfo.content
+	 * @param {string} windowInfo.contentClass
+	 * @param {object} windowInfo.initialSize
+	 * @param {number} windowInfo.initialSize.width
+	 * @param {number} windowInfo.initialSize.height
+	 * @param {object} windowInfo.minSize
+	 * @param {number} windowInfo.minSize.width
+	 * @param {number} windowInfo.minSize.height
+	 */
 	constructor (windowInfo) {
 		function createWindowElement (windowInfo) {
 			const windowTmpl = require('./window.html');
@@ -77,10 +46,9 @@ class Window {
 		}
 
 		function createCardElement (windowInfo) {
-			const $li = $('<li />', {
-				'class': 'card active-card',
-				content: windowInfo.title,
-			});
+			const $li = $('<li />', { 'class': 'card active-card' });
+			const $button = $('<button />', { text: windowInfo.title });
+			$li.append($button);
 			$cards.append($li);
 			return $li;
 		}
@@ -350,38 +318,121 @@ class Window {
 
 class AboutApp {
 	constructor () {
-		this.window = new Window(WindowInfo.about);
+		this.window = new Window({
+			title:        'About',
+			content:      require('./about.html'),
+			contentClass: 'app-about',
+			initialSize:  { width: 1280, height: 800 },
+			minSize:      { width:  350, height: 380 },
+		});
 	}
 }
 
 class ContactApp {
 	constructor () {
-		this.window = new Window(WindowInfo.contact);
+		this.window = new Window({
+			title:        'Contact',
+			content:      require('./contact.html'),
+			contentClass: 'app-contact',
+			initialSize:  { width: 640, height: 480 },
+			minSize:      { width: 350, height: 380 },
+		});
 	}
 }
 
 class ProjectsApp {
 	constructor () {
-		this.window = new Window(WindowInfo.projects);
+		this.window = new Window({
+			title:        'Projects',
+			content:      require('./projects.html'),
+			contentClass: 'app-projects',
+			initialSize:  { width: 870, height: 720 },
+			minSize:      { width: 350, height: 380 },
+		});
+
 		this.projects = [
-			{ title: 'project-1' },
-			{ title: 'project-2' },
-			{ title: 'project-3' },
-			{ title: 'project-4' },
-			{ title: 'project-5' },
-			{ title: 'project-6' },
-			{ title: 'project-7' },
+			{
+				name: 'Project One',
+				screenshots: [
+					'https://dummyimage.com/600x400/9e289e/fff&text=dummy',
+					'https://dummyimage.com/600x400/9e289e/fff&text=more-text',
+					'https://dummyimage.com/600x400/9e289e/fff&text=final-text',
+				],
+				cover: 'https://dummyimage.com/150x150/9e289e/fff&text=dummy',
+				professional: false,
+				what: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam gravida ultricies scelerisque. Nulla facilisi.',
+				why: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non sem nulla. Cras sit amet lectus lacinia, interdum justo id, vestibulum tellus. Aliquam erat volutpat.',
+				when: 'September 2017',
+				how: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pretium lorem sed turpis commodo, ac volutpat justo tempor. Proin a magna sed lacus tincidunt tempor. Mauris commodo euismod fermentum. Praesent.',
+			},
+			{
+				name: 'project-2',
+				cover: 'https://dummyimage.com/150x150/9e289e/fff&text=dummy',
+			},
+			{
+				name: 'project-3',
+				cover: 'https://dummyimage.com/150x150/9e289e/fff&text=dummy',
+			},
+			{
+				name: 'project-4',
+				cover: 'https://dummyimage.com/150x150/9e289e/fff&text=dummy',
+			},
+			{
+				name: 'project-5',
+				cover: 'https://dummyimage.com/150x150/9e289e/fff&text=dummy',
+			},
+			{
+				name: 'project-6',
+				cover: 'https://dummyimage.com/150x150/9e289e/fff&text=dummy',
+			},
+			{
+				name: 'project-7',
+				cover: 'https://dummyimage.com/150x150/9e289e/fff&text=dummy',
+			},
 		];
 
-		// Load the project tiles
-		const $ul = this.window.$window.find('.project-tiles');
-		const projectTileTmpl = require('./project-tile.html');
+		// Connect the back button on the project viewer
+		const $projectViewer = this.window.$window.find('.project-viewer');
+		const $projectHeader = this.window.$window.find('.app-projects').children('h1');
+		const $projectTiles = this.window.$window.find('.project-tiles');
+		const $back = $projectViewer.find('.back-button');
+		$back.click(e => {
+			$projectViewer.find('.project').remove();
+			$projectViewer.hide();
+			$projectHeader.show();
+			$projectTiles.show();
+		});
+
+		// Render the project tiles
 		for (const project of this.projects) {
-			const tileHtml = renderTemplate(projectTileTmpl, project);
+			const tileTmpl = require('./project-tile.html');
+			const tileHtml = renderTemplate(tileTmpl, project);
 			const $li = $('<li />');
-			const $project = $(tileHtml);
-			$li.append($project);
-			$ul.append($li);
+			const $tile = $(tileHtml);
+			$li.append($tile);
+			$projectTiles.append($li);
+
+			// When a tile is clicked, render the project and switch to the
+			// project viewer
+			$tile.click(e => {
+				const projectTmpl = require('./project.html');
+				const projectHtml = renderTemplate(projectTmpl, project);
+				const $project = $(projectHtml);
+				for (const screenshot of project.screenshots) {
+					const $li = $('<li />');
+					const $img = $('<img />', {
+						'class': 'screenshot',
+						src: screenshot,
+					});
+					$li.append($img);
+					$project.find('.screenshots').append($li);
+				}
+				$projectViewer.find('.project').remove();
+				$projectViewer.append($project);
+				$projectHeader.hide();
+				$projectTiles.hide();
+				$projectViewer.show();
+			});
 		}
 	}
 }

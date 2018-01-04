@@ -276,7 +276,7 @@ body {
 	width: 0.8rem;
 }
 
-.content-area h1 {
+.content-area > h1 {
 	color: rgb(112, 112, 112);
 	font-family: 'Lato';
 	font-weight: 300;
@@ -355,10 +355,15 @@ body {
 }
 
 .app-projects .project-tile {
+	background-color: transparent;
+	border: none;
 	box-shadow: 0.0rem 0.2rem 1.0rem rgba(0, 0, 0, 0.6);
+	cursor: pointer;
 	display: block;
+	font-family: 'Open Sans';
 	height: 15.0rem;
 	margin: 0 5.0rem 10.0rem 5.0rem;
+	padding: 0;
 	position: relative;
 	width: 15.0rem;
 }
@@ -369,10 +374,11 @@ body {
 }
 
 .app-projects .project-tile .title {
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.6);
 	bottom: 0;
-	color: white;
-	opacity: 0.8;
+	box-sizing: border-box;
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0.4rem;
 	position: absolute;
 	text-align: center;
 	width: 100%;
@@ -384,5 +390,80 @@ body {
 
 .app-projects .project-tile:hover .title {
 	background-color: black;
-	opacity: 1.0;
+	color: white;
+}
+
+.app-projects .project-viewer {
+	margin: 3.0rem 5.0rem 5.0rem 5.0rem;
+	max-width: 120.0rem;
+}
+
+.app-projects .project-viewer .back-button {
+	background-color: transparent;
+	border: none;
+	color: rgb(168, 168, 168);
+	cursor: pointer;
+	font-family: 'Open Sans';
+	font-size: 2.0rem;
+	padding: 0 1.0rem 0 1.0rem;
+}
+
+.app-projects .project-viewer .back-button:hover {
+	color: rgb(112, 112, 112);
+	text-decoration: underline;
+}
+
+.app-projects .project-viewer .back-button:focus {
+	outline: none;
+}
+
+.app-projects .project-viewer .back-button:before {
+	content: '< ';
+}
+
+.app-projects .project {
+	clear: both;
+}
+
+.app-projects .project .screenshots {
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 50%;
+}
+
+.app-projects .project .screenshot {
+	width: 100%;
+}
+
+.app-projects .project .info {
+	box-sizing: border-box;
+	float: left;
+	padding-left: 3.0rem;
+	width: 50%;
+}
+
+.app-projects .project h1 {
+	color: rgb(64, 64, 64);
+	font-family: 'Lato';
+	font-weight: 400;
+	letter-spacing: 0.3rem;
+	margin: 1.0rem 0 3.0rem 0;
+}
+
+.app-projects .project h2 {
+	font-family: 'Lato';
+	font-weight: 400;
+	letter-spacing: 0.3rem;
+	margin: 2.0rem 0 1.0rem 0;
+}
+
+.app-projects .project h2:first-of-type {
+	margin-top: 0.5rem;
+}
+
+.app-projects .project p {
+	font-family: 'Open Sans';
+	margin: 0 0 3.0rem 0;
 }
