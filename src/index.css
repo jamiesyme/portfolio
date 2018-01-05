@@ -422,30 +422,33 @@ body {
 }
 
 .app-projects .project {
-	clear: both;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .app-projects .project .screenshots {
-	float: left;
+	flex: 1 1 50%;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	width: 50%;
 }
 
 .app-projects .project .screenshot {
+	display: block;
+	margin: 0 auto 1.0rem auto;
+	max-width: 50.0rem;
 	width: 100%;
 }
 
 .app-projects .project .info {
 	box-sizing: border-box;
-	float: left;
+	flex: 1 1 50%;
 	padding-left: 3.0rem;
-	width: 50%;
 }
 
 .app-projects .project h1 {
 	color: rgb(64, 64, 64);
+	flex-basis: 100%;
 	font-family: 'Lato';
 	font-weight: 400;
 	letter-spacing: 0.3rem;
