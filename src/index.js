@@ -458,4 +458,4 @@ $appsList.find('.launch-about').click(e => launchApp('about'));
 $appsList.find('.launch-contact').click(e => launchApp('contact'));
 $appsList.find('.launch-projects').click(e => launchApp('projects'));
 
-launchApp('projects');
+launchApp('about');
