@@ -7,6 +7,10 @@ $appsListButton.click(e => {
 	$appsList.toggle();
 });
 
+$appsList.find('button').click(e => {
+	$appsList.hide();
+});
+
 $desktop.click(e => {
 	if ($appsList.is(':visible')) {
 		$appsList.hide();
