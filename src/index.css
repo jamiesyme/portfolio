@@ -16,6 +16,15 @@ body {
 	overflow: hidden;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Lato';
+}
+
+p {
+	color: rgb(64, 64, 64);
+	font-family: 'Open Sans';
+}
+
 .taskbar {
 	background-color: rgb(35, 35, 35);
 	color: white;
@@ -278,11 +287,55 @@ body {
 
 .content-area > h1 {
 	color: rgb(112, 112, 112);
-	font-family: 'Lato';
 	font-weight: 300;
 	letter-spacing: 0.8rem;
 	text-align: center;
 	text-transform: uppercase;
+}
+
+.app-about {
+	overflow: auto;
+	padding: 0 3.0rem 4.0rem 3.0rem;
+}
+
+.app-about .banner {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	max-width: 96.0rem;
+	width: 100%;
+}
+
+.app-about .avatar-container {
+	box-sizing: border-box;
+	flex: 1 1 40%;
+	min-width: calc(20.0rem + 3.0rem);
+	max-width: calc(35.0rem + 3.0rem);
+	padding: 0 1.5rem 0 1.5rem;
+	margin: 0 auto 2.0rem auto;
+}
+
+.app-about .avatar {
+	border-radius: 0.2rem;
+	border: 1px solid rgb(200, 200, 200);
+	box-sizing: border-box;
+	padding: 0.5rem;
+	width: 100%;
+}
+
+.app-about .intro {
+	box-sizing: border-box;
+	flex: 1 1 60%;
+	padding: 0 1.5rem 0 1.5rem;
+}
+
+.app-about .intro p:first-of-type {
+	margin-top: 0;
+}
+
+.app-about .intro p:last-of-type {
+	margin-bottom: 0;
 }
 
 .app-contact {
@@ -434,9 +487,13 @@ body {
 }
 
 .app-projects .project .screenshot {
+	border-radius: 0.2rem;
+	border: 1px solid rgb(200, 200, 200);
+	box-sizing: border-box;
 	display: block;
 	margin: 0 auto 1.0rem auto;
 	max-width: 50.0rem;
+	padding: 0.5rem;
 	width: 100%;
 }
 
@@ -449,14 +506,12 @@ body {
 .app-projects .project h1 {
 	color: rgb(64, 64, 64);
 	flex-basis: 100%;
-	font-family: 'Lato';
 	font-weight: 400;
 	letter-spacing: 0.3rem;
 	margin: 1.0rem 0 3.0rem 0;
 }
 
 .app-projects .project h2 {
-	font-family: 'Lato';
 	font-weight: 400;
 	letter-spacing: 0.3rem;
 	margin: 2.0rem 0 1.0rem 0;
@@ -467,6 +522,5 @@ body {
 }
 
 .app-projects .project p {
-	font-family: 'Open Sans';
 	margin: 0 0 3.0rem 0;
 }

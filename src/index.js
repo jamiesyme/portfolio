@@ -322,8 +322,17 @@ class AboutApp {
 			title:        'About',
 			content:      require('./about.html'),
 			contentClass: 'app-about',
-			initialSize:  { width: 1280, height: 800 },
-			minSize:      { width:  350, height: 380 },
+			initialSize:  { width: 760, height: 800 },
+			minSize:      { width: 350, height: 380 },
+		});
+
+		this.window.$window.find('.app-projects-link').click(e => {
+			launchApp('projects');
+			return false;
+		});
+		this.window.$window.find('.app-contact-link').click(e => {
+			launchApp('contact');
+			return false;
 		});
 	}
 }
