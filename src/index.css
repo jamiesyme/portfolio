@@ -289,6 +289,7 @@ p {
 	color: rgb(112, 112, 112);
 	font-weight: 300;
 	letter-spacing: 0.8rem;
+	padding-left: 0.5rem; /* Minor centering issue due to letter spacing */
 	text-align: center;
 	text-transform: uppercase;
 }
@@ -523,4 +524,10 @@ p {
 
 .app-projects .project p {
 	margin: 0 0 3.0rem 0;
+}
+
+.app-projects .project .links {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }

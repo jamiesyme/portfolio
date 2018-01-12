@@ -10,7 +10,11 @@ module.exports = {
 		path: Path.resolve(__dirname, 'dist')
 	},
 	plugins: [
-		new CopyWebpackPlugin(['src/index.css', 'src/index.html'])
+		new CopyWebpackPlugin([
+			'src/index.css',
+			'src/index.html',
+			{ context: 'assets', from: '*', to: 'public' },
+		]),
 	],
 	module: {
 		rules: [
