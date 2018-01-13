@@ -1,21 +1,70 @@
-const $appsListButton = $('.apps-list-button');
-const $appsList = $('.apps-list');
 const $cards = $('.cards');
 const $desktop = $('.desktop');
 
-$appsListButton.click(e => {
-	$appsList.toggle();
-});
+class AppsList {
+	constructor () {
+		this.$button = $('.apps-list-button');
+		this.$list = $('.apps-list');
+		this.visible = false;
 
-$appsList.find('button').click(e => {
-	$appsList.hide();
-});
+		const self = this;
 
-$desktop.click(e => {
-	if ($appsList.is(':visible')) {
-		$appsList.hide();
+		// Open and close the app list with the button
+		this.$button.click(e => {
+			self.toggle();
+		});
+
+		// Close the list when the user clicks on anything except for the list
+		this.$button.on('focusout', e => {
+			if ($('.apps-list:hover').length == 0) {
+				self.hide();
+			} else {
+				this.$button.focus();
+			}
+		});
+
+		// Close the list when the user hits ESC
+		this.$button.on('keydown', e => {
+			if (e.which === 27) {
+				self.hide();
+				e.preventDefault();
+			}
+		});
+
+		// Close the list when the user launches an app
+		this.$list.find('button').click(e => self.hide());
+
+		// Register apps with buttons
+		this.$list.find('.launch-about').click(e => launchApp('about'));
+		this.$list.find('.launch-contact').click(e => launchApp('contact'));
+		this.$list.find('.launch-projects').click(e => launchApp('projects'));
 	}
-});
+
+	show () {
+		if (!this.visible) {
+			this.visible = true;
+			this.$list.show();
+			this.$button.addClass('active');
+		}
+	}
+
+	hide () {
+		if (this.visible) {
+			this.visible = false;
+			this.$list.hide();
+			this.$button.removeClass('active');
+		}
+	}
+
+	toggle () {
+		if (this.visible) {
+			this.hide();
+		} else {
+			this.show();
+		}
+	}
+}
+const appsList = new AppsList();
 
 
 function renderTemplate (template, data) {
@@ -502,9 +551,5 @@ function launchApp (appName) {
 	}
 	app.window.center();
 }
-
-$appsList.find('.launch-about').click(e => launchApp('about'));
-$appsList.find('.launch-contact').click(e => launchApp('contact'));
-$appsList.find('.launch-projects').click(e => launchApp('projects'));
 
 launchApp('projects');
