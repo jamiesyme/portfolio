@@ -1,10 +1,38 @@
 class AppsMenu {
 	constructor ($taskbar, appManager) {
-		this.$appsMenu = this.$taskbar.find('.apps-menu');
+		this.$button = this.$taskbar.find('.apps-menu-button');
+		this.$menu = this.$taskbar.find('.apps-menu');
 		this.appManager = appManager;
+
+		const self = this;
+
+		// Open and close the menu with the button
+		this.$button.click(e => {
+			self.toggle();
+		});
+
+		// Close the menu when the user clicks on anything else
+		this.$button.on('focusout', e => {
+			if ($('.apps-menu:hover').length == 0) {
+				self.hide();
+			} else {
+				this.$button.focus();
+			}
+		});
+
+		// Close the menu when the user hits ESC
+		this.$button.on('keydown', e => {
+			if (e.which === 27) {
+				self.hide();
+				e.preventDefault();
+			}
+		});
+
+		// Close the menu when the user launches an app
+		this.$menu.find('button').click(e => self.hide());
 	}
 
-	add (name, appName) {
+	addApp (name, appName) {
 		const self = this;
 		function createAppElem () {
 			const $li = $('<li />');
@@ -15,7 +43,31 @@ class AppsMenu {
 		}
 
 		const $app = createAppElem();
-		this.$appsMenu.append($app);
+		this.$menu.append($app);
+	}
+
+	show () {
+		if (!this.visible) {
+			this.visible = true;
+			this.$list.show();
+			this.$button.addClass('active');
+		}
+	}
+
+	hide () {
+		if (this.visible) {
+			this.visible = false;
+			this.$list.hide();
+			this.$button.removeClass('active');
+		}
+	}
+
+	toggle () {
+		if (this.visible) {
+			this.hide();
+		} else {
+			this.show();
+		}
 	}
 }
 
@@ -92,6 +144,10 @@ class Taskbar {
 			self.tasks.remove(window);
 		});
 		$('body > .desktop').prepend(this.$taskbar);
+	}
+
+	addApp (name, appName) {
+		this.appMenu.addApp(name, appName);
 	}
 }
 
