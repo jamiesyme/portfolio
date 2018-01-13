@@ -300,12 +300,12 @@ p {
 	text-transform: uppercase;
 }
 
-.app-about {
+.about-app {
 	overflow: auto;
 	padding: 0 3.0rem 4.0rem 3.0rem;
 }
 
-.app-about .banner {
+.about-app .banner {
 	box-sizing: border-box;
 	display: flex;
 	flex-wrap: wrap;
@@ -314,7 +314,7 @@ p {
 	width: 100%;
 }
 
-.app-about .avatar-container {
+.about-app .avatar-container {
 	box-sizing: border-box;
 	flex: 1 1 40%;
 	min-width: calc(20.0rem + 3.0rem);
@@ -323,7 +323,7 @@ p {
 	margin: 0 auto 2.0rem auto;
 }
 
-.app-about .avatar {
+.about-app .avatar {
 	border-radius: 0.2rem;
 	border: 1px solid rgb(200, 200, 200);
 	box-sizing: border-box;
@@ -331,17 +331,17 @@ p {
 	width: 100%;
 }
 
-.app-about .intro {
+.about-app .intro {
 	box-sizing: border-box;
 	flex: 1 1 60%;
 	padding: 0 1.5rem 0 1.5rem;
 }
 
-.app-about .intro p:first-of-type {
+.about-app .intro p:first-of-type {
 	margin-top: 0;
 }
 
-.app-about .intro p:last-of-type {
+.about-app .intro p:last-of-type {
 	margin-bottom: 0;
 }
 
