@@ -1,3 +1,35 @@
+const AppManager = require('./app-manager');
+const Taskbar = require('./taskbar');
+const WindowManager = require('./window-manager');
+
+const windowManager = new WindowManager();
+const appManager = new AppManager(windowManager);
+const taskbar = new Taskbar(windowManager, appManager);
+
+const apps = [
+	{
+		name: 'About',
+		id: 'about',
+		appClass: AboutApp
+	},
+	{
+		name: 'Contact',
+		id: 'contact',
+		appClass: ContactApp
+	},
+	{
+		name: 'Projects',
+		id: 'projects',
+		appClass: ProjectsApp
+	},
+];
+
+for (const app of apps) {
+	appManager.addApp(app.id, app.appClass);
+	taskbar.addApp(app.name, app.id);
+}
+
+/*
 const $cards = $('.cards');
 const $desktop = $('.desktop');
 
@@ -88,7 +120,7 @@ class Window {
 	 * @param {object} windowInfo.minSize
 	 * @param {number} windowInfo.minSize.width
 	 * @param {number} windowInfo.minSize.height
-	 */
+	 * /
 	constructor (windowInfo) {
 		function createWindowElement (windowInfo) {
 			const windowTmpl = require('./window.html');
@@ -553,3 +585,4 @@ function launchApp (appName) {
 }
 
 launchApp('projects');
+*/

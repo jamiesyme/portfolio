@@ -347,13 +347,13 @@ p {
 	margin-bottom: 0;
 }
 
-.app-contact {
+.contact-app {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
 }
 
-.app-contact form {
+.contact-app form {
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
@@ -363,50 +363,50 @@ p {
 	width: 100%;
 }
 
-.app-contact .form-group {
+.contact-app .form-group {
 	display: flex;
 	margin: 0 0 1.5rem 0;
 }
 
-.app-contact label {
+.contact-app label {
 	display: block;
 	flex: 0 0 auto;
 	width: 10.0rem;
 }
 
-.app-contact label::after {
+.contact-app label::after {
 	content: ':';
 }
 
-.app-contact input, textarea {
+.contact-app input, textarea {
 	display: block;
 	flex: 1;
 	font-size: 1.4rem;
 	width: 100%;
 }
 
-.app-contact textarea {
+.contact-app textarea {
 	resize: none;
 }
 
-.app-contact .form-group.grow-vert {
+.contact-app .form-group.grow-vert {
 	flex: 1;
 }
 
-.app-contact button {
+.contact-app button {
 	display: block;
 	margin-left: auto;
 	width: 10.0rem;
 }
 
-.app-projects {
+.projects-app {
 	align-items: center;
 	display: flex;
 	overflow: auto;
 	flex-direction: column;
 }
 
-.app-projects .project-tiles {
+.projects-app .project-tiles {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -416,7 +416,7 @@ p {
 	padding: 0;
 }
 
-.app-projects .project-tile {
+.projects-app .project-tile {
 	background-color: transparent;
 	border: none;
 	box-shadow: 0.0rem 0.2rem 1.0rem rgba(0, 0, 0, 0.6);
@@ -430,12 +430,12 @@ p {
 	width: 15.0rem;
 }
 
-.app-projects .project-tile .cover {
+.projects-app .project-tile .cover {
 	height: 100%;
 	width: 100%;
 }
 
-.app-projects .project-tile .title {
+.projects-app .project-tile .title {
 	background-color: rgba(0, 0, 0, 0.6);
 	bottom: 0;
 	box-sizing: border-box;
@@ -446,21 +446,21 @@ p {
 	width: 100%;
 }
 
-.app-projects .project-tile:hover .cover {
+.projects-app .project-tile:hover .cover {
 	opacity: 0.8;
 }
 
-.app-projects .project-tile:hover .title {
+.projects-app .project-tile:hover .title {
 	background-color: black;
 	color: white;
 }
 
-.app-projects .project-viewer {
+.projects-app .project-viewer {
 	margin: 3.0rem 5.0rem 5.0rem 5.0rem;
 	max-width: 120.0rem;
 }
 
-.app-projects .project-viewer .back-button {
+.projects-app .project-viewer .back-button {
 	background-color: transparent;
 	border: none;
 	color: rgb(168, 168, 168);
@@ -470,32 +470,32 @@ p {
 	padding: 0 1.0rem 0 1.0rem;
 }
 
-.app-projects .project-viewer .back-button:hover {
+.projects-app .project-viewer .back-button:hover {
 	color: rgb(112, 112, 112);
 	text-decoration: underline;
 }
 
-.app-projects .project-viewer .back-button:focus {
+.projects-app .project-viewer .back-button:focus {
 	outline: none;
 }
 
-.app-projects .project-viewer .back-button::before {
+.projects-app .project-viewer .back-button::before {
 	content: '< ';
 }
 
-.app-projects .project {
+.projects-app .project {
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.app-projects .project .screenshots {
+.projects-app .project .screenshots {
 	flex: 1 1 50%;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-.app-projects .project .screenshot {
+.projects-app .project .screenshot {
 	border-radius: 0.2rem;
 	border: 1px solid rgb(200, 200, 200);
 	box-sizing: border-box;
@@ -506,13 +506,13 @@ p {
 	width: 100%;
 }
 
-.app-projects .project .info {
+.projects-app .project .info {
 	box-sizing: border-box;
 	flex: 1 1 50%;
 	padding-left: 3.0rem;
 }
 
-.app-projects .project h1 {
+.projects-app .project h1 {
 	color: rgb(64, 64, 64);
 	flex-basis: 100%;
 	font-weight: 400;
@@ -520,21 +520,21 @@ p {
 	margin: 1.0rem 0 3.0rem 0;
 }
 
-.app-projects .project h2 {
+.projects-app .project h2 {
 	font-weight: 400;
 	letter-spacing: 0.3rem;
 	margin: 2.0rem 0 1.0rem 0;
 }
 
-.app-projects .project h2:first-of-type {
+.projects-app .project h2:first-of-type {
 	margin-top: 0.5rem;
 }
 
-.app-projects .project p {
+.projects-app .project p {
 	margin: 0 0 3.0rem 0;
 }
 
-.app-projects .project .links {
+.projects-app .project .links {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;

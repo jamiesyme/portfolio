@@ -1,3 +1,5 @@
+const Template = require('./template');
+
 class Window {
 	/**
 	 * @param {object} options
@@ -15,7 +17,7 @@ class Window {
 		const self = this;
 		function createWindowElement (options) {
 			const windowTmpl = require('./window.html');
-			const windowHtml = renderTemplate(windowTmpl, options);
+			const windowHtml = Template.render(windowTmpl, options);
 			const $window = $(windowHtml);
 			return $window;
 		}

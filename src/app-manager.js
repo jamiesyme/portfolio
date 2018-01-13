@@ -4,15 +4,15 @@ class AppManager {
 		this._appStore = {};
 	}
 
-	addApp (appName, appClass) {
-		this._appStore[appName] = appClass;
+	addApp (id, appClass) {
+		this._appStore[id] = appClass;
 	}
 
-	launch (appName) {
-		if (this._appStore[appName]) {
-			new this._appStore[appName](this._windowManager, this);
+	launch (id) {
+		if (this._appStore[id]) {
+			new this._appStore[id](this._windowManager, this);
 		} else {
-			throw new Error('no app called: ' + appName);
+			throw new Error('no app with id: ' + id);
 		}
 	}
 }

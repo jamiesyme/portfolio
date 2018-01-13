@@ -33,12 +33,12 @@ class AppsMenu {
 		this._$menu.find('button').click(e => self.hide());
 	}
 
-	addApp (name, appName) {
+	addApp (name, id) {
 		const self = this;
 		function createAppElem () {
 			const $li = $('<li />');
 			const $button = $('<button />', { text: name });
-			$button.click(e => self._appManager.launch(appName));
+			$button.click(e => self._appManager.launch(id));
 			$li.append($button);
 			return $li;
 		}
@@ -147,8 +147,8 @@ class Taskbar {
 		$('body > .desktop').prepend($taskbar);
 	}
 
-	addApp (name, appName) {
-		this._appMenu.addApp(name, appName);
+	addApp (name, id) {
+		this._appMenu.addApp(name, id);
 	}
 }
 
