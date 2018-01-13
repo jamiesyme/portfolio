@@ -1,27 +1,28 @@
 class AppsMenu {
 	constructor ($taskbar, appManager) {
-		this.$button = this.$taskbar.find('.apps-menu-button');
-		this.$menu = this.$taskbar.find('.apps-menu');
-		this.appManager = appManager;
+		this._$button = $taskbar.find('.apps-menu-button');
+		this._$menu = $taskbar.find('.apps-menu');
+		this._appManager = appManager;
+		this._visible = false;
 
 		const self = this;
 
 		// Open and close the menu with the button
-		this.$button.click(e => {
+		this._$button.click(e => {
 			self.toggle();
 		});
 
 		// Close the menu when the user clicks on anything else
-		this.$button.on('focusout', e => {
+		this._$button.on('focusout', e => {
 			if ($('.apps-menu:hover').length == 0) {
 				self.hide();
 			} else {
-				this.$button.focus();
+				self._$button.focus();
 			}
 		});
 
 		// Close the menu when the user hits ESC
-		this.$button.on('keydown', e => {
+		this._$button.on('keydown', e => {
 			if (e.which === 27) {
 				self.hide();
 				e.preventDefault();
@@ -29,7 +30,7 @@ class AppsMenu {
 		});
 
 		// Close the menu when the user launches an app
-		this.$menu.find('button').click(e => self.hide());
+		this._$menu.find('button').click(e => self.hide());
 	}
 
 	addApp (name, appName) {
@@ -37,33 +38,33 @@ class AppsMenu {
 		function createAppElem () {
 			const $li = $('<li />');
 			const $button = $('<button />', { text: name });
-			$button.click(e => self.appManager.launch(appName));
+			$button.click(e => self._appManager.launch(appName));
 			$li.append($button);
 			return $li;
 		}
 
 		const $app = createAppElem();
-		this.$menu.append($app);
+		this._$menu.append($app);
 	}
 
 	show () {
-		if (!this.visible) {
-			this.visible = true;
-			this.$list.show();
-			this.$button.addClass('active');
+		if (!this._visible) {
+			this._visible = true;
+			this._$menu.show();
+			this._$button.addClass('active');
 		}
 	}
 
 	hide () {
-		if (this.visible) {
-			this.visible = false;
-			this.$list.hide();
-			this.$button.removeClass('active');
+		if (this._visible) {
+			this._visible = false;
+			this._$menu.hide();
+			this._$button.removeClass('active');
 		}
 	}
 
 	toggle () {
-		if (this.visible) {
+		if (this._visible) {
 			this.hide();
 		} else {
 			this.show();
@@ -104,21 +105,21 @@ class Task {
 
 class Tasks {
 	constructor ($taskbar) {
-		this.$tasks = $taskbar.find('.tasks');
-		this.tasks = [];
+		this._$tasks = $taskbar.find('.tasks');
+		this._tasks = [];
 	}
 
 	add (window) {
 		const task = new Task(window);
-		this.tasks.push(task);
-		this.$tasks.append(task.$task);
+		this._tasks.push(task);
+		this._$tasks.append(task.$task);
 	}
 
 	remove (window) {
-		for (let i = 0; i < this.tasks.length; ++i) {
-			if (this.tasks[i].window === window) {
-				this.tasks[i].remove();
-				this.tasks.remove(i);
+		for (let i = 0; i < this._tasks.length; ++i) {
+			if (this._tasks[i].window === window) {
+				this._tasks[i].remove();
+				this._tasks.remove(i);
 				--i;
 			}
 		}
@@ -131,23 +132,23 @@ class Taskbar {
 			const html = require('./taskbar.html');
 			return $(html);
 		}
+		const $taskbar = createTaskbarElem();
 
-		this.$taskbar = createTaskbarElem();
-		this.appMenu = new AppMenu(this.$taskbar, appManager);
-		this.tasks = new Tasks(this.$taskbar);
+		this._appMenu = new AppMenu($taskbar, appManager);
+		this._tasks = new Tasks($taskbar);
 
 		const self = this;
 		windowManager.on('add-window', window => {
-			self.tasks.add(window);
+			self._tasks.add(window);
 		});
 		windowManager.on('remove-window', window => {
-			self.tasks.remove(window);
+			self._tasks.remove(window);
 		});
-		$('body > .desktop').prepend(this.$taskbar);
+		$('body > .desktop').prepend($taskbar);
 	}
 
 	addApp (name, appName) {
-		this.appMenu.addApp(name, appName);
+		this._appMenu.addApp(name, appName);
 	}
 }
 

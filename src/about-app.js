@@ -8,7 +8,7 @@ class AboutApp {
 			minSize:      { width: 350, height: 380 },
 		});
 
-		const $canvas = this.window.getCanvasElem();
+		const $canvas = this.window.$canvas;
 		$canvas.find('.app-projects-link').click(e => {
 			e.preventDefault();
 			appManager.launch('projects');

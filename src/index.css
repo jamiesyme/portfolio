@@ -135,19 +135,29 @@ p {
 }
 
 .window {
-	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
+	border: 0.1rem solid rgb(96, 96, 96);
 	border-radius: 0.7rem;
+	box-sizing: border-box;
+	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
 	display: flex;
 	flex-direction: column;
 	position: absolute;
 	z-index: 0;
 }
 
+.window.maximized {
+	border: none;
+	border-radius: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.window.minimized {
+	display: none;
+}
+
 .title-bar {
-	box-sizing: border-box;
 	background-color: rgb(35, 35, 35);
-	border: 0.1rem solid rgb(96, 96, 96);
-	border-radius: 0.7rem 0.7rem 0 0;
 	flex: 0 0 auto;
 	height: 3.2rem;
 	width: 100%;
@@ -171,7 +181,7 @@ p {
 	top: 0;
 }
 
-.title-bar .control-button {
+.title-bar .control-buttons button {
 	box-sizing: border-box;
 	background-color: rgb(112, 112, 112);
 	border: 0.1rem solid rgb(148, 148, 148);
@@ -182,37 +192,29 @@ p {
 	height: 1.3rem;
 }
 
-.title-bar .minimize-button {
+.title-bar .control-buttons .minimize {
 	background-color: rgb(76, 175, 80);
 	border-color: rgb(56, 142, 60);
 }
 
-.title-bar .maximize-button {
+.title-bar .control-buttons .maximize {
 	background-color: rgb(255, 235, 59);
 	border-color: rgb(253, 216, 53);
 }
 
-.title-bar .close-button {
+.title-bar .control-buttons .close {
 	background-color: rgb(229, 57, 53);
 	border-color: rgb(198, 40, 40);
 }
 
-.content-area {
+.canvas {
 	box-sizing: border-box;
 	background-color: white;
-	border: 0.1rem solid rgb(128, 128, 128);
-	border-radius: 0 0 0.7rem 0.7rem;
-	border-top: none;
+	/*border: 0.1rem solid rgb(128, 128, 128);*/
 	flex: 1 1 auto;
 	height: 100%;
 	width: 100%;
 	z-index: 0;
-}
-
-.maximized .title-bar,
-.maximized .content-area {
-	border: none;
-	border-radius: 0;
 }
 
 .resize-handle-n,
@@ -291,7 +293,7 @@ p {
 	width: 0.8rem;
 }
 
-.content-area > h1 {
+.canvas > h1 {
 	color: rgb(112, 112, 112);
 	font-weight: 300;
 	letter-spacing: 0.8rem;

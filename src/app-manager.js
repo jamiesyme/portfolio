@@ -1,16 +1,16 @@
 class AppManager {
 	constructor (windowManager) {
-		this.windowManager = windowManager;
-		this.appStore = {};
+		this._windowManager = windowManager;
+		this._appStore = {};
 	}
 
 	addApp (appName, appClass) {
-		this.appStore[appName] = appClass;
+		this._appStore[appName] = appClass;
 	}
 
 	launch (appName) {
-		if (this.appStore[appName]) {
-			new this.appStore[appName](this.windowManager, this);
+		if (this._appStore[appName]) {
+			new this._appStore[appName](this._windowManager, this);
 		} else {
 			throw new Error('no app called: ' + appName);
 		}
