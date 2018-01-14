@@ -38,10 +38,8 @@ class Window {
 				if (dn && newPos.y != oldPos.y) {
 					const diff = newPos.y - oldPos.y;
 					const newHeight = self.height - diff;
-					//if (newHeight >= self.minHeight) {
-						self.top = self.top + diff;
-						self.height = newHeight;
-					//}
+					self.height = newHeight;
+					self.top = self.top + diff - (self.height - newHeight);
 				}
 				if (de && newPos.x != oldPos.x) {
 					const diff = newPos.x - oldPos.x;
@@ -54,10 +52,8 @@ class Window {
 				if (dw && newPos.x != oldPos.x) {
 					const diff = newPos.x - oldPos.x;
 					const newWidth = self.width - diff;
-					//if (newWidth >= self.minWidth) {
-						self.left = self.left + diff;
-						self.width = newWidth;
-					//}
+					self.width = newWidth;
+					self.left = self.left + diff - (self.width - newWidth);
 				}
 				oldPos = newPos;
 			});
@@ -88,6 +84,7 @@ class Window {
 			});
 		}
 
+		this._title = options.title;
 		this._windowManager = windowManager;
 		this._$window = createWindowElement(options);
 		this._geometry = {
@@ -125,11 +122,12 @@ class Window {
 		// Set the initial size
 		this.width = options.initialSize.width;
 		this.height = options.initialSize.height;
+		this.center();
 	}
 
 	on (eventType, cb) {
 		if (this._listeners[eventType]) {
-			this._listeners[eventType].append(cb);
+			this._listeners[eventType].push(cb);
 		}
 	}
 
@@ -164,6 +162,10 @@ class Window {
 		return this._$window.find('.canvas');
 	}
 
+	get title () {
+		return this._title;
+	}
+
 	close () {
 		this._emit('close');
 	}
@@ -177,6 +179,7 @@ class Window {
 	}
 
 	set width (w) {
+		w = Math.max(this._windowManager.minWindowSize.width, w);
 		this._geometry.width = w;
 		if (!this.maximized) {
 			this._$window.width(w);
@@ -184,9 +187,10 @@ class Window {
 	}
 
 	set height (h) {
-		this._geometry.height = w;
+		h = Math.max(this._windowManager.minWindowSize.height, h);
+		this._geometry.height = h;
 		if (!this.maximized) {
-			this._$window.height(w);
+			this._$window.height(h);
 		}
 	}
 
@@ -209,7 +213,7 @@ class Window {
 	set top (t) {
 		const tMin = this._windowManager.bounds.yMin;
 		const tMax = this._windowManager.bounds.yMax;
-		t = min(tMax, max(tMin, t));
+		t = Math.min(tMax, Math.max(tMin, t));
 		this._geometry.top = t;
 		if (!this.maximized) {
 			this._$window.css({ top: t });
@@ -241,7 +245,7 @@ class Window {
 			this._applyExplicitGeometry();
 			this._$window.removeClass('maximized');
 		}
-		this._emit('maximized', m);
+		this._emit('maximize', m);
 	}
 
 	get maximized () {
@@ -254,7 +258,7 @@ class Window {
 		} else {
 			this._$window.removeClass('minimized');
 		}
-		this._emit('minimized', m);
+		this._emit('minimize', m);
 	}
 
 	get minimized () {

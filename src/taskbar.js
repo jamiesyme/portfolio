@@ -28,9 +28,6 @@ class AppsMenu {
 				e.preventDefault();
 			}
 		});
-
-		// Close the menu when the user launches an app
-		this._$menu.find('button').click(e => self.hide());
 	}
 
 	addApp (name, id) {
@@ -38,7 +35,10 @@ class AppsMenu {
 		function createAppElem () {
 			const $li = $('<li />');
 			const $button = $('<button />', { text: name });
-			$button.click(e => self._appManager.launch(id));
+			$button.click(e => {
+				self._appManager.launch(id)
+				self.hide();
+			});
 			$li.append($button);
 			return $li;
 		}
@@ -93,7 +93,7 @@ class Task {
 			}
 		});
 		this.$task.click(e => {
-			self.window.minimize = !self.window.minimize;
+			self.window.minimized = !self.window.minimized;
 		});
 	}
 
@@ -119,7 +119,7 @@ class Tasks {
 		for (let i = 0; i < this._tasks.length; ++i) {
 			if (this._tasks[i].window === window) {
 				this._tasks[i].remove();
-				this._tasks.remove(i);
+				this._tasks.splice(i, 1);
 				--i;
 			}
 		}
@@ -134,7 +134,7 @@ class Taskbar {
 		}
 		const $taskbar = createTaskbarElem();
 
-		this._appMenu = new AppMenu($taskbar, appManager);
+		this._appsMenu = new AppsMenu($taskbar, appManager);
 		this._tasks = new Tasks($taskbar);
 
 		const self = this;
@@ -144,11 +144,11 @@ class Taskbar {
 		windowManager.on('remove-window', window => {
 			self._tasks.remove(window);
 		});
-		$('body > .desktop').prepend($taskbar);
+		$('body').prepend($taskbar);
 	}
 
 	addApp (name, id) {
-		this._appMenu.addApp(name, id);
+		this._appsMenu.addApp(name, id);
 	}
 }
 

@@ -11,7 +11,7 @@ class WindowManager {
 
 	on (eventType, cb) {
 		if (this._listeners[eventType]) {
-			this._listeners[eventType].append(cb);
+			this._listeners[eventType].push(cb);
 		}
 	}
 
@@ -22,13 +22,14 @@ class WindowManager {
 	}
 
 	addWindow (options) {
-		const window = new Window(options);
+		const window = new Window(this, options);
 		this._$desktop.append(window.$element);
 
 		const self = this;
 		window.on('close', () => self.removeWindow(window));
 
 		this._emit('add-window', window);
+		return window;
 	}
 
 	removeWindow (window) {
@@ -45,6 +46,13 @@ class WindowManager {
 			yMin:    0,
 			yMax:    this._$desktop.height() - 1,
 			yCenter: this._$desktop.height() / 2,
+		};
+	}
+
+	get minWindowSize () {
+		return {
+			width: 250,
+			height: 250,
 		};
 	}
 }

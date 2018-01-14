@@ -1,8 +1,8 @@
 const Template = require('./template');
 
 class ProjectsApp {
-	constructor () {
-		this.window = new Window({
+	constructor (windowManager) {
+		this.window = windowManager.addWindow({
 			title:        'Projects',
 			content:      require('./projects-app.html'),
 			contentClass: 'projects-app',
@@ -137,4 +137,4 @@ class ProjectsApp {
 	}
 }
 
-module.exports = ProjectApp;
+module.exports = ProjectsApp;

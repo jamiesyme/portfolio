@@ -56,15 +56,12 @@ p {
 	background-color: rgba(155, 77, 202, 0.8);
 }
 
-.taskbar .separator {
-	background-color: rgb(48, 48, 48);
-	height: 2.4rem;
-	margin: 0.4rem 1.0rem 0 1.0rem;
-	width: 0.2rem;
-}
-
 .apps-menu-button, .clock {
 	flex: none;
+}
+
+.clock {
+	line-height: 3.2rem;
 }
 
 .tasks {
@@ -135,12 +132,13 @@ p {
 }
 
 .window {
-	border: 0.1rem solid rgb(96, 96, 96);
 	border-radius: 0.7rem;
-	box-sizing: border-box;
+	border: 0.1rem solid rgb(96, 96, 96);
 	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 	position: absolute;
 	z-index: 0;
 }
