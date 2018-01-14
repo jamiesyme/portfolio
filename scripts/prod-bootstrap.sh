@@ -18,7 +18,7 @@ sudo ufw --force enable
 # Install & configure NGINX
 sudo apt-get install -y nginx
 sudo ln -s $(realpath config/nginx-prod.conf) /etc/nginx/sites-available/portfolio
-sudo ln -s /etc/nginx/sites-evailable/portfolio /etc/nginx/sites-enabled/portfolio
+sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/portfolio
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -s reload
 
@@ -38,5 +38,12 @@ echo 'PATH="$(yarn gobal bin):$PATH"' >> "$HOME/.profile"
 # Install PM2
 yarn global add pm2
 
-echo "Run the following command to complete the bootstrapping process, or restart your ssh connection:"
+# Copy the base api config
+cp config/base-api-env.json config/api-env.json
+
+echo ""
+echo "Almost there! Run the following command to complete the bootstrapping process (or restart your ssh connection):"
 echo ". ~/.profile"
+echo ""
+echo "After that, edit `config/api-env.json` and run `scripts/prod-update.sh`.
+echo ""
