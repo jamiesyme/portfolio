@@ -75,7 +75,7 @@
 	cursor: pointer;
 	font-family: 'Open Sans';
 	font-size: 2.0rem;
-	padding: 0 1.0rem 0 1.0rem;
+	padding: 0 1.0rem 0 0.5rem;
 }
 
 .projects-app .project-viewer .back-button:hover {

@@ -13,6 +13,7 @@
 	background-color: transparent;
 	border: none;
 	color: white;
+	font-family: 'Open Sans';
 	height: 100%;
 	padding: 0 1.0rem 0 1.0rem;
 }
@@ -37,6 +38,7 @@
 
 .clock {
 	flex: none;
+	font-family: 'Open Sans';
 	line-height: 3.2rem;
 	padding: 0 1.0rem;
 }

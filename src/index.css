@@ -27,7 +27,8 @@ p {
 
 .desktop {
 	background-attachment: fixed;
-	background-image: url(http://www.powerpointhintergrund.com/uploads/2017/08/background-pictures-images-and-stock-photos-istock-11.jpeg);
+	background-color: rgb(135, 199, 179);
+	background-image: url('/f/desktop.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

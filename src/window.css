@@ -24,6 +24,7 @@
 .title-bar {
 	background-color: rgb(35, 35, 35);
 	flex: 0 0 auto;
+	font-family: 'Open Sans';
 	height: 3.2rem;
 	width: 100%;
 	z-index: 1;
