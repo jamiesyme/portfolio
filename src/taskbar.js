@@ -1,3 +1,30 @@
+class Taskbar {
+	constructor (windowManager, appManager) {
+		function createTaskbarElem () {
+			const html = require('./taskbar.html');
+			return $(html);
+		}
+		const $taskbar = createTaskbarElem();
+
+		this._appsMenu = new AppsMenu($taskbar, appManager);
+		this._tasks = new Tasks($taskbar);
+		this._clock = new Clock($taskbar);
+
+		const self = this;
+		windowManager.on('add-window', window => {
+			self._tasks.add(window);
+		});
+		windowManager.on('remove-window', window => {
+			self._tasks.remove(window);
+		});
+		$('body').prepend($taskbar);
+	}
+
+	addApp (name, id) {
+		this._appsMenu.addApp(name, id);
+	}
+}
+
 class AppsMenu {
 	constructor ($taskbar, appManager) {
 		this._$button = $taskbar.find('.apps-menu-button');
@@ -127,29 +154,32 @@ class Tasks {
 	}
 }
 
-class Taskbar {
-	constructor (windowManager, appManager) {
-		function createTaskbarElem () {
-			const html = require('./taskbar.html');
-			return $(html);
-		}
-		const $taskbar = createTaskbarElem();
-
-		this._appsMenu = new AppsMenu($taskbar, appManager);
-		this._tasks = new Tasks($taskbar);
-
-		const self = this;
-		windowManager.on('add-window', window => {
-			self._tasks.add(window);
-		});
-		windowManager.on('remove-window', window => {
-			self._tasks.remove(window);
-		});
-		$('body').prepend($taskbar);
+class Clock {
+	constructor ($taskbar) {
+		this._$clock = $taskbar.find('.clock');
+		this._update();
 	}
 
-	addApp (name, id) {
-		this._appsMenu.addApp(name, id);
+	_update () {
+		const time = new Date();
+		const timeStr = this._formatTime(time);
+		this._$clock.text(timeStr);
+
+		const waitMs = (60 - time.getSeconds()) * 1000;
+		const self = this;
+		setTimeout(() => self._update(), waitMs);
+	}
+
+	_formatTime (date) {
+		// Shamelessly stolen:
+		//   https://stackoverflow.com/a/8888498/1422864
+		let hours = date.getHours();
+		let minutes = date.getMinutes();
+		let ampm = hours >= 12 ? 'pm' : 'am';
+		hours = hours % 12;
+		hours = hours ? hours : 12; // hour '0' is really '12'
+		minutes = minutes < 10 ? '0' + minutes : minutes;
+		return hours + ':' + minutes + ' ' + ampm;
 	}
 }
 
