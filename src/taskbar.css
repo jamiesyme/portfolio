@@ -56,23 +56,19 @@
 	margin: 0.4rem 0.4rem 0.4rem 0;
 }
 
-.task > button {
+.task button {
 	background-color: rgb(64, 64, 64);
 	border: 1px solid rgb(96, 96, 96);
 	box-sizing: border-box;
-	color: rgb(196, 196, 196);
+	color: white;
 	display: block;
 	height: 2.4rem;
 	text-align: left;
 	width: 100%;
 }
 
-.task > button:hover {
+.task button:hover {
 	border-color: rgba(155, 77, 202, 0.8);
-}
-
-.task.active button {
-	color: white;
 }
 
 .task.closed button {
@@ -94,12 +90,12 @@
 	width: 24.0rem;
 }
 
-.apps-menu > li {
+.apps-menu li {
 	display: block;
 	height: 3.2rem;
 }
 
-.apps-menu > li > button {
+.apps-menu li button {
 	display: block;
 	padding: 0 1.0rem 0 3.0rem;
 	text-align: left;

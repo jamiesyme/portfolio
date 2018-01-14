@@ -102,7 +102,7 @@ class AppsMenu {
 class Task {
 	constructor (window) {
 		function createTaskElem () {
-			const $li = $('<li />', { 'class': 'task active' });
+			const $li = $('<li />', { 'class': 'task' });
 			const $button = $('<button />', { text: window.title });
 			$li.append($button);
 			return $li;

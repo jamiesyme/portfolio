@@ -68,7 +68,7 @@ class Window {
 			});
 			$(document).mouseup(e => oldPos = null);
 			$(document).mousemove(e => {
-				if (!oldPos) {
+				if (!oldPos || self.maximized) {
 					return;
 				}
 				const newPos = { x: e.clientX, y: e.clientY };

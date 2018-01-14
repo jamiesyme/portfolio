@@ -156,3 +156,14 @@
 	top: 0;
 	width: 0.8rem;
 }
+
+.window.maximized .resize-handle-n,
+.window.maximized .resize-handle-e,
+.window.maximized .resize-handle-s,
+.window.maximized .resize-handle-w,
+.window.maximized .resize-handle-ne,
+.window.maximized .resize-handle-se,
+.window.maximized .resize-handle-sw,
+.window.maximized .resize-handle-nw {
+	display: none;
+}
