@@ -30,8 +30,8 @@
 }
 
 .apps-menu-button {
-	flex: none;
-	width: 15.0rem;
+	flex: 0 0 20%;
+	max-width: 15.0rem;
 	text-align: left;
 }
 

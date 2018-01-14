@@ -235,6 +235,9 @@ class Window {
 	}
 
 	set left (l) {
+		const lMin = this._windowManager.bounds.xMin - this.width;
+		const lMax = this._windowManager.bounds.xMax;
+		l = Math.min(lMax, Math.max(lMin, l));
 		this._geometry.left = l;
 		if (!this.maximized) {
 			this._$window.css({ left: l });

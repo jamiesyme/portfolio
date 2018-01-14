@@ -23,13 +23,26 @@ class WindowManager {
 	}
 
 	addWindow (options) {
+		// Optimize initial size for smaller screens
+		if ((options.initialSize || {}).width) {
+			const max = this._$desktop.width() - 20 * 2;
+			options.initialSize.width = Math.min(max, options.initialSize.width);
+		}
+		if ((options.initialSize || {}).height) {
+			const max = this._$desktop.height() - 20 * 2;
+			options.initialSize.height = Math.min(max, options.initialSize.height);
+		}
+
+		// Create window
 		const window = new Window(this, options);
 		this._$desktop.append(window.$element);
 		this._windows.push(window);
 
+		// Remove window (later)
 		const self = this;
 		window.on('close', () => self.removeWindow(window));
 
+		// Focus window (now and later)
 		window.$element.click(e => self.focusWindow(window));
 		this.focusWindow(window);
 
@@ -62,11 +75,11 @@ class WindowManager {
 
 	get bounds () {
 		return {
-			xMin:    0,
-			xMax:    this._$desktop.width() - 1,
+			xMin:    20, // 20 = arbitrary buffer
+			xMax:    this._$desktop.width() - 1 - 20, // 20 = arbitrary buffer
 			xCenter: this._$desktop.width() / 2,
 			yMin:    0,
-			yMax:    this._$desktop.height() - 1,
+			yMax:    this._$desktop.height() - 1 - 32, // 32 = size of title bar
 			yCenter: this._$desktop.height() / 2,
 		};
 	}
