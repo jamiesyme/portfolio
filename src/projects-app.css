@@ -145,3 +145,15 @@
 	margin: 0;
 	padding: 0;
 }
+
+.projects-app .project .links a {
+	color: rgb(155, 77, 202);
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+	margin-bottom: 0.5rem;
+}
+
+.projects-app .project .links a:hover {
+	text-decoration: underline;
+}

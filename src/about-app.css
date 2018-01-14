@@ -1,5 +1,4 @@
 .about-app {
-	overflow: auto;
 	padding: 0 3.0rem 4.0rem 3.0rem;
 }
 
@@ -41,4 +40,14 @@
 
 .about-app .intro p:last-of-type {
 	margin-bottom: 0;
+}
+
+.about-app p a {
+	color: rgb(155, 77, 202);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.about-app p a:hover {
+	text-decoration: underline;
 }

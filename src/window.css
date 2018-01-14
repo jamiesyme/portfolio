@@ -73,22 +73,12 @@
 }
 
 .canvas {
-	box-sizing: border-box;
 	background-color: white;
-	/*border: 0.1rem solid rgb(128, 128, 128);*/
+	overflow: auto;
 	flex: 1 1 auto;
 	height: 100%;
 	width: 100%;
 	z-index: 0;
-}
-
-.canvas > h1 {
-	color: rgb(112, 112, 112);
-	font-weight: 300;
-	letter-spacing: 0.8rem;
-	padding-left: 0.5rem; /* Minor centering issue due to letter spacing */
-	text-align: center;
-	text-transform: uppercase;
 }
 
 .resize-handle-n,

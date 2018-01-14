@@ -31,7 +31,7 @@ for (const app of apps) {
 	appManager.addApp(app.id, app.appClass);
 	taskbar.addApp(app.name, app.id);
 }
-appManager.launch('projects');
+appManager.launch('about');
 
 /*
 const $cards = $('.cards');

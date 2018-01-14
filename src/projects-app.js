@@ -13,7 +13,7 @@ class ProjectsApp {
 		const $canvas = this.window.$canvas;
 		const $viewer = $canvas.find('.project-viewer');
 		const $back   = $viewer.find('.back-button');
-		const $header = $canvas.children('h1');
+		const $header = $canvas.find('.app-title');
 		const $tiles  = $canvas.find('.project-tiles');
 
 		// Connect the back button on the project viewer
@@ -109,7 +109,7 @@ class ProjectsApp {
 				how: 'The front end is mostly custom, building only from jQuery and Milligram, and was designed to stay out of the user\'s way as much as possible. The temporary api server was put together with Node and Hapi.js, and serves results from a static JSON file. NGINX is used to serve the front end.',
 				where: [
 					{
-						name: 'namemyvar.com',
+						name: 'Website',
 						link: 'https://namemyvar.com',
 					},
 					{
@@ -132,7 +132,7 @@ class ProjectsApp {
 				how: 'The front end is pretty basic, using only Bootstrap and Video.js. The back end is written in Go, and uses FFmpeg and MP4Box to process videos. After processing, the MPEG-DASH files are uploaded to S3, and video metadata is stored in Postgres.',
 				where: [
 					{
-						name: 'videoso.ca',
+						name: 'Website',
 						link: 'http://videoso.ca',
 					},
 					{
