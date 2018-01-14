@@ -33,6 +33,7 @@
 	display: block;
 	flex: 1;
 	font-size: 1.4rem;
+	outline-color: rgb(155, 77, 202);
 	width: 100%;
 }
 
@@ -47,5 +48,6 @@
 .contact-app button {
 	display: block;
 	margin-left: auto;
+	outline-color: rgb(155, 77, 202);
 	width: 10.0rem;
 }

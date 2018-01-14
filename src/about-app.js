@@ -1,5 +1,12 @@
 class AboutApp {
 	constructor (windowManager, appManager) {
+		function launchApp (id) {
+			// Launching an app from within a click handler will keep the current
+			// window focused instead of giving it to the launched app. To avoid
+			// this, we can use setTimeout().
+			setTimeout(() => appManager.launch(id), 0);
+		}
+
 		this.window = windowManager.addWindow({
 			title:        'About',
 			content:      require('./about-app.html'),
@@ -11,11 +18,11 @@ class AboutApp {
 		const $canvas = this.window.$canvas;
 		$canvas.find('.app-projects-link').click(e => {
 			e.preventDefault();
-			appManager.launch('projects');
+			launchApp('projects');
 		});
 		$canvas.find('.app-contact-link').click(e => {
 			e.preventDefault();
-			appManager.launch('contact');
+			launchApp('contact');
 		});
 	}
 }
