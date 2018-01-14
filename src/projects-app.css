@@ -1,0 +1,165 @@
+.projects-app {
+	align-items: center;
+	display: flex;
+	overflow: auto;
+	flex-direction: column;
+}
+
+.projects-app .app-title {
+	margin-bottom: 0;
+}
+
+.projects-app .project-tiles {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	list-style-type: none;
+	margin: 0 5.0rem 3.0rem 5.0rem;
+	max-width: 120.0rem;
+	padding: 0;
+}
+
+.projects-app .project-tile {
+	background-color: transparent;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 0.2rem;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: block;
+	font-family: 'Open Sans';
+	height: 20.0rem;
+	margin: 3.0rem 5.0rem 3.0rem 5.0rem;
+	padding: 0;
+	position: relative;
+	width: 20.0rem;
+}
+
+.projects-app .project-tile:focus {
+	outline: none;
+}
+
+.projects-app .project-tile .cover {
+	height: 100%;
+	width: 100%;
+}
+
+.projects-app .project-tile:hover .cover {
+	opacity: 0.8;
+}
+
+.projects-app .project-tile .title {
+	background-color: rgba(0, 0, 0, 0.6);
+	bottom: 0;
+	box-sizing: border-box;
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0.4rem;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+.projects-app .project-tile:hover .title {
+	background-color: rgb(155, 77, 202);
+	color: white;
+}
+
+.projects-app .project-viewer {
+	margin: 3.0rem 3.0rem 5.0rem 3.0rem;
+	max-width: 120.0rem;
+}
+
+.projects-app .project-viewer .back-button {
+	background-color: transparent;
+	border: none;
+	color: rgb(168, 168, 168);
+	cursor: pointer;
+	font-family: 'Open Sans';
+	font-size: 2.0rem;
+	padding: 0 1.0rem 0 0.5rem;
+}
+
+.projects-app .project-viewer .back-button:hover {
+	color: rgb(112, 112, 112);
+}
+
+.projects-app .project-viewer .back-button:focus {
+	outline: none;
+}
+
+.projects-app .project-viewer .back-button::before {
+	content: '< ';
+}
+
+.projects-app .project {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.projects-app .project .screenshots {
+	box-sizing: border-box;
+	flex: 1 1 50%;
+	list-style-type: none;
+	margin: 0 auto;
+	min-width: calc(30.0rem + 3.0rem);
+	padding: 0 1.5rem 0 1.5rem;
+}
+
+.projects-app .project .screenshot {
+	border-radius: 0.2rem;
+	border: 1px solid rgb(200, 200, 200);
+	box-sizing: border-box;
+	display: block;
+	margin: 0 auto 3.0rem auto;
+	max-width: 50.0rem;
+	width: 100%;
+}
+
+.projects-app .project .screenshot:hover {
+	opacity: 0.8;
+}
+
+.projects-app .project .info {
+	box-sizing: border-box;
+	flex: 1 1 50%;
+	padding: 0 1.5rem 0 1.5rem;
+}
+
+.projects-app .project h1 {
+	color: rgb(64, 64, 64);
+	flex-basis: 100%;
+	font-weight: 400;
+	letter-spacing: 0.3rem;
+	margin: 1.0rem 0 3.0rem 0;
+}
+
+.projects-app .project h2 {
+	font-weight: 400;
+	letter-spacing: 0.3rem;
+	margin: 2.0rem 0 1.0rem 0;
+}
+
+.projects-app .project h2:first-of-type {
+	margin-top: 0.5rem;
+}
+
+.projects-app .project p {
+	margin: 0 0 3.0rem 0;
+}
+
+.projects-app .project .links {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.projects-app .project .links a {
+	color: rgb(155, 77, 202);
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+	margin-bottom: 0.5rem;
+}
+
+.projects-app .project .links a:hover {
+	text-decoration: underline;
+}

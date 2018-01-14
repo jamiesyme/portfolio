@@ -1,0 +1,105 @@
+.taskbar {
+	background-color: rgb(35, 35, 35);
+	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
+	color: white;
+	display: flex;
+	flex: none;
+	height: 3.2rem;
+	padding: 0 1.0rem 0 1.0rem;
+	z-index: 1;
+}
+
+.taskbar button {
+	background-color: transparent;
+	border: none;
+	color: white;
+	font-family: 'Open Sans';
+	height: 100%;
+	padding: 0 1.0rem 0 1.0rem;
+}
+
+.taskbar button:focus {
+	outline: none;
+}
+
+.taskbar button:hover {
+	background-color: rgba(155, 77, 202, 0.8);
+}
+
+.taskbar button.active {
+	background-color: rgba(155, 77, 202, 0.8);
+}
+
+.apps-menu-button {
+	flex: 0 0 20%;
+	max-width: 15.0rem;
+	text-align: left;
+}
+
+.clock {
+	flex: none;
+	font-family: 'Open Sans';
+	line-height: 3.2rem;
+	padding: 0 1.0rem;
+}
+
+.tasks {
+	display: flex;
+	flex: 1 1 auto;
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 0 0.4rem;
+}
+
+.task {
+	display: block;
+	width: 100%;
+	max-width: 18.0rem;
+	margin: 0.4rem 0.4rem 0.4rem 0;
+}
+
+.task button {
+	background-color: rgb(64, 64, 64);
+	border: 1px solid rgb(96, 96, 96);
+	box-sizing: border-box;
+	color: white;
+	display: block;
+	height: 2.4rem;
+	text-align: left;
+	width: 100%;
+}
+
+.task button:hover {
+	border-color: rgba(155, 77, 202, 0.8);
+}
+
+.task.closed button {
+	color: rgb(192, 192, 192);
+	font-style: italic;
+}
+
+.apps-menu {
+	background-color: rgb(64, 64, 64);
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
+	display: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 0.8rem 0 0.8rem 0;
+	position: absolute;
+	top: 3.2rem;
+	width: 24.0rem;
+}
+
+.apps-menu li {
+	display: block;
+	height: 3.2rem;
+}
+
+.apps-menu li button {
+	display: block;
+	padding: 0 1.0rem 0 3.0rem;
+	text-align: left;
+	width: 100%;
+}

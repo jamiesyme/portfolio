@@ -1,0 +1,76 @@
+.contact-app {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.contact-app form {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	font-family: 'Open Sans';
+	max-width: 80.0rem;
+	padding: 0 4.0rem 4.0rem 4.0rem;
+	width: 100%;
+}
+
+.contact-app .form-group {
+	display: flex;
+	margin: 0 0 1.5rem 0;
+}
+
+.contact-app .form-group label {
+	display: block;
+	flex: 0 0 auto;
+	width: 10.0rem;
+}
+
+.contact-app .form-group label::after {
+	content: ':';
+}
+
+.contact-app input, textarea {
+	display: block;
+	flex: 1;
+	font-family: 'Open Sans';
+	font-size: 1.4rem;
+	line-height: 2.0rem;
+	outline-color: rgb(155, 77, 202);
+	padding: 0.4rem;
+	width: 100%;
+}
+
+.contact-app textarea {
+	resize: none;
+}
+
+.contact-app .form-group.grow-vert {
+	flex: 1;
+}
+
+.contact-app .submit-group {
+	display: flex;
+	margin-left: 10.0rem;
+}
+
+.contact-app .submit-group label {
+	flex: 1 1 20.0rem;
+}
+
+.contact-app .submit-group label.failure {
+	color: rgb(211, 0, 0);
+}
+
+.contact-app .submit-group label.success {
+	color: green;
+}
+
+.contact-app .submit-group button {
+	display: block;
+	flex: 0 1 10.0rem;
+	max-width: 10.0rem;
+	min-width: 6.0rem;
+	outline-color: rgb(155, 77, 202);
+}

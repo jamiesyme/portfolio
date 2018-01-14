@@ -1,0 +1,38 @@
+html, body {
+	height: 100%;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%; /* So 1.6rem = 16px */
+	font-family: sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	font-size: 1.6rem;
+	line-height: 1.6;
+	overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Lato';
+}
+
+p {
+	color: rgb(64, 64, 64);
+	font-family: 'Open Sans';
+}
+
+.desktop {
+	background-attachment: fixed;
+	background-color: rgb(135, 199, 179);
+	background-image: url('/f/desktop.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	flex: 1 1 auto;
+	position: relative;
+	z-index: 0;
+}
