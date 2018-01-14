@@ -17,12 +17,13 @@ class ProjectsApp {
 		const $tiles  = $canvas.find('.project-tiles');
 
 		// Connect the back button on the project viewer
-		$back.click(e => {
+		$back.click(e => history.back());
+		window.onpopstate = function () {
 			$viewer.find('.project').remove();
 			$viewer.hide();
 			$header.show();
 			$tiles.show();
-		});
+		};
 
 		// Render the project tiles
 		for (const project of ProjectsApp.projects) {
@@ -62,6 +63,7 @@ class ProjectsApp {
 					$li.append($a);
 					$project.find('.links').append($li);
 				}
+				history.pushState({}, '');
 				$viewer.find('.project').remove();
 				$viewer.append($project);
 				$header.hide();
