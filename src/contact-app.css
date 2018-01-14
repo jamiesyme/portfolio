@@ -21,13 +21,13 @@
 	margin: 0 0 1.5rem 0;
 }
 
-.contact-app label {
+.contact-app .form-group label {
 	display: block;
 	flex: 0 0 auto;
 	width: 10.0rem;
 }
 
-.contact-app label::after {
+.contact-app .form-group label::after {
 	content: ':';
 }
 
@@ -50,9 +50,27 @@
 	flex: 1;
 }
 
-.contact-app button {
+.contact-app .submit-group {
+	display: flex;
+	margin-left: 10.0rem;
+}
+
+.contact-app .submit-group label {
+	flex: 1 1 20.0rem;
+}
+
+.contact-app .submit-group label.failure {
+	color: rgb(211, 0, 0);
+}
+
+.contact-app .submit-group label.success {
+	color: green;
+}
+
+.contact-app .submit-group button {
 	display: block;
-	margin-left: auto;
+	flex: 0 1 10.0rem;
+	max-width: 10.0rem;
+	min-width: 6.0rem;
 	outline-color: rgb(155, 77, 202);
-	width: 10.0rem;
 }
