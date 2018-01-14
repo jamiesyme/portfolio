@@ -5,12 +5,16 @@
 	flex-direction: column;
 }
 
+.projects-app .app-title {
+	margin-bottom: 0;
+}
+
 .projects-app .project-tiles {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	list-style-type: none;
-	margin: 3.0rem 5.0rem 2.0rem 5.0rem;
+	margin: 0 5.0rem 3.0rem 5.0rem;
 	max-width: 120.0rem;
 	padding: 0;
 }
@@ -24,7 +28,7 @@
 	display: block;
 	font-family: 'Open Sans';
 	height: 20.0rem;
-	margin: 0 5.0rem 5.0rem 5.0rem;
+	margin: 3.0rem 5.0rem 3.0rem 5.0rem;
 	padding: 0;
 	position: relative;
 	width: 20.0rem;
@@ -60,7 +64,7 @@
 }
 
 .projects-app .project-viewer {
-	margin: 3.0rem 5.0rem 5.0rem 5.0rem;
+	margin: 3.0rem 3.0rem 5.0rem 3.0rem;
 	max-width: 120.0rem;
 }
 
@@ -92,10 +96,12 @@
 }
 
 .projects-app .project .screenshots {
+	box-sizing: border-box;
 	flex: 1 1 50%;
 	list-style-type: none;
-	margin: 0;
-	padding: 0;
+	margin: 0 auto;
+	min-width: calc(30.0rem + 3.0rem);
+	padding: 0 1.5rem 0 1.5rem;
 }
 
 .projects-app .project .screenshot {
@@ -115,7 +121,7 @@
 .projects-app .project .info {
 	box-sizing: border-box;
 	flex: 1 1 50%;
-	padding-left: 3.0rem;
+	padding: 0 1.5rem 0 1.5rem;
 }
 
 .projects-app .project h1 {
