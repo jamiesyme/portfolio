@@ -6,7 +6,7 @@ class ProjectsApp {
 			title:        'Projects',
 			content:      require('./projects-app.html'),
 			contentClass: 'projects-app',
-			initialSize:  { width: 1002, height: 680 },
+			initialSize:  { width: 880, height: 680 },
 			minSize:      { width: 350, height: 420 },
 		});
 
@@ -76,6 +76,29 @@ class ProjectsApp {
 
 	static get projects () {
 		return [
+			{
+				name: 'Portfolio',
+				screenshots: [
+					'/f/portfolio-about.png',
+					'/f/portfolio-project.png',
+				],
+				cover: '/f/portfolio-cover.png',
+				professional: false,
+				what: 'This website is a portfolio of my recent projects. It features a dynamic window manager, and was primarily designed to mimic a desktop environment.',
+				why: 'When thinking about what I wanted my portfolio to look like, I was torn: I wanted it to be beautiful and original, but I didn\'t want to put too much emphasis on my front end work; I wanted to get creative and convey that I enjoy challenging problems, yet I needed the website to be useable by the average person. In the end, I think I found a happy medium with this design.',
+				when: 'December 2017 &ndash; January 2018',
+				how: 'This design uses JavaScript for just about everything, including launching apps using the apps menu, resizing windows with the invisible handles, and updating the clock every minute. It also required some clever CSS to implement the fluid app designs, as breakpoints are only available to the page as a whole, and not for individual containers. I would have liked to put each app in it\'s own iframe, but unfortunately, that would have killed the performance.',
+				where: [
+					{
+						name: 'Website',
+						link: 'https://jamiesyme.com',
+					},
+					{
+						name: 'Github',
+						link: 'https://github.com/jamiesyme/portfolio',
+					},
+				],
+			},
 			{
 				name: 'Taffy',
 				screenshots: [
