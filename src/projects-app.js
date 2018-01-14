@@ -41,11 +41,16 @@ class ProjectsApp {
 				const $project = $(projectHtml);
 				for (const screenshot of project.screenshots) {
 					const $li = $('<li />');
+					const $a = $('<a />', {
+						href: screenshot,
+						target: '_blank',
+					});
 					const $img = $('<img />', {
 						'class': 'screenshot',
 						src: screenshot,
 					});
-					$li.append($img);
+					$a.append($img);
+					$li.append($a);
 					$project.find('.screenshots').append($li);
 				}
 				for (const resource of project.where) {
