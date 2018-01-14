@@ -1,0 +1,51 @@
+.contact-app {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.contact-app form {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	max-width: 80.0rem;
+	padding: 0 4.0rem 4.0rem 4.0rem;
+	width: 100%;
+}
+
+.contact-app .form-group {
+	display: flex;
+	margin: 0 0 1.5rem 0;
+}
+
+.contact-app label {
+	display: block;
+	flex: 0 0 auto;
+	width: 10.0rem;
+}
+
+.contact-app label::after {
+	content: ':';
+}
+
+.contact-app input, textarea {
+	display: block;
+	flex: 1;
+	font-size: 1.4rem;
+	width: 100%;
+}
+
+.contact-app textarea {
+	resize: none;
+}
+
+.contact-app .form-group.grow-vert {
+	flex: 1;
+}
+
+.contact-app button {
+	display: block;
+	margin-left: auto;
+	width: 10.0rem;
+}

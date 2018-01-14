@@ -1,0 +1,44 @@
+.about-app {
+	overflow: auto;
+	padding: 0 3.0rem 4.0rem 3.0rem;
+}
+
+.about-app .banner {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	max-width: 96.0rem;
+	width: 100%;
+}
+
+.about-app .avatar-container {
+	box-sizing: border-box;
+	flex: 1 1 40%;
+	min-width: calc(20.0rem + 3.0rem);
+	max-width: calc(35.0rem + 3.0rem);
+	padding: 0 1.5rem 0 1.5rem;
+	margin: 0 auto 2.0rem auto;
+}
+
+.about-app .avatar {
+	border-radius: 0.2rem;
+	border: 1px solid rgb(200, 200, 200);
+	box-sizing: border-box;
+	padding: 0.5rem;
+	width: 100%;
+}
+
+.about-app .intro {
+	box-sizing: border-box;
+	flex: 1 1 60%;
+	padding: 0 1.5rem 0 1.5rem;
+}
+
+.about-app .intro p:first-of-type {
+	margin-top: 0;
+}
+
+.about-app .intro p:last-of-type {
+	margin-bottom: 0;
+}

@@ -11,9 +11,9 @@ module.exports = {
 	},
 	plugins: [
 		new CopyWebpackPlugin([
-			'src/index.css',
 			'src/index.html',
-			{ context: 'assets', from: '*', to: 'public' },
+			{ context: 'src',    from: '*.css', to: '.' },
+			{ context: 'assets', from: '*',     to: 'public' },
 		]),
 	],
 	module: {
