@@ -90,6 +90,7 @@ class Task {
 				self.$task.addClass('closed');
 			} else {
 				self.$task.removeClass('closed');
+				window.focus();
 			}
 		});
 		this.$task.click(e => {

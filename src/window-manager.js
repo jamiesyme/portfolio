@@ -3,6 +3,7 @@ const Window = require('./window');
 class WindowManager {
 	constructor () {
 		this._$desktop = $('body > .desktop');
+		this._windows = [];
 		this._listeners = {
 			'add-window': [],
 			'remove-window': [],
@@ -24,9 +25,13 @@ class WindowManager {
 	addWindow (options) {
 		const window = new Window(this, options);
 		this._$desktop.append(window.$element);
+		this._windows.push(window);
 
 		const self = this;
 		window.on('close', () => self.removeWindow(window));
+
+		window.$element.click(e => self.focusWindow(window));
+		this.focusWindow(window);
 
 		this._emit('add-window', window);
 		return window;
@@ -36,6 +41,23 @@ class WindowManager {
 		this._emit('remove-window', window);
 
 		window.$element.remove();
+
+		const index = this._windows.indexOf(window);
+		this._windows.splice(index, 1);
+	}
+
+	focusWindow (window) {
+		const index = this._windows.indexOf(window);
+		if (index <= 0) {
+			return;
+		}
+
+		this._windows.splice(index, 1);
+		this._windows.unshift(window);
+
+		for (let i = 0; i < this._windows.length; ++i) {
+			this._windows[i].zIndex = -i;
+		}
 	}
 
 	get bounds () {

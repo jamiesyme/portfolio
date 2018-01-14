@@ -166,8 +166,16 @@ class Window {
 		return this._title;
 	}
 
+	set zIndex (z) {
+		this.$element.css('z-index', z);
+	}
+
 	close () {
 		this._emit('close');
+	}
+
+	focus () {
+		this._windowManager.focusWindow(this);
 	}
 
 	get width () {
