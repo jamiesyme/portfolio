@@ -13,7 +13,7 @@ class ProjectsApp {
 		const $canvas = this.window.$canvas;
 		const $viewer = $canvas.find('.project-viewer');
 		const $back   = $viewer.find('.back-button');
-		const $header = $canvas.find('.app-projects').children('h1');
+		const $header = $canvas.children('h1');
 		const $tiles  = $canvas.find('.project-tiles');
 
 		// Connect the back button on the project viewer
