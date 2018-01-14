@@ -93,6 +93,10 @@ class Window {
 			top:    this._$window.position().top,
 			left:   this._$window.position().left
 		};
+		this._minSize = {
+			width: options.minSize.width,
+			height: options.minSize.height,
+		};
 		this._listeners = {
 			'close': [],
 			'maximize': [],
@@ -187,6 +191,7 @@ class Window {
 	}
 
 	set width (w) {
+		w = Math.max(this._minSize.width, w);
 		w = Math.max(this._windowManager.minWindowSize.width, w);
 		this._geometry.width = w;
 		if (!this.maximized) {
@@ -195,6 +200,7 @@ class Window {
 	}
 
 	set height (h) {
+		h = Math.max(this._minSize.height, h);
 		h = Math.max(this._windowManager.minWindowSize.height, h);
 		this._geometry.height = h;
 		if (!this.maximized) {
