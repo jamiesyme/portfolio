@@ -6,8 +6,8 @@ class ProjectsApp {
 			title:        'Projects',
 			content:      require('./projects-app.html'),
 			contentClass: 'projects-app',
-			initialSize:  { width: 870, height: 720 },
-			minSize:      { width: 350, height: 380 },
+			initialSize:  { width: 1002, height: 680 },
+			minSize:      { width: 350, height: 420 },
 		});
 
 		const $canvas = this.window.$canvas;

@@ -10,7 +10,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	list-style-type: none;
-	margin: 3.0rem 5.0rem 5.0rem 5.0rem;
+	margin: 3.0rem 5.0rem 2.0rem 5.0rem;
 	max-width: 120.0rem;
 	padding: 0;
 }
@@ -23,11 +23,11 @@
 	cursor: pointer;
 	display: block;
 	font-family: 'Open Sans';
-	height: 15.0rem;
-	margin: 0 5.0rem 10.0rem 5.0rem;
+	height: 20.0rem;
+	margin: 0 5.0rem 5.0rem 5.0rem;
 	padding: 0;
 	position: relative;
-	width: 15.0rem;
+	width: 20.0rem;
 }
 
 .projects-app .project-tile:focus {

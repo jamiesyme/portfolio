@@ -11,7 +11,7 @@ class AboutApp {
 			title:        'About',
 			content:      require('./about-app.html'),
 			contentClass: 'about-app',
-			initialSize:  { width: 760, height: 800 },
+			initialSize:  { width: 760, height: 820 },
 			minSize:      { width: 350, height: 380 },
 		});
 
