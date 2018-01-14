@@ -16,9 +16,10 @@
 }
 
 .projects-app .project-tile {
+	box-sizing: border-box;
 	background-color: transparent;
-	border: none;
-	box-shadow: 0.0rem 0.2rem 1.0rem rgba(0, 0, 0, 0.6);
+	background-size: cover;
+	border: 1px solid rgb(192, 192, 192);
 	cursor: pointer;
 	display: block;
 	font-family: 'Open Sans';
@@ -29,11 +30,6 @@
 	width: 15.0rem;
 }
 
-.projects-app .project-tile .cover {
-	height: 100%;
-	width: 100%;
-}
-
 .projects-app .project-tile .title {
 	background-color: rgba(0, 0, 0, 0.6);
 	bottom: 0;
@@ -42,15 +38,15 @@
 	padding: 0.4rem;
 	position: absolute;
 	text-align: center;
-	width: 100%;
+	width: calc(100% - 0.1rem);
 }
 
-.projects-app .project-tile:hover .cover {
-	opacity: 0.8;
+.projects-app .project-tile:hover {
+	box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
 }
 
 .projects-app .project-tile:hover .title {
-	background-color: black;
+	background-color: rgb(155, 77, 202);
 	color: white;
 }
 

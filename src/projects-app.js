@@ -59,6 +59,7 @@ class ProjectsApp {
 					const $a = $('<a />', {
 						text: resource.name,
 						href: resource.link,
+						target: '_blank',
 					});
 					$li.append($a);
 					$project.find('.links').append($li);
