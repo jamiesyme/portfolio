@@ -1,6 +1,5 @@
 .window {
-	border-radius: 0.7rem;
-	border: 0.1rem solid rgb(96, 96, 96);
+	border-radius: 0.7rem; /* Needed for box shadow */
 	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
 	box-sizing: border-box;
 	display: flex;
@@ -11,10 +10,15 @@
 }
 
 .window.maximized {
-	border: none;
 	border-radius: 0;
 	height: 100%;
 	width: 100%;
+}
+
+.window.maximized .title-bar,
+.window.maximized .canvas {
+	border: none;
+	border-radius: 0;
 }
 
 .window.minimized {
@@ -23,6 +27,7 @@
 
 .title-bar {
 	background-color: rgb(35, 35, 35);
+	border-radius: 0.7rem 0.7rem 0 0;
 	flex: 0 0 auto;
 	font-family: 'Open Sans';
 	height: 3.2rem;
@@ -31,6 +36,7 @@
 }
 
 .title-bar .title {
+	display: none; /* Disabled for now */
 	color: white;
 	cursor: default;
 	line-height: 3.2rem;
@@ -48,37 +54,55 @@
 }
 
 .title-bar .control-buttons button {
+	background-color: transparent;
+	border-radius: 50%;
+	border: none;
 	box-sizing: border-box;
-	background-color: rgb(112, 112, 112);
-	border: 0.1rem solid rgb(148, 148, 148);
-	border-radius: 0.65rem;
+	cursor: pointer;
+	display: table-cell;
+	margin-right: 0.6rem;
 	padding: 0;
-	margin-right: 0.8rem;
-	width: 1.3rem;
-	height: 1.3rem;
+	vertical-align: middle;
+	height: 1.7rem;
+	width: 1.7rem;
 }
 
-.title-bar .control-buttons .minimize {
+.title-bar .control-buttons button::after {
+	background-color: rgb(112, 112, 112);
+	border-radius: inherit;
+	border: 0.1rem solid rgb(148, 148, 148);
+	box-sizing: border-box;
+	content: '';
+	display: inline-block;
+	margin-top: 0.2rem;
+	height: 1.3rem;
+	width: 1.3rem;
+}
+
+.title-bar .control-buttons .minimize::after {
 	background-color: rgb(76, 175, 80);
 	border-color: rgb(56, 142, 60);
 }
 
-.title-bar .control-buttons .maximize {
+.title-bar .control-buttons .maximize::after {
 	background-color: rgb(255, 235, 59);
 	border-color: rgb(253, 216, 53);
 }
 
-.title-bar .control-buttons .close {
+.title-bar .control-buttons .close::after {
 	background-color: rgb(229, 57, 53);
 	border-color: rgb(198, 40, 40);
 }
 
 .canvas {
 	background-color: white;
+	border: 0.1rem solid rgb(164, 164, 164);
+	border-top: none;
+	border-radius: 0 0 0.7rem 0.7rem;
 	overflow: auto;
 	flex: 1 1 auto;
-	height: 100%;
-	width: 100%;
+	height: calc(100% - 0.1rem);
+	width: calc(100% - 0.2rem);
 	z-index: 0;
 }
 
