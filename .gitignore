@@ -1,3 +1,4 @@
 /config/api-env.json
 /dist/
 /node_modules/
+/.vagrant
