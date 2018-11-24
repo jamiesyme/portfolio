@@ -8,10 +8,9 @@ class ContactApp {
 			minSize:      { width: 350, height: 380 },
 		});
 
-		const self = this;
 		this.window.$element.find('form').submit(e => {
 			e.preventDefault();
-			self._send();
+			this._send();
 		});
 	}
 
@@ -71,16 +70,15 @@ class ContactApp {
 			data: JSON.stringify({ from, subject, message }),
 		});
 
-		const self = this;
 		req.done(() => {
-			self._clearForm();
-			self._unlockForm();
-			self._setResult(true);
+			this._clearForm();
+			this._unlockForm();
+			this._setResult(true);
 		});
 		req.fail(jqXHR => {
 			console.log('Failed request:', jqXHR);
-			self._unlockForm();
-			self._setResult(false);
+			this._unlockForm();
+			this._setResult(false);
 		});
 	}
 }

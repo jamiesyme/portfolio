@@ -14,14 +14,7 @@ class Window {
 	 * @param {number} options.minSize.height
 	 */
 	constructor (windowManager, options) {
-		const self = this;
-		function createWindowElement (options) {
-			const windowTmpl = require('./window.html');
-			const windowHtml = Template.render(windowTmpl, options);
-			const $window = $(windowHtml);
-			return $window;
-		}
-		function enableResizeHandle ($h, dn, de, ds, dw) {
+		const enableResizeHandle = ($h, dn, de, ds, dw) => {
 			let oldPos = null;
 			$h.mousedown(e => {
 				oldPos = { x: e.clientX, y: e.clientY }
@@ -37,28 +30,28 @@ class Window {
 				const newPos = { x: e.clientX, y: e.clientY };
 				if (dn && newPos.y != oldPos.y) {
 					const diff = newPos.y - oldPos.y;
-					const newHeight = self.height - diff;
-					self.height = newHeight;
-					self.top = self.top + diff - (self.height - newHeight);
+					const newHeight = this.height - diff;
+					this.height = newHeight;
+					this.top = this.top + diff - (this.height - newHeight);
 				}
 				if (de && newPos.x != oldPos.x) {
 					const diff = newPos.x - oldPos.x;
-					self.width = self.width + diff;
+					this.width = this.width + diff;
 				}
 				if (ds && newPos.y != oldPos.y) {
 					const diff = newPos.y - oldPos.y;
-					self.height = self.height + diff;
+					this.height = this.height + diff;
 				}
 				if (dw && newPos.x != oldPos.x) {
 					const diff = newPos.x - oldPos.x;
-					const newWidth = self.width - diff;
-					self.width = newWidth;
-					self.left = self.left + diff - (self.width - newWidth);
+					const newWidth = this.width - diff;
+					this.width = newWidth;
+					this.left = this.left + diff - (this.width - newWidth);
 				}
 				oldPos = newPos;
 			});
-		}
-		function enableMoveHandle ($h) {
+		};
+		const enableMoveHandle = $h => {
 			let oldPos = null;
 			$h.mousedown(e => {
 				oldPos = { x: e.clientX, y: e.clientY }
@@ -68,25 +61,30 @@ class Window {
 			});
 			$(document).mouseup(e => oldPos = null);
 			$(document).mousemove(e => {
-				if (!oldPos || self.maximized) {
+				if (!oldPos || this.maximized) {
 					return;
 				}
 				const newPos = { x: e.clientX, y: e.clientY };
 				if (newPos.x != oldPos.x) {
 					const diff = newPos.x - oldPos.x;
-					self.left = self.left + diff;
+					this.left = this.left + diff;
 				}
 				if (newPos.y != oldPos.y) {
 					const diff = newPos.y - oldPos.y;
-					self.top = self.top + diff;
+					this.top = this.top + diff;
 				}
 				oldPos = newPos;
 			});
-		}
+		};
 
 		this._title = options.title;
 		this._windowManager = windowManager;
-		this._$window = createWindowElement(options);
+		this._$window = (() => {
+			const windowTmpl = require('./window.html');
+			const windowHtml = Template.render(windowTmpl, options);
+			const $window = $(windowHtml);
+			return $window;
+		})();
 		this._geometry = {
 			width:  this._$window.width(),
 			height: this._$window.height(),

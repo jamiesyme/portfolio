@@ -1,10 +1,6 @@
 class Taskbar {
 	constructor (windowManager, appManager) {
-		function createTaskbarElem () {
-			const html = require('./taskbar.html');
-			return $(html);
-		}
-		const $taskbar = createTaskbarElem();
+		const $taskbar = $(require('./taskbar.html'));
 
 		this._appsMenu = new AppsMenu($taskbar, appManager);
 		this._tasks = new Tasks($taskbar);
@@ -34,46 +30,39 @@ class AppsMenu {
 		this._appManager = appManager;
 		this._visible = false;
 
-		const self = this;
-
 		// Open and close the menu with the button
 		this._$button.click(e => {
-			self.toggle();
+			this.toggle();
 		});
 
 		// Close the menu when the user clicks on anything else
 		this._$button.on('focusout', e => {
 			if ($('.apps-menu:hover').length == 0) {
-				self.hide();
+				this.hide();
 			} else {
-				self._$button.focus();
+				this._$button.focus();
 			}
 		});
 
 		// Close the menu when the user hits ESC
 		this._$button.on('keydown', e => {
 			if (e.which === 27) {
-				self.hide();
+				this.hide();
 				e.preventDefault();
 			}
 		});
 	}
 
 	addApp (name, id) {
-		const self = this;
-		function createAppElem () {
-			const $li = $('<li />');
-			const $button = $('<button />', { text: name });
-			$button.click(e => {
-				self._appManager.launch(id)
-				self.hide();
-			});
-			$li.append($button);
-			return $li;
-		}
+		const $li = $('<li />');
+		const $button = $('<button />', { text: name });
+		$button.click(e => {
+			this._appManager.launch(id)
+			this.hide();
+		});
+		$li.append($button);
 
-		const $app = createAppElem();
-		this._$menu.append($app);
+		this._$menu.append($li);
 	}
 
 	show () {
@@ -103,27 +92,24 @@ class AppsMenu {
 
 class Task {
 	constructor (window) {
-		function createTaskElem () {
+		this.window = window;
+		this.$task = (() => {
 			const $li = $('<li />', { 'class': 'task' });
 			const $button = $('<button />', { text: window.title });
 			$li.append($button);
 			return $li;
-		}
+		})();
 
-		this.window = window;
-		this.$task = createTaskElem();
-
-		const self = this;
 		this.window.on('minimize', m => {
 			if (m) {
-				self.$task.addClass('closed');
+				this.$task.addClass('closed');
 			} else {
-				self.$task.removeClass('closed');
+				this.$task.removeClass('closed');
 				window.focus();
 			}
 		});
 		this.$task.click(e => {
-			self.window.minimized = !self.window.minimized;
+			this.window.minimized = !this.window.minimized;
 		});
 	}
 
@@ -193,8 +179,7 @@ class Clock {
 		this._$clock.text(timeStr);
 
 		const waitMs = (60 - time.getSeconds()) * 1000;
-		const self = this;
-		setTimeout(() => self._update(), waitMs);
+		setTimeout(() => this._update(), waitMs);
 	}
 
 	_formatTime (date) {
