@@ -7,6 +7,7 @@ class WindowManager {
 		this._listeners = {
 			'add-window': [],
 			'remove-window': [],
+			'focus-window': [],
 		};
 	}
 
@@ -39,14 +40,13 @@ class WindowManager {
 		this._windows.push(window);
 
 		// Remove window (later)
-		const self = this;
-		window.on('close', () => self.removeWindow(window));
+		window.on('close', () => this.removeWindow(window));
 
-		// Focus window (now and later)
-		window.$element.click(e => self.focusWindow(window));
-		this.focusWindow(window);
+		// Focus window (later)
+		window.$element.click(e => this.focusWindow(window));
 
 		this._emit('add-window', window);
+		this.focusWindow(window);
 		return window;
 	}
 
@@ -57,11 +57,15 @@ class WindowManager {
 
 		const index = this._windows.indexOf(window);
 		this._windows.splice(index, 1);
+
+		if (this._windows.length > 0) {
+			this.focusWindow(this._windows[0]);
+		}
 	}
 
 	focusWindow (window) {
 		const index = this._windows.indexOf(window);
-		if (index <= 0) {
+		if (index < 0) {
 			return;
 		}
 
@@ -71,6 +75,8 @@ class WindowManager {
 		for (let i = 0; i < this._windows.length; ++i) {
 			this._windows[i].zIndex = -i;
 		}
+
+		this._emit('focus-window', window);
 	}
 
 	get bounds () {

@@ -10,12 +10,14 @@ class Taskbar {
 		this._tasks = new Tasks($taskbar);
 		this._clock = new Clock($taskbar);
 
-		const self = this;
 		windowManager.on('add-window', window => {
-			self._tasks.add(window);
+			this._tasks.add(window);
 		});
 		windowManager.on('remove-window', window => {
-			self._tasks.remove(window);
+			this._tasks.remove(window);
+		});
+		windowManager.on('focus-window', window => {
+			this._tasks.focus(window);
 		});
 		$('body').prepend($taskbar);
 	}
@@ -129,6 +131,18 @@ class Task {
 		this.$task.remove();
 		this.$task = null;
 	}
+
+	addFocus () {
+		return this.$task.addClass('active');
+	}
+
+	removeFocus () {
+		return this.$task.removeClass('active');
+	}
+
+	hasFocus () {
+		return this.$task.hasClass('active');
+	}
 }
 
 class Tasks {
@@ -149,6 +163,19 @@ class Tasks {
 				this._tasks[i].remove();
 				this._tasks.splice(i, 1);
 				--i;
+			}
+		}
+	}
+
+	focus (window) {
+		for (const task of this._tasks) {
+			const hasFocus = task.hasFocus();
+			const shouldFocus = task.window === window;
+			if (hasFocus && !shouldFocus) {
+				task.removeFocus();
+			}
+			if (!hasFocus && shouldFocus) {
+				task.addFocus();
 			}
 		}
 	}
