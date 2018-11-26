@@ -15,7 +15,8 @@ class Taskbar {
 		windowManager.on('focus-window', window => {
 			this._tasks.focus(window);
 		});
-		$('body').prepend($taskbar);
+
+		$('body > .menus').prepend($taskbar);
 	}
 
 	addApp (name, id) {

@@ -2,7 +2,8 @@ const Window = require('./window');
 
 class WindowManager {
 	constructor () {
-		this._$desktop = $('body > .desktop');
+		this._$body = $('body');
+		this._$windows = $('body > .windows');
 		this._windows = [];
 		this._listeners = {
 			'add-window': [],
@@ -26,17 +27,17 @@ class WindowManager {
 	addWindow (options) {
 		// Optimize initial size for smaller screens
 		if ((options.initialSize || {}).width) {
-			const max = this._$desktop.width() - 20 * 2;
+			const max = this._$body.width() - 20 * 2;
 			options.initialSize.width = Math.min(max, options.initialSize.width);
 		}
 		if ((options.initialSize || {}).height) {
-			const max = this._$desktop.height() - 20 * 2;
+			const max = this._$body.height() - 20 * 2;
 			options.initialSize.height = Math.min(max, options.initialSize.height);
 		}
 
 		// Create window
 		const window = new Window(this, options);
-		this._$desktop.append(window.$element);
+		this._$windows.append(window.$element);
 		this._windows.push(window);
 
 		// Remove window (later)
@@ -80,13 +81,17 @@ class WindowManager {
 	}
 
 	get bounds () {
+		const topBuffer = 36; // 36px = size of taskbar
+		const leftBuffer = 20;
+		const rightBuffer = 20;
+		const bottomBuffer = 32; // 32px = size of titlebar
 		return {
-			xMin:    20, // 20 = arbitrary buffer
-			xMax:    this._$desktop.width() - 1 - 20, // 20 = arbitrary buffer
-			xCenter: this._$desktop.width() / 2,
-			yMin:    0,
-			yMax:    this._$desktop.height() - 1 - 32, // 32 = size of title bar
-			yCenter: this._$desktop.height() / 2,
+			xMin:    leftBuffer,
+			xMax:    this._$body.width() - 1 - rightBuffer,
+			xCenter: this._$body.width() / 2,
+			yMin:    topBuffer,
+			yMax:    this._$body.height() - 1 - bottomBuffer,
+			yCenter: this._$body.height() / 2,
 		};
 	}
 
