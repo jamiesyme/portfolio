@@ -29,12 +29,13 @@ p {
 }
 
 .desktop {
-	background-attachment: fixed;
+	/*background-attachment: fixed;
 	background-color: rgb(135, 199, 179);
 	background-image: url('/f/desktop.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover;*/
+	background-color: rgb(220, 220, 220);
 	position: absolute;
 	top: 0;
 	left: 0;

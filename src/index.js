@@ -1,10 +1,12 @@
 const AboutApp      = require('./about-app');
 const AppManager    = require('./app-manager');
 const ContactApp    = require('./contact-app');
+const Desktop       = require('./desktop');
 const ProjectsApp   = require('./projects-app');
 const Taskbar       = require('./taskbar');
 const WindowManager = require('./window-manager');
 
+const desktop       = new Desktop();
 const windowManager = new WindowManager();
 const appManager    = new AppManager(windowManager);
 const taskbar       = new Taskbar(windowManager, appManager);
@@ -31,4 +33,9 @@ for (const app of apps) {
 	appManager.addApp(app.id, app.appClass);
 	taskbar.addApp(app.name, app.id);
 }
-appManager.launch('about');
+
+// Create the projects
+const $body = $('body');
+const projApp = appManager.launch('projects');
+projApp.window.width = $body.width() * 0.4;
+projApp.window.left = $body.width() * 0.55;

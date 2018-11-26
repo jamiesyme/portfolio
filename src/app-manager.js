@@ -10,7 +10,7 @@ class AppManager {
 
 	launch (id) {
 		if (this._appStore[id]) {
-			new this._appStore[id](this._windowManager, this);
+			return new this._appStore[id](this._windowManager, this);
 		} else {
 			throw new Error('no app with id: ' + id);
 		}

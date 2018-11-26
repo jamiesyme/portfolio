@@ -1,0 +1,16 @@
+.desktop > .intro {
+	margin: 20rem 10rem;
+	max-width: calc(50% - 10rem);
+}
+
+.desktop h1 {
+	font-size: 4.8rem;
+}
+
+.desktop .lead {
+	font-size: 2.8rem;
+}
+
+.desktop .accent-text {
+	color: rgb(155, 77, 202);
+}
