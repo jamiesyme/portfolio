@@ -8,6 +8,7 @@ sudo ln -s /vagrant/config/nginx.conf /etc/nginx/sites-available/portfolio
 sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/portfolio
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -s reload
+sudo systemctl disable nginx
 
 # Setup serve folder
 sudo ln -s /vagrant /srv/portfolio

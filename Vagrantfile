@@ -17,6 +17,11 @@ Vagrant.configure("2") do |config|
     ./scripts/dev-bootstrap.sh
   SHELL
 
+  # Start NGINX
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
+    sudo service nginx start
+  SHELL
+
   # Disable the Ubuntu console log from being generated.
   # See: https://groups.google.com/forum/#!topic/vagrant-up/eZljy-bddoI
   config.vm.provider "virtualbox" do |vb|
