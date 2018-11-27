@@ -46,6 +46,9 @@ class WindowManager {
 		// Focus window (later)
 		window.$element.click(e => this.focusWindow(window));
 
+		// Unfocus window (later)
+		window.on('minimize', () => this.selectFocusWindow());
+
 		this._emit('add-window', window);
 		this.focusWindow(window);
 		return window;
@@ -73,10 +76,11 @@ class WindowManager {
 		this._windows.splice(index, 1);
 		this._windows.unshift(window);
 
-		for (let i = 0; i < this._windows.length; ++i) {
-			this._windows[i].zIndex = -i;
-		}
+		this.selectFocusWindow();
+	}
 
+	selectFocusWindow () {
+		this._windows.forEach((w, i) => w.zIndex = -i);
 		this._emit('focus-window', window);
 	}
 
@@ -100,6 +104,10 @@ class WindowManager {
 			width: 250,
 			height: 250,
 		};
+	}
+
+	isWindowFocused (window) {
+		return window === this._windows.find(w => !w.minimized);
 	}
 }
 

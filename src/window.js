@@ -285,6 +285,10 @@ class Window {
 		this.top = bounds.yCenter - this.height / 2;
 		this.left = bounds.xCenter - this.width / 2;
 	}
+
+	get active () {
+		return this._windowManager.isWindowFocused(this);
+	}
 }
 
 module.exports = Window;

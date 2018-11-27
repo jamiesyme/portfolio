@@ -106,11 +106,16 @@ class Task {
 				this.$task.addClass('closed');
 			} else {
 				this.$task.removeClass('closed');
-				window.focus();
+				this.window.focus();
 			}
 		});
 		this.$task.click(e => {
-			this.window.minimized = !this.window.minimized;
+			if (this.window.active) {
+				this.window.minimized = !this.window.minimized;
+			} else {
+				this.window.minimized = false;
+				this.window.focus();
+			}
 		});
 	}
 
@@ -156,13 +161,10 @@ class Tasks {
 
 	focus (window) {
 		for (const task of this._tasks) {
-			const hasFocus = task.hasFocus();
-			const shouldFocus = task.window === window;
-			if (hasFocus && !shouldFocus) {
-				task.removeFocus();
-			}
-			if (!hasFocus && shouldFocus) {
+			if (task.window.active) {
 				task.addFocus();
+			} else {
+				task.removeFocus();
 			}
 		}
 	}
