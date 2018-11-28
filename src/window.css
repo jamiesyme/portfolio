@@ -5,12 +5,11 @@
 	position: absolute;
 	z-index: 0;
 	transition: transform 0.2s ease, opacity 0.15s ease;
+	pointer-events: all;
 }
 
 .window.maximized {
 	border-radius: 0;
-	height: 100%;
-	width: 100%;
 }
 
 .window.maximized .title-bar,

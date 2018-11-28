@@ -44,8 +44,8 @@ class WindowManager {
 
 		// Initialize the CSS
 		window.$elem.css({
-			left:   window.x,
 			top:    window.y,
+			left:   window.x,
 			width:  window.width,
 			height: window.height,
 		});
@@ -58,7 +58,11 @@ class WindowManager {
 				this.closeWindow(window);
 			});
 			$btns.find('.maximize').click(e => {
-				this.maximizeWindow(window);
+				if (window.maximized) {
+					this.unmaximizeWindow(window);
+				} else {
+					this.maximizeWindow(window);
+				}
 			});
 			$btns.find('.minimize').click(e => {
 				this.minimizeWindow(window);
@@ -345,6 +349,14 @@ class WindowManager {
 			return;
 		}
 		window.$elem.addClass('maximized');
+		window.$elem.css({
+			top:    titlebarHeight,
+			left:   0,
+			right:  0,
+			bottom: 0,
+			width:  '',
+			height: '',
+		});
 		window.maximized = true;
 		window.emit('maximize', true);
 	}
@@ -354,6 +366,14 @@ class WindowManager {
 			return;
 		}
 		window.$elem.removeClass('maximized');
+		window.$elem.css({
+			top:    window.y,
+			left:   window.x,
+			right:  '',
+			bottom: '',
+			width:  window.width,
+			height: window.height,
+		});
 		window.maximized = false;
 		window.emit('maximize', false);
 	}
