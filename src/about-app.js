@@ -7,11 +7,11 @@ class AboutApp {
 			setTimeout(() => appManager.launch(id), 0);
 		}
 
-		this.window = windowManager.addWindow({
+		this.window = windowManager.openWindow({
 			title:        'About',
 			content:      require('./about-app.html'),
 			contentClass: 'about-app',
-			initialSize:  { width: 760, height: 870 },
+			size:         { width: 760, height: 870 },
 			minSize:      { width: 350, height: 380 },
 		});
 

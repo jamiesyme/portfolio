@@ -1,21 +1,21 @@
 class ContactApp {
 	constructor (windowManager) {
-		this.window = windowManager.addWindow({
+		this.window = windowManager.openWindow({
 			title:        'Contact',
 			content:      require('./contact-app.html'),
 			contentClass: 'contact-app',
-			initialSize:  { width: 640, height: 480 },
+			size:         { width: 640, height: 480 },
 			minSize:      { width: 350, height: 380 },
 		});
 
-		this.window.$element.find('form').submit(e => {
+		this.window.$elem.find('form').submit(e => {
 			e.preventDefault();
 			this._send();
 		});
 	}
 
 	_lockForm () {
-		const $window = this.window.$element;
+		const $window = this.window.$elem;
 		$window.find('form').prop('disabled', true);
 		$window.find('input').prop('disabled', true);
 		$window.find('textarea').prop('disabled', true);
@@ -23,7 +23,7 @@ class ContactApp {
 	}
 
 	_unlockForm () {
-		const $window = this.window.$element;
+		const $window = this.window.$elem;
 		$window.find('form').prop('disabled', false);
 		$window.find('input').prop('disabled', false);
 		$window.find('textarea').prop('disabled', false);
@@ -31,14 +31,14 @@ class ContactApp {
 	}
 
 	_clearForm () {
-		const $window = this.window.$element;
+		const $window = this.window.$elem;
 		$window.find('.from').val('');
 		$window.find('.subject').val('');
 		$window.find('.message').val('');
 	}
 
 	_clearResult () {
-		const $result = this.window.$element.find('.result');
+		const $result = this.window.$elem.find('.result');
 		$result.text('');
 		$result.removeClass('failure');
 		$result.removeClass('success');
@@ -46,7 +46,7 @@ class ContactApp {
 
 	_setResult (success) {
 		this._clearResult();
-		const $result = this.window.$element.find('.result');
+		const $result = this.window.$elem.find('.result');
 		if (success) {
 			$result.addClass('success');
 			$result.text('Email sent.');
@@ -57,7 +57,7 @@ class ContactApp {
 	}
 
 	_send () {
-		const $window = this.window.$element;
+		const $window = this.window.$elem;
 		const from = $window.find('.from').val();
 		const subject = $window.find('.subject').val();
 		const message = $window.find('.message').val();

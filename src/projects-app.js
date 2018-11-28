@@ -2,11 +2,11 @@ const Template = require('./template');
 
 class ProjectsApp {
 	constructor (windowManager) {
-		this.window = windowManager.addWindow({
+		this.window = windowManager.openWindow({
 			title:        'Projects',
 			content:      require('./projects-app.html'),
 			contentClass: 'projects-app',
-			initialSize:  { width: 880, height: 680 },
+			size:         { width: 880, height: 680 },
 			minSize:      { width: 350, height: 420 },
 		});
 

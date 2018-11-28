@@ -93,6 +93,8 @@ class AppsMenu {
 
 class Task {
 	constructor (window) {
+		const windowManager = window.windowManager;
+
 		this.window = window;
 		this.$task = (() => {
 			const $li = $('<li />', { 'class': 'task' });
@@ -103,18 +105,18 @@ class Task {
 
 		this.window.on('minimize', m => {
 			if (m) {
-				this.$task.addClass('closed');
+				this.$task.addClass('minimized');
 			} else {
-				this.$task.removeClass('closed');
-				this.window.focus();
+				this.$task.removeClass('minimized');
 			}
 		});
+
 		this.$task.click(e => {
-			if (this.window.active) {
-				this.window.minimized = !this.window.minimized;
+			if (this.window.focused) {
+				windowManager.minimizeWindow(this.window);
 			} else {
-				this.window.minimized = false;
-				this.window.focus();
+				windowManager.unminimizeWindow(this.window);
+				windowManager.focusWindow(this.window);
 			}
 		});
 	}
@@ -125,15 +127,11 @@ class Task {
 	}
 
 	addFocus () {
-		return this.$task.addClass('active');
+		return this.$task.addClass('focused');
 	}
 
 	removeFocus () {
-		return this.$task.removeClass('active');
-	}
-
-	hasFocus () {
-		return this.$task.hasClass('active');
+		return this.$task.removeClass('focused');
 	}
 }
 
@@ -161,7 +159,7 @@ class Tasks {
 
 	focus (window) {
 		for (const task of this._tasks) {
-			if (task.window.active) {
+			if (task.window === window) {
 				task.addFocus();
 			} else {
 				task.removeFocus();
