@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 	position: absolute;
 	z-index: 0;
+	transition: transform 0.2s ease, opacity 0.15s ease;
 }
 
 .window.maximized {
@@ -19,7 +20,9 @@
 }
 
 .window.minimized {
-	display: none;
+	transform: scale(0.5);
+	opacity: 0;
+	pointer-events: none;
 }
 
 .title-bar {
