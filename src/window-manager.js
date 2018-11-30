@@ -17,6 +17,8 @@ class WindowManager {
 			'remove-window': [],
 			'focus-window': [],
 		};
+
+		$(window).resize(() => this.restrictWindowsToBounds());
 	}
 
 	openWindow (params) {
@@ -227,6 +229,7 @@ class WindowManager {
 		}, true);
 
 		this.emit('add-window', window);
+		this.restrictWindowToBounds(window);
 		this.focusWindow(window);
 		return window;
 	}
@@ -421,6 +424,17 @@ class WindowManager {
 	emit (eventType, data) {
 		for (const cb of this._listeners[eventType] || []) {
 			cb(data);
+		}
+	}
+
+	restrictWindowToBounds (window) {
+		this.setWindowSize(window, window.width, window.height);
+		this.setWindowPosition(window, window.x, window.y);
+	}
+
+	restrictWindowsToBounds () {
+		for (const window of this._windows) {
+			this.restrictWindowToBounds(window);
 		}
 	}
 }
