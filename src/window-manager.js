@@ -248,6 +248,11 @@ class WindowManager {
 		this._windows.forEach((w, i) => {
 			w.$elem.css('z-index', -i);
 			w.focused = w === window;
+			if (w.focused) {
+				w.$elem.addClass('focused');
+			} else {
+				w.$elem.removeClass('focused');
+			}
 		});
 
 		this.emit('focus-window', window);

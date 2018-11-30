@@ -1,16 +1,61 @@
 .desktop > .intro {
 	margin: 20rem 10rem;
-	max-width: calc(50% - 10rem);
+	max-width: 64.0rem;
 }
 
 .desktop h1 {
 	font-size: 4.8rem;
 }
 
+.desktop h2 {
+	margin: 8.0rem 0 0.5rem;
+}
+
 .desktop .lead {
-	font-size: 2.8rem;
+	font-size: 2.0rem;
 }
 
 .desktop .accent-text {
 	color: rgb(155, 77, 202);
+}
+
+.desktop hr {
+	border: none;
+	border-top: 0.1rem solid rgb(164, 164, 164);
+	max-width: 18.0rem;
+	margin: 0
+}
+
+.desktop .launchers {
+	list-style: none;
+	margin: 3.0rem 0 0;
+	padding: 0;
+}
+
+.desktop .launchers li {
+	display: inline-block;
+}
+
+.desktop .launcher {
+	width: 10.0rem;
+	height: 10.0rem;
+	margin: 1.0rem;
+	border: none;
+	background: white;
+	box-shadow: 0 0.2rem 1.0rem rgba(0, 0, 0, 0.1);
+	color: #232323;
+}
+
+.desktop .launcher:hover {
+	box-shadow: 0 0.2rem 1.0rem rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
+
+.desktop .launcher ion-icon {
+	font-size: 4.8rem;
+}
+
+.desktop .launcher .label {
+	display: block;
+	text-align: center;
 }

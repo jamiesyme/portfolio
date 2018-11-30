@@ -6,9 +6,9 @@ const ProjectsApp   = require('./projects-app');
 const Taskbar       = require('./taskbar');
 const WindowManager = require('./window-manager');
 
-const desktop       = new Desktop();
 const windowManager = new WindowManager();
 const appManager    = new AppManager(windowManager);
+const desktop       = new Desktop(appManager);
 const taskbar       = new Taskbar(windowManager, appManager);
 
 const apps = [

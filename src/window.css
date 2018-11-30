@@ -1,11 +1,15 @@
 .window {
 	border-radius: 0.7rem; /* Needed for box shadow */
-	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
 	position: absolute;
 	z-index: 0;
 	transition: transform 0.2s ease, opacity 0.15s ease;
 	pointer-events: all;
+}
+
+.window.focused {
+	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
 }
 
 .window.maximized {
