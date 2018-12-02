@@ -72,6 +72,20 @@ class ProjectsApp {
 				$viewer.show();
 			});
 		}
+
+		// Adjust projects grid upon window resize
+		this.window.on('resize', () => {
+			let cols = (() => {
+				if (this.window.width < 550) {
+					return '1fr';
+				}
+				if (this.window.width < 900) {
+					return '1fr 1fr';
+				}
+				return '1fr 1fr 1fr';
+			})();
+			$tiles.css('grid-template-columns', cols);
+		});
 	}
 
 	static get projects () {

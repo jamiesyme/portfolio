@@ -1,66 +1,74 @@
 .projects-app {
-	align-items: center;
-	display: flex;
 	overflow: auto;
-	flex-direction: column;
 }
 
 .projects-app .app-title {
-	margin-bottom: 0;
+	margin: 4.0rem 0;
+}
+
+.projects-app .project-tiles-wrapper {
+	padding: 0 5.0rem 3.0rem;
+	max-width: calc(110.0rem + 5.0rem * 2);
+	margin: 0 auto;
 }
 
 .projects-app .project-tiles {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+	display: grid;
+	grid-gap: 4.0rem;
 	list-style-type: none;
-	margin: 0 5.0rem 3.0rem 5.0rem;
-	max-width: 120.0rem;
-	padding: 0;
+	margin: 0;
+	padding: 0 0 2.0rem 0;
+
+	/* This will be overwritten by JavaScript, we're just providing a default */
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
 .projects-app .project-tile {
 	background-color: transparent;
-	border: 1px solid rgb(192, 192, 192);
-	border-radius: 0.2rem;
+	border: none;
+	background: white;
+	color: #232323;
 	box-sizing: border-box;
 	cursor: pointer;
 	display: block;
 	font-family: 'Open Sans';
-	height: 20.0rem;
-	margin: 3.0rem 5.0rem 3.0rem 5.0rem;
 	padding: 0;
-	position: relative;
-	width: 20.0rem;
+	margin: 0 auto;
+	max-width: 35.0rem;
+	width: 100%;
 }
 
 .projects-app .project-tile:focus {
 	outline: none;
 }
 
+.projects-app .project-tile .cover-wrapper {
+	box-shadow: 0 0.2rem 1.0rem rgba(0, 0, 0, 0.1);
+	padding: 1.0rem;
+	transition: all 0.15s ease;
+}
+
+.projects-app .project-tile:hover .cover-wrapper {
+	box-shadow: 0 0.2rem 1.0rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
 .projects-app .project-tile .cover {
-	height: 100%;
 	width: 100%;
+	display: block;
 }
 
 .projects-app .project-tile:hover .cover {
-	opacity: 0.8;
+	/*opacity: 0.85;*/
 }
 
 .projects-app .project-tile .title {
-	background-color: rgba(0, 0, 0, 0.6);
-	bottom: 0;
 	box-sizing: border-box;
-	color: rgba(255, 255, 255, 0.8);
+	color: #232323;
 	padding: 0.4rem;
-	position: absolute;
-	text-align: center;
+	text-align: left;
+	font-weight: bold;
 	width: 100%;
-}
-
-.projects-app .project-tile:hover .title {
-	background-color: rgb(155, 77, 202);
-	color: white;
+	margin-top: 1.0rem;
 }
 
 .projects-app .project-viewer {
