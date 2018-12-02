@@ -18,6 +18,21 @@ class WindowManager {
 			'focus-window': [],
 		};
 
+		// The size of maximized windows are changed whenever the browser is
+		// resized
+		$(window).resize(() => {
+			console.log('window resize');
+			const width = $(window).width();
+			const height = $(window).height();
+			this._windows.filter(w => w.maximized).forEach(w => {
+				w.width = width;
+				w.height = height;
+				w.emit('resize');
+			});
+		});
+
+		// Whenever the browser is resized, make sure the windows are within
+		// the bounds
 		$(window).resize(() => this.restrictWindowsToBounds());
 	}
 
@@ -314,7 +329,6 @@ class WindowManager {
 			const wNew = clamp(wMin, wMax, w);
 			if (window.width !== wNew) {
 				window.width = wNew;
-				window.$elem.css({ width: wNew });
 				changed = true;
 			}
 		}
@@ -324,11 +338,14 @@ class WindowManager {
 			const hNew = clamp(hMin, hMax, h);
 			if (window.height !== hNew) {
 				window.height = hNew;
-				window.$elem.css({ height: hNew });
 				changed = true;
 			}
 		}
 		if (changed) {
+			window.$elem.css({
+				width: window.width,
+				height: window.height,
+			});
 			window.emit('resize');
 		}
 	}
@@ -365,14 +382,21 @@ class WindowManager {
 			width:  '',
 			height: '',
 		});
+		window._savedWidth = window.width;
+		window._savedHeight = window.height;
+		window.width = window.$elem.width();
+		window.height = window.$elem.height();
 		window.maximized = true;
 		window.emit('maximize', true);
+		window.emit('resize');
 	}
 
 	unmaximizeWindow (window) {
 		if (!window.maximized) {
 			return;
 		}
+		window.width = window._savedWidth;
+		window.height = window._savedHeight;
 		window.$elem.removeClass('maximized');
 		window.$elem.css({
 			top:    window.y,
@@ -384,6 +408,7 @@ class WindowManager {
 		});
 		window.maximized = false;
 		window.emit('maximize', false);
+		window.emit('resize');
 	}
 
 	get bounds () {

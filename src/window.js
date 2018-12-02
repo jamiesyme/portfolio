@@ -39,6 +39,8 @@ class Window {
 		})();
 		this.$canvas = this.$elem.find('.canvas-outer > .canvas');
 
+		this._savedWidth = null;
+		this._savedHeight = null;
 		this._listeners = {
 			'close': [],
 			'maximize': [],
