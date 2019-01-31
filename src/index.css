@@ -5,56 +5,16 @@ html, body {
 html {
 	box-sizing: border-box;
 	font-size: 62.5%; /* So 1.6rem = 16px */
-	font-family: sans-serif;
 }
 
 body {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	background-color: rgb(220, 220, 220);
+	color: rgb(64, 64, 64);
 	font-size: 1.6rem;
+	font-family: 'Open Sans', sans-serif;
 	line-height: 1.6;
-	overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Lato';
-}
-
-p {
-	color: rgb(64, 64, 64);
-	font-family: 'Open Sans';
-}
-
-.desktop {
-	/*background-attachment: fixed;
-	background-color: rgb(135, 199, 179);
-	background-image: url('/f/desktop.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;*/
-	background-color: rgb(220, 220, 220);
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1;
-}
-
-.windows {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1;
-	pointer-events: none;
-}
-
-.menus {
-	position: relative;
-	z-index: 1;
 }
