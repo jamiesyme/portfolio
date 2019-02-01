@@ -1,5 +1,7 @@
-html, body {
-	height: 100%;
+*,
+*:after,
+*:before {
+	box-sizing: inherit;
 }
 
 html {
@@ -55,5 +57,39 @@ body > header button {
 	}
 	body > header button {
 		display: none;
+	}
+}
+
+
+/**
+ * INTRO
+ */
+.intro-section {
+	padding: 2.0rem;
+}
+
+@media (min-width: 800px) {
+	.intro-section {
+		padding: 4.0rem 2.0rem;
+		float: left;
+		max-width: 50%;
+	}
+	.intro-section > h1 {
+		font-size: 4.8rem;
+	}
+	.intro-section > p {
+		font-size: 2.0rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.intro-section {
+		padding: 4.0rem;
+	}
+	.intro-section > h1 {
+		font-size: 6.4rem;
+	}
+	.intro-section > p {
+		font-size: 2.4rem;
 	}
 }
