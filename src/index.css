@@ -46,7 +46,7 @@ body > header button {
 	font-size: 2.4rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
 	body > header {
 		padding: 1.0rem;
 	}
@@ -74,7 +74,7 @@ body > header button {
 	margin: 1rem 0;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
 	.intro-section {
 		padding: 4.0rem 2.0rem;
 		float: left;
@@ -123,7 +123,7 @@ body > header button {
 	width: 100%;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
 	.projects-section {
 		padding: 4rem 2rem;
 		float: right;
