@@ -67,29 +67,75 @@ body > header button {
 .intro-section {
 	padding: 2.0rem;
 }
+.intro-section h1 {
+	margin: 1rem 0 2rem 0;
+}
+.intro-section p {
+	margin: 1rem 0;
+}
 
 @media (min-width: 800px) {
 	.intro-section {
 		padding: 4.0rem 2.0rem;
 		float: left;
-		max-width: 50%;
+		width: 50%;
 	}
 	.intro-section > h1 {
 		font-size: 4.8rem;
+		margin: 4rem 0;
 	}
 	.intro-section > p {
 		font-size: 2.0rem;
+		max-width: 60.0rem;
 	}
 }
 
 @media (min-width: 1200px) {
 	.intro-section {
-		padding: 4.0rem;
+		padding: 4rem 4rem 4rem calc(4rem + 6%);
 	}
 	.intro-section > h1 {
 		font-size: 6.4rem;
 	}
 	.intro-section > p {
 		font-size: 2.4rem;
+	}
+}
+
+
+/**
+ * PROJECT LIST
+ */
+.projects-section {
+	padding: 2.0rem;
+}
+.projects-section ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.projects-section li {
+	display: block;
+	max-width: 50.0rem;
+	margin: 0 auto 4.0rem;
+}
+.projects-section li img {
+	width: 100%;
+}
+
+@media (min-width: 800px) {
+	.projects-section {
+		padding: 4rem 2rem;
+		float: right;
+		width: 50%;
+	}
+	.projects-section li {
+		margin: 5.0rem auto;
+	}
+}
+
+@media (min-width: 1200px) {
+	.projects-section {
+		padding: 4rem calc(4rem + 6%) 4rem 4rem;
 	}
 }
