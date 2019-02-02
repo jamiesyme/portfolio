@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	background-color: rgb(220, 220, 220);
+	background-color: rgb(232, 232, 232);
 	color: rgb(64, 64, 64);
 	font-size: 1.6rem;
 	font-family: 'Open Sans', sans-serif;
@@ -67,7 +67,7 @@ body > header button {
 .intro-section {
 	padding: 2.0rem;
 }
-.intro-section h1 {
+.intro-section .big-text {
 	margin: 1rem 0 2rem 0;
 }
 .intro-section p {
@@ -76,17 +76,17 @@ body > header button {
 
 @media (min-width: 768px) {
 	.intro-section {
-		padding: 4.0rem 2.0rem;
+		padding: 2rem;
 		float: left;
 		width: 50%;
 	}
-	.intro-section > h1 {
+	.intro-section .big-text {
 		font-size: 4.8rem;
 		margin: 4rem 0;
 	}
-	.intro-section > p {
-		font-size: 2.0rem;
-		max-width: 60.0rem;
+	.intro-section p {
+		font-size: 2rem;
+		max-width: 60rem;
 	}
 }
 
@@ -94,10 +94,10 @@ body > header button {
 	.intro-section {
 		padding: 4rem 4rem 4rem calc(4rem + 6%);
 	}
-	.intro-section > h1 {
+	.intro-section .big-text {
 		font-size: 6.4rem;
 	}
-	.intro-section > p {
+	.intro-section p {
 		font-size: 2.4rem;
 	}
 }
@@ -107,35 +107,70 @@ body > header button {
  * PROJECT LIST
  */
 .projects-section {
-	padding: 2.0rem;
+	padding: 2rem;
 }
-.projects-section ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.projects-section li {
+.projects-section section {
 	display: block;
-	max-width: 50.0rem;
-	margin: 0 auto 4.0rem;
-}
-.projects-section li img {
 	width: 100%;
+	margin: 0 auto 4rem;
+}
+.projects-section section img {
+	width: 100%;
+}
+
+@media (max-width: 767px) {
+	.projects-section section:last-child {
+		margin-bottom: 0;
+	}
 }
 
 @media (min-width: 768px) {
 	.projects-section {
-		padding: 4rem 2rem;
+		padding: 2rem;
 		float: right;
 		width: 50%;
 	}
-	.projects-section li {
+	.projects-section section {
 		margin: 5.0rem auto;
+		max-width: 50rem;
 	}
 }
 
 @media (min-width: 1200px) {
 	.projects-section {
 		padding: 4rem calc(4rem + 6%) 4rem 4rem;
+	}
+}
+
+
+/**
+ * NAVIGATION
+ */
+.nav-section {
+	padding: 2rem;
+}
+.nav-section a {
+	display: block;
+	margin: 1rem 0;
+	text-decoration: none;
+}
+
+@media (min-width: 768px) {
+	.nav-section {
+		padding: 2rem 2rem 4rem;
+		float: left;
+		width: 50%;
+	}
+	.nav-section a {
+		font-size: 2.0rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.nav-section {
+		padding: 4rem 4rem 4rem calc(4rem + 6%);
+	}
+	.nav-section a {
+		font-size: 2.4rem;
 	}
 }
