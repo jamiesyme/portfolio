@@ -3,22 +3,40 @@
 *:before {
 	box-sizing: inherit;
 }
-
 html {
 	box-sizing: border-box;
 	font-size: 62.5%; /* So 1.6rem = 16px */
 }
-
 body {
-	background-color: rgb(232, 232, 232);
-	color: rgb(64, 64, 64);
+	/*background-color: rgb(232, 232, 232);*/
+	/*background-color: #fffcfa;*/
+	/*background-color: #f1faee;*/
+	background-color: #fafafa;
+	/*color: rgb(32, 32, 32);*/
+	/*color: #202020;*/
+	/*color: #1d3557;*/
+	color: #292f36;
 	font-size: 1.6rem;
-	font-family: 'Open Sans', sans-serif;
+	font-family: Roboto, sans-serif;
 	line-height: 1.6;
 }
-
+a {
+	color: #292f36;
+}
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Lato';
+	font-family: Rubik;
+}
+
+@media (min-width: 768px) {
+	body {
+		font-size: 2rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	body {
+		font-size: 2.4rem;
+	}
 }
 
 
@@ -68,7 +86,20 @@ body > header button {
 	padding: 2.0rem;
 }
 .intro-section .big-text {
+	/*color: #457b9d;*/
+	/*color: #4ecdc4;*/
+	color: #292f36;
 	margin: 1rem 0 2rem 0;
+	font-family: 'Rubik';
+	font-size: 3.2rem;
+	font-weight: 500;
+}
+.intro-section hr {
+	border: none;
+	background-color: #ccc;
+	height: 1px;
+	width: 33%;
+	margin: 0;
 }
 .intro-section p {
 	margin: 1rem 0;
@@ -87,6 +118,7 @@ body > header button {
 	.intro-section p {
 		font-size: 2rem;
 		max-width: 60rem;
+		margin: 4rem 0;
 	}
 }
 
@@ -95,7 +127,7 @@ body > header button {
 		padding: 4rem 4rem 4rem calc(4rem + 6%);
 	}
 	.intro-section .big-text {
-		font-size: 6.4rem;
+		font-size: 7.2rem;
 	}
 	.intro-section p {
 		font-size: 2.4rem;
@@ -126,19 +158,52 @@ body > header button {
 
 @media (min-width: 768px) {
 	.projects-section {
-		padding: 2rem;
+		/*padding: 2rem;*/
+		padding: 1rem 0;
 		float: right;
 		width: 50%;
 	}
+	.projects-section .bg-card {
+		/*background-color: #1d1e22;*/
+		padding: 5rem;
+		/*max-width: 70rem;*/
+	}
 	.projects-section section {
-		margin: 5.0rem auto;
-		max-width: 50rem;
+		background-color: #eee;
+		box-shadow: 0 0.5rem 1.0rem rgba(0, 0, 0, 0.3);
+		margin: 6rem;
+		padding: 1rem;
+		min-height: 18rem;
+		max-width: 60rem;
+		position: relative;
+	}
+	.projects-section img {
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.projects-section .project-name {
+		color: #fff;
+		position: absolute;
+		left: 1.5rem;
+		bottom: 1rem;
+	}
+	.projects-section a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 	}
 }
 
 @media (min-width: 1200px) {
 	.projects-section {
-		padding: 4rem calc(4rem + 6%) 4rem 4rem;
+		/*padding: 4rem calc(4rem + 6%) 4rem 4rem;*/
+		/*padding: 4rem 0;*/
 	}
 }
 
@@ -150,9 +215,24 @@ body > header button {
 	padding: 2rem;
 }
 .nav-section a {
-	display: block;
-	margin: 1rem 0;
+	display: inline-block;
+	margin-bottom: 2rem;
 	text-decoration: none;
+	/*background-color: white;*/
+	background-color: #4ecdc4;
+	color: #fff;
+	box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+	padding: 1rem 2rem;
+	max-width: 20rem;
+}
+.nav-section a:hover {
+	background-color: #fff;
+	color: #4ecdc4;
+	border: 0.2rem solid #4ecdc4;
+	padding: 0.8rem 2rem;
+}
+.nav-section a:active {
+	box-shadow: none;
 }
 
 @media (min-width: 768px) {
@@ -168,7 +248,7 @@ body > header button {
 
 @media (min-width: 1200px) {
 	.nav-section {
-		padding: 4rem 4rem 4rem calc(4rem + 6%);
+		padding: 0 4rem 4rem calc(4rem + 6%);
 	}
 	.nav-section a {
 		font-size: 2.4rem;
