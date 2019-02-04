@@ -43,6 +43,7 @@
 	color: white;
 	cursor: default;
 	line-height: 3.2rem;
+	color: #eee;
 	text-align: center;
 }
 
@@ -117,7 +118,8 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: white;
+	/*background-color: white;*/
+	background-color: #e7e7e7;
 }
 
 .resize-handle-n,
