@@ -27,7 +27,7 @@
 	background-color: transparent;
 	border: none;
 	background: white;
-	color: #232323;
+	color: #323232;
 	box-sizing: border-box;
 	cursor: pointer;
 	display: block;
@@ -65,7 +65,7 @@
 	box-sizing: border-box;
 	color: #232323;
 	padding: 0.4rem;
-	text-align: left;
+	/*text-align: left;*/
 	font-weight: bold;
 	width: 100%;
 	margin-top: 1.0rem;

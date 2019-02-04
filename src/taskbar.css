@@ -76,7 +76,11 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	border-bottom: 0.4rem solid rgb(184, 184, 184);
+	/*border-bottom: 0.4rem solid rgb(184, 184, 184);*/
+	/*border-bottom: 0.4rem solid #B572DC;*/
+}
+.task.focused button {
+	background-color: rgb(255, 255, 255, 0.15);
 }
 
 .task button:hover {
