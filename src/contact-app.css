@@ -5,9 +5,9 @@
 }
 
 .contact-app .app-title {
-	margin: 4.0rem auto;
-	padding: 0 6.0rem;
-	max-width: 120.0rem;
+	margin: 4rem auto 2rem;
+	padding: 0 6rem;
+	max-width: 120rem;
 }
 
 .contact-app form {
@@ -16,7 +16,7 @@
 	flex: 1;
 	padding: 0;
 	width: 100%;
-	max-width: 60.0rem;
+	max-width: 60rem;
 	padding: 1rem 6rem 6rem;
 	margin: 0 auto;
 }

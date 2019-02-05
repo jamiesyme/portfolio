@@ -4,7 +4,7 @@ class ContactApp {
 			title:        'Contact',
 			content:      require('./contact-app.html'),
 			contentClass: 'contact-app',
-			size:         { width: 640, height: 480 },
+			size:         { width: 640, height: 680 },
 			minSize:      { width: 350, height: 380 },
 		});
 
