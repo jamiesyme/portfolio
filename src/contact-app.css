@@ -1,45 +1,49 @@
 .contact-app {
-	align-items: center;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	min-height: 100%;
+}
+
+.contact-app .app-title {
+	margin: 4.0rem auto;
+	padding: 0 6.0rem;
+	max-width: 120.0rem;
 }
 
 .contact-app form {
-	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	font-family: 'Open Sans';
-	max-width: 80.0rem;
-	padding: 0 4.0rem 4.0rem 4.0rem;
+	padding: 0;
 	width: 100%;
+	max-width: 60.0rem;
+	padding: 1rem 6rem 6rem;
+	margin: 0 auto;
 }
 
 .contact-app .form-group {
-	display: flex;
-	margin: 0 0 1.5rem 0;
+	margin: 0 0 2rem 0;
+	flex: 0;
+	color: rgb(64, 64, 64);
 }
 
 .contact-app .form-group label {
 	display: block;
-	flex: 0 0 auto;
-	width: 10.0rem;
-}
-
-.contact-app .form-group label::after {
-	content: ':';
+	margin: 0 0 0.5rem 0;
 }
 
 .contact-app input, textarea {
+	color: rgb(64, 64, 64);
 	display: block;
-	flex: 1;
-	font-family: 'Open Sans';
-	font-size: 1.4rem;
-	line-height: 2.0rem;
+	font-size: 1.6rem;
 	outline-color: rgb(155, 77, 202);
 	padding: 0.4rem;
 	width: 100%;
+}
+
+.contact-app textarea {
+	flex: 1;
+	min-height: 6.8rem;
 }
 
 .contact-app textarea {
@@ -47,15 +51,17 @@
 }
 
 .contact-app .form-group.grow-vert {
+	display: flex;
+	flex-direction: column;
 	flex: 1;
 }
 
 .contact-app .submit-group {
 	display: flex;
-	margin-left: 10.0rem;
 }
 
 .contact-app .submit-group label {
+	display: block;
 	flex: 1 1 20.0rem;
 }
 
@@ -72,5 +78,6 @@
 	flex: 0 1 10.0rem;
 	max-width: 10.0rem;
 	min-width: 6.0rem;
+	color: rgb(64, 64, 64);
 	outline-color: rgb(155, 77, 202);
 }

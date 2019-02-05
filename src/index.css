@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
 html, body {
 	height: 100%;
 }
@@ -5,7 +11,7 @@ html, body {
 html {
 	box-sizing: border-box;
 	font-size: 62.5%; /* So 1.6rem = 16px */
-	font-family: sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -26,7 +32,6 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
 	color: rgb(64, 64, 64);
-	font-family: 'Open Sans';
 }
 
 .desktop {
