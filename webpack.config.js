@@ -34,7 +34,14 @@ module.exports = {
 				use: {
 					loader: 'html-loader'
 				}
-			}
+			},
+			{
+				test: /\.md$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'raw-loader',
+				}
+			},
 		]
 	},
 	watchOptions: {
