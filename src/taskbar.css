@@ -24,7 +24,7 @@
 }
 
 .taskbar button:hover {
-	background-color: rgba(155, 77, 202, 0.8);
+	background-color: rgba(155, 77, 202, 0.8) !important;
 }
 
 .taskbar button.active {
