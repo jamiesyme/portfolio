@@ -239,7 +239,7 @@ class WindowManager {
 		}
 
 		// Focus the window when clicked
-		window.$elem[0].addEventListener('click', e => {
+		window.$elem[0].addEventListener('mousedown', e => {
 			this.focusWindow(window);
 		}, true);
 
