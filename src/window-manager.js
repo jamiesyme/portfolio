@@ -34,6 +34,11 @@ class WindowManager {
 		// Whenever the browser is resized, make sure the windows are within
 		// the bounds
 		$(window).resize(() => this.restrictWindowsToBounds());
+
+		// Whenever the desktop is clicked, unfocus all windows
+		$('body > .desktop')[0].addEventListener('click', () => {
+			this.unfocusWindow();
+		}, true);
 	}
 
 	openWindow (params) {
@@ -286,6 +291,16 @@ class WindowManager {
 			this._windows.forEach(w => w.focused = false);
 			this.emit('focus-window', null);
 		}
+	}
+
+	unfocusWindow () {
+		const window = this._windows[0];
+		if (!window || !window.focused) {
+			return;
+		}
+		window.focused = false;
+		window.$elem.removeClass('focused');
+		this.emit('focus-window', null);
 	}
 
 	setWindowPosition (window, x, y) {
