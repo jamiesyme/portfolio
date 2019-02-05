@@ -1,5 +1,4 @@
 .projects-app {
-	overflow: auto;
 }
 
 .projects-app .app-title {
@@ -77,8 +76,7 @@
 .projects-app .project-viewer {
 	margin: 0 auto;
 	padding: 4rem 6rem 6rem;
-	/*padding: 3rem 3rem 5rem 3rem;*/
-	max-width: 60rem;
+	max-width: calc(60rem + 6rem * 2);
 }
 
 .projects-app .project-viewer .back-button {

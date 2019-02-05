@@ -21,7 +21,6 @@ class WindowManager {
 		// The size of maximized windows are changed whenever the browser is
 		// resized
 		$(window).resize(() => {
-			console.log('window resize');
 			const width = $(window).width();
 			const height = $(window).height();
 			this._windows.filter(w => w.maximized).forEach(w => {
@@ -242,6 +241,25 @@ class WindowManager {
 
 			['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'].forEach(bindHandle);
 		}
+
+		// Add CSS classes for certain windows since we can't rely on media
+		// queries
+		window.on('resize', () => {
+			window.$elem.removeClass('window-sm');
+			window.$elem.removeClass('window-md');
+			window.$elem.removeClass('window-lg');
+			window.$elem.removeClass('window-xl');
+
+			if (window.width < 768) {
+				window.$elem.addClass('window-sm');
+			} else if (window.width < 960) {
+				window.$elem.addClass('window-md');
+			} else if (window.width < 1200) {
+				window.$elem.addClass('window-lg');
+			} else {
+				window.$elem.addClass('window-xl');
+			}
+		});
 
 		// Focus the window when clicked
 		window.$elem[0].addEventListener('mousedown', e => {
