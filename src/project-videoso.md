@@ -1,11 +1,9 @@
 # Videoso
 
+Videoso is an early prototype of a video sharing platform.
+
 - ![Home Page](/f/videoso-1.png)
 - ![Video Player](/f/videoso-2.png)
-
-## What
-
-Videoso is an early prototype of a video sharing platform.
 
 ## Why
 

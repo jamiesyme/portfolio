@@ -1,11 +1,9 @@
 # Taffy
 
+Taffy is an experiment in tag-based file systems. It supports file organization and search through use of tags.
+
 - ![Help Command](/f/taffy-help.png)
 - ![Using Taffy](/f/taffy-use.png)
-
-## What
-
-Taffy is an experiment in tag-based file systems. It supports file organization and search through use of tags.
 
 ## Why
 

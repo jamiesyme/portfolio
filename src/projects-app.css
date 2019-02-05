@@ -76,35 +76,36 @@
 }
 
 .projects-app .project-viewer {
-	margin: 3.0rem 3.0rem 5.0rem 3.0rem;
-	max-width: 120.0rem;
+	margin: 0 auto;
+	padding: 4rem 6rem 6rem;
+	/*padding: 3rem 3rem 5rem 3rem;*/
+	max-width: 60rem;
 }
 
 .projects-app .project-viewer .back-button {
 	background-color: transparent;
 	border: none;
-	color: rgb(168, 168, 168);
+	color: rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 	font-family: 'Open Sans';
 	font-size: 2.0rem;
-	padding: 0 1.0rem 0 0.5rem;
+	padding: 0;
 }
 
 .projects-app .project-viewer .back-button:hover {
-	color: rgb(112, 112, 112);
+	color: rgba(0, 0, 0, 0.6);
 }
 
 .projects-app .project-viewer .back-button:focus {
 	outline: none;
 }
 
-.projects-app .project-viewer .back-button::before {
-	content: '< ';
+.projects-app .project-viewer .back-button ion-icon {
+	position: relative;
+	top: 0.2rem;
 }
 
 .projects-app .project {
-	display: flex;
-	flex-wrap: wrap;
 }
 
 .projects-app .project .screenshots {
@@ -138,16 +139,15 @@
 
 .projects-app .project h1 {
 	color: rgb(64, 64, 64);
-	flex-basis: 100%;
-	font-weight: 400;
-	letter-spacing: 0.3rem;
-	margin: 1.0rem 0 3.0rem 0;
+	font-size: 4.8rem;
+	text-align: center;
+	margin: 1rem 0 2rem;
 }
 
 .projects-app .project h2 {
-	font-weight: 400;
-	letter-spacing: 0.3rem;
-	margin: 2.0rem 0 1.0rem 0;
+	color: rgb(64, 64, 64);
+	font-size: 2.4rem;
+	margin: 2rem 0 1rem;
 }
 
 .projects-app .project h2:first-of-type {

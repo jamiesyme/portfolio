@@ -1,11 +1,9 @@
 # Portfolio
 
+This website is a portfolio of my recent projects. It features a dynamic window manager, and was primarily designed to mimic a desktop environment.
+
 - ![About Page](/f/portfolio-about.png)
 - ![Project Page](/f/portfolio-project.png)
-
-## What
-
-This website is a portfolio of my recent projects. It features a dynamic window manager, and was primarily designed to mimic a desktop environment.
 
 ## Why
 

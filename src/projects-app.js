@@ -11,11 +11,12 @@ class ProjectsApp {
 			minSize:      { width: 350, height: 420 },
 		});
 
-		const $canvas = this.window.$canvas;
-		const $viewer = $canvas.find('.project-viewer');
-		const $back   = $viewer.find('.back-button');
-		const $header = $canvas.find('.app-title');
-		const $tiles  = $canvas.find('.project-tiles');
+		const $canvas       = this.window.$canvas;
+		const $viewer       = $canvas.find('.project-viewer');
+		const $back         = $viewer.find('.back-button');
+		const $header       = $canvas.find('.app-title');
+		const $tiles        = $canvas.find('.project-tiles');
+		const $tileWrapper  = $canvas.find('.project-tiles-wrapper');
 
 		// Connect the back button on the project viewer
 		$back.click(e => history.back());
@@ -23,7 +24,7 @@ class ProjectsApp {
 			$viewer.find('.project').remove();
 			$viewer.hide();
 			$header.show();
-			$tiles.show();
+			$tileWrapper.show();
 		};
 
 		// Render the project tiles
@@ -101,7 +102,7 @@ class ProjectsApp {
 				$viewer.find('.project').remove();
 				$viewer.append($project);
 				$header.hide();
-				$tiles.hide();
+				$tileWrapper.hide();
 				$viewer.show();
 			});
 		}

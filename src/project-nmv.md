@@ -1,11 +1,9 @@
 # Name My Var
 
+Name My Var is intended to be a search engine for variable, function, and class names. Given an input name, such as "error", the website will provide suggestions for alternative and related names, common uses, etc. At this point in time, only the front end is implemented.
+
 - ![Home Page](/f/nmv-home.png)
 - ![Search Page](/f/nmv-search.png)
-
-## What
-
-Name My Var is intended to be a search engine for variable, function, and class names. Given an input name, such as "error", the website will provide suggestions for alternative and related names, common uses, etc. At this point in time, only the front end is implemented.
 
 ## Why
 
