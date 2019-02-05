@@ -9,8 +9,7 @@
 }
 
 .projects-app .project-tiles-wrapper {
-	padding: 2rem 6rem 6rem;
-	/*padding: 0 5.0rem 3.0rem;*/
+	padding: 1rem 6rem 6rem;
 	max-width: 120rem;
 	margin: 0 auto;
 }
@@ -109,12 +108,9 @@
 }
 
 .projects-app .project .screenshots {
-	box-sizing: border-box;
-	flex: 1 1 50%;
 	list-style-type: none;
-	margin: 0 auto;
-	min-width: calc(30.0rem + 3.0rem);
-	padding: 0 1.5rem 0 1.5rem;
+	padding: 0;
+	margin: 4rem 0;
 }
 
 .projects-app .project .screenshots img {
@@ -122,8 +118,7 @@
 	border: 1px solid rgb(200, 200, 200);
 	box-sizing: border-box;
 	display: block;
-	margin: 0 auto 3.0rem auto;
-	max-width: 50.0rem;
+	margin: 0 auto 4rem;
 	width: 100%;
 }
 
@@ -133,7 +128,6 @@
 
 .projects-app .project .info {
 	box-sizing: border-box;
-	flex: 1 1 50%;
 	padding: 0 1.5rem 0 1.5rem;
 }
 
