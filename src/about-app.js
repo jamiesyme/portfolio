@@ -15,14 +15,9 @@ class AboutApp {
 			minSize:      { width: 350, height: 380 },
 		});
 
-		const $canvas = this.window.$canvas;
-		$canvas.find('.app-projects-link').click(e => {
-			e.preventDefault();
-			launchApp('projects');
-		});
-		$canvas.find('.app-contact-link').click(e => {
-			e.preventDefault();
-			launchApp('contact');
+		this.window.$canvas.find('.app-link').click(e => {
+			const app = $(e.target).data('app');
+			launchApp(app);
 		});
 	}
 }

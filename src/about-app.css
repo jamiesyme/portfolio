@@ -13,6 +13,23 @@
 	padding: 1rem 6rem 6rem;
 }
 
+.about-app a,
+.about-app .app-link {
+	cursor: pointer;
+	color: rgb(155, 77, 202);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.about-app a:hover,
+.about-app .app-link:hover {
+	text-decoration: underline;
+}
+
+.about-app p {
+	margin: 0 0 2rem;
+}
+
 .about-app .pictures {
 	list-style: none;
 	padding: 0;
@@ -25,16 +42,17 @@
 	max-width: 100%;
 }
 
-.about-app p {
+.about-app .links {
+	list-style: none;
+	padding: 0;
 	margin: 0 0 2rem;
 }
 
-.about-app p a {
-	color: rgb(155, 77, 202);
-	font-weight: bold;
-	text-decoration: none;
+.about-app .links li {
+	display: inline;
 }
 
-.about-app p a:hover {
-	text-decoration: underline;
+.about-app .links li + li::before {
+	content: '/';
+	padding: 0 1rem;
 }
