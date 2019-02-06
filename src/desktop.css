@@ -58,6 +58,7 @@
 
 .desktop .launcher .label {
 	display: block;
-	text-align: center;
+	font-weight: bold;
 	margin-top: 0.6rem;
+	text-align: center;
 }
