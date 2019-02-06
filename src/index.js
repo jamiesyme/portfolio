@@ -2,9 +2,21 @@ const AboutApp      = require('./about-app');
 const AppManager    = require('./app-manager');
 const ContactApp    = require('./contact-app');
 const Desktop       = require('./desktop');
+const InterfaceMode = require('./interface-mode');
 const ProjectsApp   = require('./projects-app');
 const Taskbar       = require('./taskbar');
 const WindowManager = require('./window-manager');
+
+InterfaceMode.isDesktop(isDesktop => {
+	const $body = $('body');
+	if (isDesktop) {
+		$body.addClass('desktop-interface');
+		$body.removeClass('mobile-interface');
+	} else {
+		$body.addClass('mobile-interface');
+		$body.removeClass('desktop-interface');
+	}
+});
 
 const windowManager = new WindowManager();
 const appManager    = new AppManager(windowManager);
