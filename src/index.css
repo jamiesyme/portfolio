@@ -33,6 +33,11 @@ p {
 	color: rgb(64, 64, 64);
 }
 
+.mobile-interface .on-desktop,
+.desktop-interface .on-mobile {
+	display: none !important;
+}
+
 .desktop {
 	/*background-attachment: fixed;
 	background-color: rgb(135, 199, 179);

@@ -8,6 +8,7 @@ export function isDesktop(cb) {
 			query.addListener(ev => {
 				cb(ev.matches);
 			});
+			cb(query.matches);
 		}
 		return query.matches;
 	}

@@ -1,7 +1,17 @@
+const InterfaceMode = require('./interface-mode');
 const Window = require('./window');
 
-const taskbarHeight = 36; // 36px
-const titlebarHeight = 32; // 32px
+function getTaskbarHeight() {
+	if (InterfaceMode.isDesktop()) {
+		return 36; // 36px
+	} else {
+		return 48; // 48px
+	}
+}
+
+function getTitlebarHeight() {
+	return 32; // 32px
+}
 
 function clamp (min, max, value) {
 	return Math.min(max, Math.max(min, value));
@@ -250,9 +260,9 @@ class WindowManager {
 			window.$elem.removeClass('window-lg');
 			window.$elem.removeClass('window-xl');
 
-			if (window.width < 768) {
+			if (window.width < 600) {
 				window.$elem.addClass('window-sm');
-			} else if (window.width < 960) {
+			} else if (window.width < 900) {
 				window.$elem.addClass('window-md');
 			} else if (window.width < 1200) {
 				window.$elem.addClass('window-lg');
@@ -408,7 +418,7 @@ class WindowManager {
 		}
 		window.$elem.addClass('maximized');
 		window.$elem.css({
-			top:    titlebarHeight,
+			top:    getTaskbarHeight(),
 			left:   0,
 			right:  0,
 			bottom: 0,
@@ -445,10 +455,10 @@ class WindowManager {
 	}
 
 	get bounds () {
-		const topBuffer = taskbarHeight;
+		const topBuffer = getTaskbarHeight();
 		const leftBuffer = 20;
 		const rightBuffer = 20;
-		const bottomBuffer = titlebarHeight;
+		const bottomBuffer = getTitlebarHeight();
 		return {
 			xMin:    leftBuffer,
 			xMax:    this._$body.width() - 1 - rightBuffer,
@@ -469,7 +479,7 @@ class WindowManager {
 	get maxWindowSize () {
 		return {
 			width: this._$body.width(),
-			height: this._$body.height() - taskbarHeight,
+			height: this._$body.height() - getTaskbarHeight(),
 		};
 	}
 

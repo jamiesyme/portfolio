@@ -1,12 +1,16 @@
 .taskbar {
+	display: flex;
 	background-color: rgb(35, 35, 35);
 	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.5);
 	color: white;
-	display: flex;
-	flex: none;
 	height: 3.6rem;
-	padding: 0 1.0rem 0 1.0rem;
+	line-height: 3.6rem;
+	padding: 0 1.0rem;
 	z-index: 1;
+}
+.mobile-interface .taskbar {
+	height: 4.8rem;
+	line-height: 4.8rem;
 }
 
 .taskbar button {
@@ -31,20 +35,27 @@
 	background-color: rgba(155, 77, 202, 0.8);
 }
 
-.apps-menu-button {
+.taskbar .apps-menu-button {
 	flex: 0 0 20%;
 	max-width: 15.0rem;
 	text-align: left;
 }
+.mobile-interface .taskbar .apps-menu-button {
+	flex: 0;
+	max-width: none;
+	font-size: 3.2rem;
+}
 
-.clock {
-	flex: none;
+.taskbar .apps-menu-button ion-icon {
+	display: block;
+}
+
+.taskbar .clock {
 	font-family: 'Open Sans';
-	line-height: 3.6rem;
 	padding: 0 1.0rem;
 }
 
-.tasks {
+.taskbar .tasks {
 	display: flex;
 	flex: 1 1 auto;
 	list-style-type: none;
@@ -52,14 +63,17 @@
 	padding: 0 0 0 1.0rem;
 }
 
-.task {
+.taskbar .task {
 	display: block;
 	width: 100%;
 	max-width: 18.0rem;
 	margin: 0 0.8rem 0 0;
 }
+.mobile-interface .taskbar .task {
+	display: none;
+}
 
-.task button {
+.taskbar .task button {
 	box-sizing: border-box;
 	color: white;
 	display: block;
@@ -69,7 +83,7 @@
 	width: 100%;
 }
 
-.task.focused button::after {
+.taskbar .task.focused button::after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -79,24 +93,24 @@
 	/*border-bottom: 0.4rem solid rgb(184, 184, 184);*/
 	/*border-bottom: 0.4rem solid #B572DC;*/
 }
-.task.focused button {
+.taskbar .task.focused button {
 	background-color: rgb(255, 255, 255, 0.15);
 }
 
-.task button:hover {
+.taskbar .task button:hover {
 	border-color: rgba(155, 77, 202, 0.8);
 }
 
-.task button:hover::after {
+.taskbar .task button:hover::after {
 	display: none;
 }
 
-.task.minimized button {
+.taskbar .task.minimized button {
 	color: rgb(192, 192, 192);
 	font-style: italic;
 }
 
-.apps-menu {
+.taskbar .apps-menu {
 	background-color: white;
 	border: 0.1rem solid rgb(164, 164, 164);
 	border-radius: 0.7rem;
@@ -114,12 +128,12 @@
 	width: 24.0rem;
 }
 
-.apps-menu li {
+.taskbar .apps-menu li {
 	display: block;
 	height: 3.2rem;
 }
 
-.apps-menu li button {
+.taskbar .apps-menu li button {
 	color: rgb(64, 64, 64);
 	display: block;
 	padding: 0 1.0rem 0 3.0rem;
@@ -127,6 +141,6 @@
 	width: 100%;
 }
 
-.apps-menu li button:hover {
+.taskbar .apps-menu li button:hover {
 	color: white;
 }
