@@ -49,7 +49,7 @@ for (const app of apps) {
 // Create the projects
 const $body = $('body');
 //const projApp = appManager.launch('projects');
-const projApp = appManager.launch('about');
+/*const projApp = appManager.launch('about');
 windowManager.setWindowPosition(
 	projApp.window,
 	$body.width() * 0.55,
@@ -59,4 +59,4 @@ windowManager.setWindowSize(
 	projApp.window,
 	$body.width() * 0.4,
 	null
-);
+);*/

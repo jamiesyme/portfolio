@@ -1,21 +1,11 @@
 const InterfaceMode = require('./interface-mode');
 const Window = require('./window');
 
-function getTaskbarHeight() {
-	if (InterfaceMode.isDesktop()) {
-		return 36; // 36px
-	} else {
-		return 48; // 48px
-	}
-}
-
-function getTitlebarHeight() {
-	return 32; // 32px
-}
-
 function clamp (min, max, value) {
 	return Math.min(max, Math.max(min, value));
 }
+
+const titlebarHeight = 32; // 32px
 
 class WindowManager {
 	constructor () {
@@ -81,7 +71,7 @@ class WindowManager {
 			height: window.height,
 		});
 
-		{ // Bind the control buttons
+		{ // Bind the titlebar control buttons
 			const $bar = window.$elem.children('.title-bar');
 			const $btns = $bar.find('.control-buttons');
 
@@ -97,6 +87,17 @@ class WindowManager {
 			});
 			$btns.find('.minimize').click(e => {
 				this.minimizeWindow(window);
+			});
+		}
+
+		{ // Bind the home bar buttons
+			const $bar = window.$elem.children('.home-bar');
+
+			$bar.find('.minimize').click(e => {
+				this.minimizeWindow(window);
+			});
+			$bar.find('.go-back').click(e => {
+				window.emit('go-back');
 			});
 		}
 
@@ -254,7 +255,7 @@ class WindowManager {
 
 		// Add CSS classes for certain windows since we can't rely on media
 		// queries
-		window.on('resize', () => {
+		function updateSizeClasses() {
 			window.$elem.removeClass('window-sm');
 			window.$elem.removeClass('window-md');
 			window.$elem.removeClass('window-lg');
@@ -269,15 +270,25 @@ class WindowManager {
 			} else {
 				window.$elem.addClass('window-xl');
 			}
-		});
+		}
+		window.on('resize', updateSizeClasses);
+		updateSizeClasses();
 
 		// Focus the window when clicked
 		window.$elem[0].addEventListener('mousedown', e => {
 			this.focusWindow(window);
 		}, true);
 
+		// Let the taskbar and other components know about this window
 		this.emit('add-window', window);
+
+		// Restrict the window size, and maximize the window by default on mobile
 		this.restrictWindowToBounds(window);
+		if (InterfaceMode.isMobile()) {
+			this.maximizeWindow(window);
+		}
+
+		// Focus the new window by default
 		this.focusWindow(window);
 		return window;
 	}
@@ -418,7 +429,7 @@ class WindowManager {
 		}
 		window.$elem.addClass('maximized');
 		window.$elem.css({
-			top:    getTaskbarHeight(),
+			top:    0,
 			left:   0,
 			right:  0,
 			bottom: 0,
@@ -455,10 +466,10 @@ class WindowManager {
 	}
 
 	get bounds () {
-		const topBuffer = getTaskbarHeight();
+		const topBuffer = 0;
 		const leftBuffer = 20;
 		const rightBuffer = 20;
-		const bottomBuffer = getTitlebarHeight();
+		const bottomBuffer = titlebarHeight;
 		return {
 			xMin:    leftBuffer,
 			xMax:    this._$body.width() - 1 - rightBuffer,
@@ -479,7 +490,7 @@ class WindowManager {
 	get maxWindowSize () {
 		return {
 			width: this._$body.width(),
-			height: this._$body.height() - getTaskbarHeight(),
+			height: this._$body.height(),
 		};
 	}
 

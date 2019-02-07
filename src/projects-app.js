@@ -19,13 +19,16 @@ class ProjectsApp {
 		const $tileWrapper  = $canvas.find('.project-tiles-wrapper');
 
 		// Connect the back button on the project viewer
-		$back.click(e => history.back());
-		window.onpopstate = function () {
+		const goBack = () => {
 			$viewer.find('.project').remove();
 			$viewer.hide();
 			$header.show();
 			$tileWrapper.show();
+			this.window.setCanGoBack(false);
 		};
+		$back.click(e => history.back());
+		this.window.on('go-back', e => history.back());
+		window.onpopstate = goBack;
 
 		// Render the project tiles
 		for (const project of ProjectsApp.projects) {
@@ -45,7 +48,6 @@ class ProjectsApp {
 						case Markdown.BlockType.heading1:
 							return $('<h1>');
 						case Markdown.BlockType.heading2:
-							console.log(mdElem);
 							return $('<h2>');
 						case Markdown.BlockType.heading3:
 							return $('<h3>');
@@ -104,6 +106,7 @@ class ProjectsApp {
 				$header.hide();
 				$tileWrapper.hide();
 				$viewer.show();
+				this.window.setCanGoBack(true);
 			});
 		}
 

@@ -87,6 +87,7 @@
 	font-family: 'Open Sans';
 	font-size: 2.0rem;
 	padding: 0;
+	margin: 0 0 1rem;
 }
 
 .projects-app .project-viewer .back-button:hover {
@@ -133,7 +134,7 @@
 	color: rgb(64, 64, 64);
 	font-size: 4.8rem;
 	text-align: center;
-	margin: 1rem 0 2rem;
+	margin: 0 0 2rem;
 }
 
 .projects-app .project h2 {

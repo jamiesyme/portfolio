@@ -2,6 +2,8 @@
 	border-radius: 0.7rem; /* Needed for box shadow */
 	box-shadow: 0 0 4.3rem rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
 	position: absolute;
 	z-index: 0;
 	transition: transform 0.2s ease, opacity 0.15s ease;
@@ -17,7 +19,7 @@
 }
 
 .window.maximized .title-bar,
-.window.maximized .canvas {
+.window.maximized .canvas-outer {
 	border: none;
 	border-radius: 0;
 }
@@ -28,17 +30,16 @@
 	pointer-events: none;
 }
 
-.title-bar {
+.window .title-bar {
 	background-color: rgb(35, 35, 35);
 	border-radius: 0.7rem 0.7rem 0 0;
-	font-family: 'Open Sans';
 	height: 3.2rem;
 	overflow: hidden;
 	position: relative;
 	z-index: 100;
 }
 
-.title-bar .title {
+.window .title-bar .title {
 	display: none; /* Disabled for now */
 	color: white;
 	cursor: default;
@@ -47,7 +48,7 @@
 	text-align: center;
 }
 
-.title-bar .control-buttons {
+.window .title-bar .control-buttons {
 	align-items: center;
 	margin-right: 0.7rem;
 	display: flex;
@@ -57,7 +58,7 @@
 	top: 0;
 }
 
-.title-bar .control-buttons button {
+.window .title-bar .control-buttons button {
 	background-color: transparent;
 	border-radius: 50%;
 	border: none;
@@ -71,7 +72,7 @@
 	width: 1.7rem;
 }
 
-.title-bar .control-buttons button::after {
+.window .title-bar .control-buttons button::after {
 	background-color: rgb(112, 112, 112);
 	border-radius: inherit;
 	border: 0.1rem solid rgb(148, 148, 148);
@@ -83,35 +84,31 @@
 	width: 1.3rem;
 }
 
-.title-bar .control-buttons .minimize::after {
+.window .title-bar .control-buttons .minimize::after {
 	background-color: rgb(76, 175, 80);
 	border-color: rgb(56, 142, 60);
 }
 
-.title-bar .control-buttons .maximize::after {
+.window .title-bar .control-buttons .maximize::after {
 	background-color: rgb(255, 235, 59);
 	border-color: rgb(253, 216, 53);
 }
 
-.title-bar .control-buttons .close::after {
+.window .title-bar .control-buttons .close::after {
 	background-color: rgb(229, 57, 53);
 	border-color: rgb(198, 40, 40);
 }
 
-.canvas-outer {
+.window .canvas-outer {
 	border: 0.1rem solid rgb(164, 164, 164);
 	border-top: none;
 	border-radius: 0 0 0.7rem 0.7rem;
 	overflow: hidden;
-	position: absolute;
-	top: 3.2rem;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 10;
+	flex: 1;
+	position: relative;
 }
 
-.canvas {
+.window .canvas {
 	overflow: auto;
 	position: absolute;
 	top: 0;
@@ -123,23 +120,54 @@
 	background-color: #f7f7f7;
 }
 
-.resize-handle-n,
-.resize-handle-e,
-.resize-handle-s,
-.resize-handle-w {
+.window .home-bar {
+	background-color: rgb(35, 35, 35);
+	height: 4.8rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.window .home-bar .minimize {
+	grid-column-start: 2;
+}
+
+.window .home-bar .go-back {
+	display: none;
+}
+
+.window.can-go-back .home-bar .go-back {
+	display: block;
+}
+
+.window .home-bar ion-icon {
+	color: white;
+	display: block;
+	font-size: 2.4rem;
+	margin: 0 auto;
+}
+
+.window .home-bar button {
+	background: none;
+	border: none;
+}
+
+.window .resize-handle-n,
+.window .resize-handle-e,
+.window .resize-handle-s,
+.window .resize-handle-w {
 	position: absolute;
 	z-index: 200;
 }
 
-.resize-handle-ne,
-.resize-handle-se,
-.resize-handle-sw,
-.resize-handle-nw {
+.window .resize-handle-ne,
+.window .resize-handle-se,
+.window .resize-handle-sw,
+.window .resize-handle-nw {
 	position: absolute;
 	z-index: 201;
 }
 
-.resize-handle-n {
+.window .resize-handle-n {
 	cursor: ns-resize;
 	height: 0.8rem;
 	left: 0;
@@ -147,7 +175,7 @@
 	width: 100%;
 }
 
-.resize-handle-e {
+.window .resize-handle-e {
 	cursor: ew-resize;
 	height: 100%;
 	right: -0.2rem;
@@ -155,7 +183,7 @@
 	width: 0.8rem;
 }
 
-.resize-handle-s {
+.window .resize-handle-s {
 	bottom: -0.2rem;
 	cursor: ns-resize;
 	height: 0.8rem;
@@ -163,7 +191,7 @@
 	width: 100%;
 }
 
-.resize-handle-w {
+.window .resize-handle-w {
 	cursor: ew-resize;
 	height: 100%;
 	left: -0.2rem;
@@ -171,7 +199,7 @@
 	width: 0.8rem;
 }
 
-.resize-handle-ne {
+.window .resize-handle-ne {
 	cursor: nesw-resize;
 	height: 1.2rem;
 	right: -0.2rem;
@@ -179,7 +207,7 @@
 	width: 1.2rem;
 }
 
-.resize-handle-se {
+.window .resize-handle-se {
 	bottom: -0.2rem;
 	cursor: nwse-resize;
 	height: 1.2rem;
@@ -187,7 +215,7 @@
 	width: 1.2rem;
 }
 
-.resize-handle-sw {
+.window .resize-handle-sw {
 	bottom: -0.2rem;
 	cursor: nesw-resize;
 	height: 1.2rem;
@@ -195,7 +223,7 @@
 	width: 1.2rem;
 }
 
-.resize-handle-nw {
+.window .resize-handle-nw {
 	cursor: nwse-resize;
 	height: 1.2rem;
 	left: -0.2rem;

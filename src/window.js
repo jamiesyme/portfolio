@@ -47,6 +47,7 @@ class Window {
 			'minimize': [],
 			'move': [],
 			'resize': [],
+			'go-back': [],
 		};
 	}
 
@@ -59,6 +60,14 @@ class Window {
 	emit (eventType, data) {
 		for (const cb of this._listeners[eventType] || []) {
 			cb(data);
+		}
+	}
+
+	setCanGoBack (canGoBack) {
+		if (canGoBack) {
+			this.$elem.addClass('can-go-back');
+		} else {
+			this.$elem.removeClass('can-go-back');
 		}
 	}
 }

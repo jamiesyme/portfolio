@@ -61,12 +61,15 @@ p {
 
 .windows {
 	position: absolute;
-	top: 0;
+	top: 3.6rem;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	z-index: 1;
 	pointer-events: none;
+}
+.mobile-interface .windows {
+	top: 4.8rem;
 }
 
 .menus {
