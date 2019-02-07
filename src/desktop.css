@@ -1,14 +1,36 @@
 .desktop > .intro {
-	margin: 20rem 10rem;
-	max-width: 64.0rem;
+	padding: 4rem;
+	overflow: scroll;
+	max-height: 100%;
+}
+@media (min-width: 600px) {
+	.desktop > .intro {
+		padding: 20rem 10rem;
+		max-width: 64.0rem;
+	}
+}
+
+.desktop .avoid-wrap {
+	display: inline-block;
 }
 
 .desktop h1 {
-	font-size: 4.8rem;
+	font-size: 3.2rem;
+	margin: 0 0 2rem;
+}
+@media (min-width: 600px) {
+	.desktop h1 {
+		font-size: 4.8rem;
+	}
 }
 
 .desktop h2 {
-	margin: 8.0rem 0 0.5rem;
+	margin: 4rem 0 0.5rem;
+}
+@media (min-width: 600px) {
+	.desktop h2 {
+		margin: 8.0rem 0 0.5rem;
+	}
 }
 
 .desktop .lead {
