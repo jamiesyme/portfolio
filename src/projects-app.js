@@ -18,7 +18,7 @@ class ProjectsApp {
 		const $tiles        = $canvas.find('.project-tiles');
 		const $tileWrapper  = $canvas.find('.project-tiles-wrapper');
 
-		// Connect the back button on the project viewer
+		// Connect the back buttons for the project viewer
 		const goBack = () => {
 			$viewer.find('.project').remove();
 			$viewer.hide();
@@ -109,20 +109,6 @@ class ProjectsApp {
 				this.window.setCanGoBack(true);
 			});
 		}
-
-		// Adjust projects grid upon window resize
-		this.window.on('resize', () => {
-			let cols = (() => {
-				if (this.window.width < 550) {
-					return '1fr';
-				}
-				if (this.window.width < 900) {
-					return '1fr 1fr';
-				}
-				return '1fr 1fr 1fr';
-			})();
-			$tiles.css('grid-template-columns', cols);
-		});
 	}
 
 	static get projects () {

@@ -16,11 +16,15 @@
 .projects-app .project-tiles {
 	display: grid;
 	grid-gap: 4.0rem;
+	grid-template-columns: 1fr;
 	list-style-type: none;
 	margin: 0;
 	padding: 0 0 2.0rem 0;
-
-	/* This will be overwritten by JavaScript, we're just providing a default */
+}
+.window-md .projects-app .project-tiles {
+	grid-template-columns: 1fr 1fr;
+}
+.window-lg .projects-app .project-tiles {
 	grid-template-columns: 1fr 1fr 1fr;
 }
 
